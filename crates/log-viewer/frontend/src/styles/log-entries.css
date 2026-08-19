@@ -1,0 +1,239 @@
+/* Log Entry Rows and Cells */
+
+/* Log Entry Row - flex row with two columns */
+.log-entry {
+  display: flex;
+  cursor: pointer;
+  align-items: stretch;
+}
+
+.log-entry:hover {
+  background: var(--bg-hover);
+}
+
+.log-entry.selected {
+  background: var(--bg-active);
+  box-shadow: inset 3px 0 0 var(--accent-blue);
+}
+
+/* Header Cell - contains scrollable header content */
+.entry-header-cell {
+  min-width: 200px;
+  flex-shrink: 0;
+  overflow: hidden;
+  border-right: 2px solid var(--border-color);
+  position: relative;
+  display: flex;
+}
+
+/* Expand toggle - sticks to right edge of header column */
+.header-expand-toggle {
+  position: absolute;
+  right: 4px;
+  top: 4px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.header-expand-toggle:hover {
+  color: var(--text-primary);
+}
+
+.entry-header-content {
+  overflow: hidden;
+  flex: 1;
+  /* Add left padding for the absolutely positioned gutter */
+  padding-left: var(--gutter-width, 0px);
+}
+
+/* Inner content that actually scrolls - must expand to fit all text */
+.entry-header-col {
+  display: inline-flex;
+  align-items: stretch;
+  min-width: 100%;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+.header-content {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 2px 6px 2px 8px;
+}
+
+/* Viewport Cell - source code column */
+.entry-viewport-cell {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  overflow: hidden;
+}
+
+.header-row1 {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.header-row2 {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 1px;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.header-details {
+  padding-top: 4px;
+  font-size: 11px;
+  overflow: auto;
+  max-height: 300px;
+  word-break: break-word;
+}
+
+/* Viewport Column - source code and visualizations */
+.entry-viewport-col {
+  display: flex;
+  flex-direction: column;
+  font-size: 11px;
+  overflow: hidden;
+  flex: 1;
+  min-width: 0;
+}
+
+/* Collapsed source line preview */
+.viewport-collapsed {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 2px 6px;
+  overflow: hidden;
+  height: 100%;
+}
+
+.source-line-preview {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Only show full padding when expanded */
+.log-entry.expanded .entry-viewport-col {
+  padding: 2px 6px;
+  flex: 1;
+}
+
+/* Hide viewport header when collapsed - only show when entry is expanded */
+.viewport-header {
+  display: none;
+}
+
+.log-entry.expanded .viewport-header {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  color: var(--text-muted);
+}
+
+.viewport-label {
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+}
+
+.viewport-content {
+  padding-top: 4px;
+  font-size: 11px;
+  word-break: break-word;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+}
+
+/* Meta badge for fields count etc */
+.content-meta {
+  background: var(--bg-tertiary);
+  padding: 0 4px;
+  border-radius: 3px;
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+
+/* Column toggle button */
+.col-toggle {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.col-toggle:hover {
+  color: var(--text-primary);
+}
+
+/* Expand toggle in toolbar */
+.expand-toggle {
+  background: none;
+  border: 1px solid var(--border-color);
+  border-radius: 2px;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 1px 4px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.expand-toggle:hover {
+  color: var(--text-primary);
+  background: var(--bg-hover);
+}
+
+.reset-toggle {
+  font-size: 12px;
+  line-height: 1;
+}
+
+.entry-meta {
+  color: var(--text-muted);
+  font-size: 11px;
+}
+
+.header-location {
+  background: none;
+  border: none;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 1px;
+}
+
+.header-location:hover {
+  color: var(--accent-blue);
+  text-decoration: underline;
+}

@@ -1,0 +1,17 @@
+name: handlers
+description: HTTP request handlers for API endpoints
+
+files:
+  - name: handlers.rs
+    description: HTTP handlers for log listing, viewing, searching and session management
+
+key_types:
+  - list_logs: Handler to list available log files
+  - get_log: Handler to get log file content
+  - search_log: Handler to search within a log file
+  - query_log: Handler for JQ queries on logs
+
+submodules: []
+source_files:
+  - src/handlers.rs
+last_synced: null

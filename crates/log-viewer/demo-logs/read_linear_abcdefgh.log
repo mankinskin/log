@@ -1,0 +1,200 @@
+{
+  "fields": {
+    "log_file": {
+      "_type": "Option",
+      "_values": [
+        "C:/Users/linus_behrbohm/git/SECOND_CHECKOUT/graph_app/context-engine/target/test-logs/linear_read_unique_chars.log"
+      ],
+      "_variant": "Some"
+    },
+    "message": "Test tracing initialized",
+    "test_name": "linear_read_unique_chars"
+  },
+  "filename": "crates/context-stack/context-trace/src/logging/tracing_utils/test_tracing.rs",
+  "level": "INFO",
+  "line_number": 299,
+  "target": "context_trace::logging::tracing_utils::test_tracing",
+  "timestamp": "2026-03-03T02:42:38.772350Z"
+}
+
+{
+  "fields": {
+    "message": "New ReadCtx"
+  },
+  "filename": "crates/context-stack/context-read/src/context/mod.rs",
+  "level": "DEBUG",
+  "line_number": 44,
+  "target": "context_read::context",
+  "timestamp": "2026-03-03T02:42:38.772674Z"
+}
+
+{
+  "fields": {
+    "known": {
+      "_type": "Pattern",
+      "_values": [
+        []
+      ]
+    },
+    "known_len": 0,
+    "message": "read_segment",
+    "unknown": {
+      "_type": "Pattern",
+      "_values": [
+        [
+          {
+            "index": 0,
+            "text": "a"
+          },
+          {
+            "index": 1,
+            "text": "b"
+          },
+          {
+            "index": 2,
+            "text": "c"
+          },
+          {
+            "index": 3,
+            "text": "d"
+          },
+          {
+            "index": 4,
+            "text": "e"
+          },
+          {
+            "index": 5,
+            "text": "f"
+          },
+          {
+            "index": 6,
+            "text": "g"
+          },
+          {
+            "index": 7,
+            "text": "h"
+          }
+        ]
+      ]
+    },
+    "unknown_len": 8
+  },
+  "filename": "crates/context-stack/context-read/src/context/mod.rs",
+  "level": "DEBUG",
+  "line_number": 72,
+  "target": "context_read::context",
+  "timestamp": "2026-03-03T02:42:38.772875Z"
+}
+
+{
+  "fields": {
+    "edge_count": 8,
+    "graph_data": {
+      "edges": [
+        {
+          "from": 8,
+          "pattern_idx": 0,
+          "sub_index": 0,
+          "to": 0
+        },
+        {
+          "from": 8,
+          "pattern_idx": 0,
+          "sub_index": 1,
+          "to": 1
+        },
+        {
+          "from": 8,
+          "pattern_idx": 0,
+          "sub_index": 2,
+          "to": 2
+        },
+        {
+          "from": 8,
+          "pattern_idx": 0,
+          "sub_index": 3,
+          "to": 3
+        },
+        {
+          "from": 8,
+          "pattern_idx": 0,
+          "sub_index": 4,
+          "to": 4
+        },
+        {
+          "from": 8,
+          "pattern_idx": 0,
+          "sub_index": 5,
+          "to": 5
+        },
+        {
+          "from": 8,
+          "pattern_idx": 0,
+          "sub_index": 6,
+          "to": 6
+        },
+        {
+          "from": 8,
+          "pattern_idx": 0,
+          "sub_index": 7,
+          "to": 7
+        }
+      ],
+      "nodes": [
+        {
+          "index": 0,
+          "label": "a",
+          "width": 1
+        },
+        {
+          "index": 1,
+          "label": "b",
+          "width": 1
+        },
+        {
+          "index": 2,
+          "label": "c",
+          "width": 1
+        },
+        {
+          "index": 3,
+          "label": "d",
+          "width": 1
+        },
+        {
+          "index": 4,
+          "label": "e",
+          "width": 1
+        },
+        {
+          "index": 5,
+          "label": "f",
+          "width": 1
+        },
+        {
+          "index": 6,
+          "label": "g",
+          "width": 1
+        },
+        {
+          "index": 7,
+          "label": "h",
+          "width": 1
+        },
+        {
+          "index": 8,
+          "label": "abcdefgh",
+          "width": 8
+        }
+      ]
+    },
+    "message": "graph_snapshot",
+    "node_count": 9
+  },
+  "filename": "crates/context-stack/context-trace/src/graph/snapshot.rs",
+  "level": "INFO",
+  "line_number": 112,
+  "target": "context_trace::graph::snapshot",
+  "timestamp": "2026-03-03T02:42:38.773153Z"
+}
+

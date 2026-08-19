@@ -1,0 +1,33 @@
+/* Log Viewer - Modern Dark Theme
+ * 
+ * Modular CSS Architecture:
+ * - Shared: base variables, layout, buttons from viewer-api-frontend
+ * - App-specific: header, filter-panel, log-viewer, etc.
+ */
+
+/* Import shared base styles */
+@import '@context-engine/viewer-api-frontend/styles';
+
+/* App-specific overrides and extensions */
+@import './variables.css';
+@import './header.css';
+@import './buttons.css';
+@import './filter-panel.css';
+@import './file-tree.css';
+@import './layout.css';
+@import './log-viewer.css';
+@import './log-entries.css';
+@import './depth-gutter.css';
+@import './entry-content.css';
+@import './fields.css';
+@import './panic.css';
+@import './code-snippet.css';
+@import './code-viewer.css';
+
+@import './stats.css';
+@import './prism.css';
+@import './json-viewer.css';
+@import './rust-value.css';
+@import './effects-debug.css';
+@import './utilities.css';
+@import '../components/ThemeSettings/theme-settings.css';

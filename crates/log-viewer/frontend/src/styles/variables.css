@@ -1,0 +1,226 @@
+/* CSS Variables and Design Tokens  —  Dark Souls "Cinder" Theme */
+
+:root {
+  /* — Gothic stone backgrounds — */
+  --bg-primary: #0d0c0b;
+  --bg-secondary: #141311;
+  --bg-tertiary: #1a1816;
+  --bg-hover: #24201c;
+  --bg-active: #2a2218;
+  
+  /* — Ashen / bone text — */
+  --text-primary: #c8c0b4;
+  --text-secondary: #8a8478;
+  --text-muted: #524e46;
+  
+  /* — Iron borders — */
+  --border-color: #2e2a24;
+  --border-subtle: #1e1c18;
+  
+  /* — Ember & vine accents — */
+  --accent-blue: #3a6a80;      /* faded steel blue */
+  --accent-green: #2a5a28;     /* deep vine green */
+  --accent-orange: #c85a18;    /* bonfire orange */
+  --accent-purple: #5a3a6a;    /* dark soul purple */
+  --accent-yellow: #a08018;    /* tarnished gold */
+  
+  /* — Log levels: cinder palette — */
+  --level-trace: #3a3830;      /* ash grey */
+  --level-debug: #4a5a3a;      /* moss green */
+  --level-info: #3a5a6a;       /* cold iron blue */
+  --level-warn: #a07020;       /* bonfire amber */
+  --level-error: #8a2a18;      /* blood ember */
+  
+  /* — Log level badge text (bright for dark backgrounds) — */
+  --level-trace-text: #c0c0c8;
+  --level-debug-text: #d8c8f0;
+  --level-info-text: #b8d8f8;
+  --level-warn-text: #f8e8b8;
+  --level-error-text: #f8c8c8;
+  
+  /* — Span type badge text — */
+  --span-enter-text: #90d8a8;
+  --span-exit-text: #f0b080;
+  
+  --font-mono: 'Cascadia Code', 'Fira Code', 'Consolas', monospace;
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  
+  --sidebar-width: 220px;
+  --header-height: 24px;
+  --tab-height: 20px;
+  --z-overlay: 9999;
+}
+
+/* ----- GPU overlay mode -----
+   Canvas renders gothic stone wall BEHIND HTML (z-index -1, opaque).
+   HTML backgrounds become transparent so stone texture + vine growth
+   and ember effects show through. */
+:root.gpu-active {
+  --bg-primary:    transparent;
+  --bg-secondary:  rgba(20, 19, 17, 0.14);
+  --bg-tertiary:   rgba(26, 24, 22, 0.14);
+  --bg-hover:      rgba(36, 32, 28, 0.25);
+  --bg-active:     rgba(42, 34, 24, 0.25);
+  --border-color:  rgba(46, 42, 36, 0.35);
+  --border-subtle: rgba(30, 28, 24, 0.25);
+  /* Mobile overlay needs opaque sidebar even in glass/GPU mode */
+  --sidebar-mobile-bg: #141311;
+
+  /* ── GPU glass-mode contrast palette ──
+     When backgrounds are transparent, text needs its own contrast.
+     
+     Uses -webkit-text-stroke + paint-order for GPU-accelerated outlines:
+     - Single composite pass per element (vs 5x text-shadow copies)
+     - paint-order: stroke fill → stroke renders BEHIND fill text
+     - Colored glow via single text-shadow (1 layer, not 4-5)
+     
+     Configurable via --gpu-stroke-* variables.
+     
+     Usage:
+       -webkit-text-stroke: var(--gpu-stroke);
+       paint-order: stroke fill;
+       text-shadow: var(--gpu-glow);
+     Or apply the utility class:
+       .gpu-text        — primary stroke + warm glow
+       .gpu-text-subtle — stroke only, no glow
+       .gpu-text-cool   — stroke + cool steel glow
+  */
+
+  /* Stroke & glow colors — change these to retheme everything */
+  --gpu-stroke-color:       rgba(10, 6, 2, 0.8);    /* deep ember-black  */
+  --gpu-glow-color:         rgba(100, 50, 10, 0.18); /* warm ember tint   */
+  --gpu-stroke-color-cool:  rgba(2, 6, 12, 0.75);    /* cold iron-black   */
+  --gpu-glow-color-cool:    rgba(20, 50, 80, 0.15);  /* steel blue tint   */
+
+  /* Stroke widths */
+  --gpu-stroke:        0.5px var(--gpu-stroke-color);
+  --gpu-stroke-thin:   0.3px var(--gpu-stroke-color);
+
+  /* Single-layer glow (replaces 4-5 text-shadow copies) */
+  --gpu-glow:          0 0 3px var(--gpu-glow-color);
+  --gpu-glow-cool:     0 0 3px var(--gpu-glow-color-cool);
+
+  /* Icon shadow — light single pass */
+  --gpu-icon-shadow: drop-shadow(0 0 1px rgba(10, 6, 2, 0.7));
+  --gpu-blur:        blur(4px);
+
+  /* Note: GPU text/accent color overrides are now applied dynamically
+     via the theme store to match the user's selected theme.
+     See tools/log-viewer/frontend/src/store/theme.ts */
+}
+
+/* ── GPU glass contrast — applied to components ── */
+
+/* Base: all gpu-active text gets stroke behind fill */
+:root.gpu-active {
+  paint-order: stroke fill;
+}
+
+/* Sidebar: stroke + glow + blur */
+:root.gpu-active .sidebar {
+  -webkit-text-stroke: var(--gpu-stroke);
+  text-shadow: var(--gpu-glow);
+  backdrop-filter: var(--gpu-blur);
+  -webkit-backdrop-filter: var(--gpu-blur);
+  /* Solid panel background — same recipe as the in-graph node-detail
+     panels (e.g. .search-state-panel) so file-tree text stays readable
+     when the WgpuOverlay is rendered behind the HTML layer. */
+  background: rgba(10, 10, 14, 0.92);
+  border-right: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Same opaque-panel treatment for the global Panel containers
+   (file-tree on the left, code-viewer on the right, etc.). */
+:root.gpu-active .panel {
+  background: rgba(10, 10, 14, 0.92);
+  border-color: rgba(255, 255, 255, 0.15);
+  -webkit-text-stroke: var(--gpu-stroke);
+  text-shadow: var(--gpu-glow);
+}
+
+:root.gpu-active .sidebar .tree-icon,
+:root.gpu-active .sidebar svg {
+  filter: var(--gpu-icon-shadow);
+}
+
+:root.gpu-active .sidebar .tree-badge,
+:root.gpu-active .sidebar .sidebar-badge,
+:root.gpu-active .sidebar .file-count {
+  -webkit-text-stroke: 0;
+  text-shadow: none;
+  background: rgba(0, 0, 0, 0.55);
+  color: #b0a898;
+}
+
+/* Header: stroke + glow + blur */
+:root.gpu-active .header {
+  -webkit-text-stroke: var(--gpu-stroke);
+  text-shadow: var(--gpu-glow);
+  backdrop-filter: var(--gpu-blur);
+  -webkit-backdrop-filter: var(--gpu-blur);
+}
+
+:root.gpu-active .header svg {
+  filter: var(--gpu-icon-shadow);
+}
+
+:root.gpu-active .header .search-input {
+  -webkit-text-stroke: 0;
+  text-shadow: none;
+}
+
+/* Tab bar: stroke + blur, active tab gets cool glow */
+:root.gpu-active .tab-bar {
+  -webkit-text-stroke: var(--gpu-stroke-thin);
+  text-shadow: none;
+  backdrop-filter: var(--gpu-blur);
+  -webkit-backdrop-filter: var(--gpu-blur);
+}
+
+:root.gpu-active .tab-bar .tab.active {
+  -webkit-text-stroke: var(--gpu-stroke);
+  text-shadow: var(--gpu-glow-cool);
+}
+
+:root.gpu-active .tab-bar svg {
+  filter: var(--gpu-icon-shadow);
+}
+
+:root.gpu-active .tab-info {
+  -webkit-text-stroke: var(--gpu-stroke-thin);
+}
+
+/* Log entries: thin stroke only (no glow — preserves colored labels) */
+:root.gpu-active .log-entry {
+  -webkit-text-stroke: var(--gpu-stroke-thin);
+}
+
+:root.gpu-active .log-entry svg {
+  filter: var(--gpu-icon-shadow);
+}
+
+:root.gpu-active body {
+  background: transparent !important;
+}
+
+/* Theme settings: stroke + glow on labels and titles */
+:root.gpu-active .theme-settings .theme-color-label,
+:root.gpu-active .theme-settings .theme-section-title,
+:root.gpu-active .theme-settings .theme-settings-title,
+:root.gpu-active .theme-settings .theme-settings-subtitle {
+  -webkit-text-stroke: var(--gpu-stroke);
+  text-shadow: var(--gpu-glow);
+}
+
+:root.gpu-active .theme-settings .theme-color-desc,
+:root.gpu-active .theme-settings .theme-section-hint {
+  -webkit-text-stroke: var(--gpu-stroke-thin);
+}
+
+
+:root.gpu-active #app {
+  isolation: isolate;
+  will-change: transform;
+}
+
+

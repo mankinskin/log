@@ -1,0 +1,2334 @@
+{
+  "fields": {
+    "log_file": {
+      "_type": "Option",
+      "_values": [
+        "C:/Users/linus_behrbohm/git/SECOND_CHECKOUT/graph_app/context-engine/target/test-logs/repetition_abab.log"
+      ],
+      "_variant": "Some"
+    },
+    "message": "Test tracing initialized",
+    "test_name": "repetition_abab"
+  },
+  "filename": "crates/context-stack/context-trace/src/logging/tracing_utils/test_tracing.rs",
+  "level": "INFO",
+  "line_number": 299,
+  "target": "context_trace::logging::tracing_utils::test_tracing",
+  "timestamp": "2026-03-03T02:42:42.895806Z"
+}
+
+{
+  "fields": {
+    "message": "New ReadCtx"
+  },
+  "filename": "crates/context-stack/context-read/src/context/mod.rs",
+  "level": "DEBUG",
+  "line_number": 44,
+  "target": "context_read::context",
+  "timestamp": "2026-03-03T02:42:42.896159Z"
+}
+
+{
+  "fields": {
+    "known": {
+      "_type": "Pattern",
+      "_values": [
+        [
+          {
+            "index": 0,
+            "text": "a"
+          },
+          {
+            "index": 1,
+            "text": "b"
+          }
+        ]
+      ]
+    },
+    "known_len": 2,
+    "message": "read_segment",
+    "unknown": {
+      "_type": "Pattern",
+      "_values": [
+        [
+          {
+            "index": 0,
+            "text": "a"
+          },
+          {
+            "index": 1,
+            "text": "b"
+          }
+        ]
+      ]
+    },
+    "unknown_len": 2
+  },
+  "filename": "crates/context-stack/context-read/src/context/mod.rs",
+  "level": "DEBUG",
+  "line_number": 72,
+  "target": "context_read::context",
+  "timestamp": "2026-03-03T02:42:42.896362Z"
+}
+
+{
+  "fields": {
+    "known": {
+      "_type": "Pattern",
+      "_values": [
+        [
+          {
+            "index": 0,
+            "text": "a"
+          },
+          {
+            "index": 1,
+            "text": "b"
+          }
+        ]
+      ]
+    },
+    "known_len": 2,
+    "message": "BlockExpansionCtx::new"
+  },
+  "filename": "crates/context-stack/context-read/src/expansion/block.rs",
+  "level": "DEBUG",
+  "line_number": 36,
+  "target": "context_read::expansion::block",
+  "timestamp": "2026-03-03T02:42:42.896520Z"
+}
+
+{
+  "fields": {
+    "has_root": true,
+    "message": "Starting block expansion",
+    "root_last_token": {
+      "_type": "Option",
+      "_values": [
+        {
+          "index": 1,
+          "text": "b"
+        }
+      ],
+      "_variant": "Some"
+    }
+  },
+  "filename": "crates/context-stack/context-read/src/expansion/block.rs",
+  "level": "DEBUG",
+  "line_number": 44,
+  "target": "context_read::expansion::block",
+  "timestamp": "2026-03-03T02:42:42.896606Z"
+}
+
+{
+  "fields": {
+    "initial_band": {
+      "_type": "Band",
+      "end_bound": {
+        "_type": "AtomPosition",
+        "_values": [
+          1
+        ]
+      },
+      "pattern": {
+        "_type": "Pattern",
+        "_values": [
+          [
+            {
+              "index": 1,
+              "text": "b"
+            }
+          ]
+        ]
+      },
+      "start_bound": {
+        "_type": "AtomPosition",
+        "_values": [
+          0
+        ]
+      }
+    },
+    "message": "New BandState"
+  },
+  "filename": "crates/context-stack/context-read/src/expansion/chain/mod.rs",
+  "level": "DEBUG",
+  "line_number": 55,
+  "target": "context_read::expansion::chain",
+  "timestamp": "2026-03-03T02:42:42.896668Z"
+}
+
+{
+  "fields": {
+    "cursor_root": {
+      "_type": "Pattern",
+      "_values": [
+        [
+          {
+            "index": 0,
+            "text": "a"
+          },
+          {
+            "index": 1,
+            "text": "b"
+          }
+        ]
+      ]
+    },
+    "message": "New ExpansionCtx"
+  },
+  "filename": "crates/context-stack/context-read/src/expansion/mod.rs",
+  "level": "DEBUG",
+  "line_number": 81,
+  "target": "context_read::expansion",
+  "timestamp": "2026-03-03T02:42:42.896750Z"
+}
+
+{
+  "fields": {
+    "band": {
+      "_type": "Single",
+      "band": {
+        "_type": "Band",
+        "end_bound": {
+          "_type": "AtomPosition",
+          "_values": [
+            1
+          ]
+        },
+        "pattern": {
+          "_type": "Pattern",
+          "_values": [
+            [
+              {
+                "index": 1,
+                "text": "b"
+              }
+            ]
+          ]
+        },
+        "start_bound": {
+          "_type": "AtomPosition",
+          "_values": [
+            0
+          ]
+        }
+      }
+    },
+    "message": "Using root's last token for overlap detection"
+  },
+  "filename": "crates/context-stack/context-read/src/expansion/mod.rs",
+  "level": "DEBUG",
+  "line_number": 89,
+  "target": "context_read::expansion",
+  "timestamp": "2026-03-03T02:42:42.896808Z"
+}
+
+{
+  "fields": {
+    "cursor_root": {
+      "_type": "Pattern",
+      "_values": [
+        [
+          {
+            "index": 0,
+            "text": "a"
+          },
+          {
+            "index": 1,
+            "text": "b"
+          }
+        ]
+      ]
+    },
+    "end_path": {
+      "_ty": {
+        "_type": "PhantomData",
+        "type_param": "context_trace::path::accessors::role::End"
+      },
+      "_type": "RolePath",
+      "sub_path": {
+        "_type": "SubPath",
+        "path": [],
+        "root_entry": 0
+      }
+    },
+    "message": "New CursorCtx",
+    "start_path": {
+      "_ty": {
+        "_type": "PhantomData",
+        "type_param": "context_trace::path::accessors::role::Start"
+      },
+      "_type": "RolePath",
+      "sub_path": {
+        "_type": "SubPath",
+        "path": [],
+        "root_entry": 0
+      }
+    }
+  },
+  "filename": "crates/context-stack/context-read/src/expansion/cursor.rs",
+  "level": "DEBUG",
+  "line_number": 21,
+  "target": "context_read::expansion::cursor",
+  "timestamp": "2026-03-03T02:42:42.896919Z"
+}
+
+{
+  "fields": {
+    "first": {
+      "_type": "Option",
+      "_values": [
+        {
+          "index": 1,
+          "text": "b"
+        }
+      ],
+      "_variant": "Some"
+    },
+    "message": "expansion state before processing",
+    "state": {
+      "_type": "Single",
+      "band": {
+        "_type": "Band",
+        "end_bound": {
+          "_type": "AtomPosition",
+          "_values": [
+            1
+          ]
+        },
+        "pattern": {
+          "_type": "Pattern",
+          "_values": [
+            [
+              {
+                "index": 1,
+                "text": "b"
+              }
+            ]
+          ]
+        },
+        "start_bound": {
+          "_type": "AtomPosition",
+          "_values": [
+            0
+          ]
+        }
+      }
+    }
+  },
+  "filename": "crates/context-stack/context-read/src/expansion/block.rs",
+  "level": "DEBUG",
+  "line_number": 66,
+  "target": "context_read::expansion::block",
+  "timestamp": "2026-03-03T02:42:42.897030Z"
+}
+
+{
+  "fields": {
+    "last_end_postfix": {
+      "index": 1,
+      "text": "b"
+    },
+    "message": "Try new ExpandCtx"
+  },
+  "filename": "crates/context-stack/context-read/src/expansion/chain/expand.rs",
+  "level": "DEBUG",
+  "line_number": 29,
+  "target": "context_read::expansion::chain::expand",
+  "timestamp": "2026-03-03T02:42:42.897122Z"
+}
+
+{
+  "fields": {
+    "message": "ExpandCtx: no postfix positions available"
+  },
+  "filename": "crates/context-stack/context-read/src/expansion/chain/expand.rs",
+  "level": "DEBUG",
+  "line_number": 39,
+  "target": "context_read::expansion::chain::expand",
+  "timestamp": "2026-03-03T02:42:42.897195Z"
+}
+
+{
+  "fields": {
+    "final_state": {
+      "_type": "Single",
+      "band": {
+        "_type": "Band",
+        "end_bound": {
+          "_type": "AtomPosition",
+          "_values": [
+            1
+          ]
+        },
+        "pattern": {
+          "_type": "Pattern",
+          "_values": [
+            [
+              {
+                "index": 1,
+                "text": "b"
+              }
+            ]
+          ]
+        },
+        "start_bound": {
+          "_type": "AtomPosition",
+          "_values": [
+            0
+          ]
+        }
+      }
+    },
+    "message": "BlockExpansionCtx::process complete"
+  },
+  "filename": "crates/context-stack/context-read/src/expansion/block.rs",
+  "level": "DEBUG",
+  "line_number": 72,
+  "target": "context_read::expansion::block",
+  "timestamp": "2026-03-03T02:42:42.897236Z"
+}
+
+{
+  "fields": {
+    "edge_count": 2,
+    "graph_data": {
+      "edges": [
+        {
+          "from": 2,
+          "pattern_idx": 0,
+          "sub_index": 0,
+          "to": 0
+        },
+        {
+          "from": 2,
+          "pattern_idx": 0,
+          "sub_index": 1,
+          "to": 1
+        }
+      ],
+      "nodes": [
+        {
+          "index": 0,
+          "label": "a",
+          "width": 1
+        },
+        {
+          "index": 1,
+          "label": "b",
+          "width": 1
+        },
+        {
+          "index": 2,
+          "label": "ab",
+          "width": 2
+        }
+      ]
+    },
+    "message": "graph_snapshot",
+    "node_count": 3
+  },
+  "filename": "crates/context-stack/context-trace/src/graph/snapshot.rs",
+  "level": "INFO",
+  "line_number": 112,
+  "target": "context_trace::graph::snapshot",
+  "timestamp": "2026-03-03T02:42:42.897359Z"
+}
+
+{
+  "fields": {
+    "message": "enter"
+  },
+  "filename": "crates/context-stack/context-search/src/search/mod.rs",
+  "level": "INFO",
+  "line_number": 91,
+  "span": "find_ancestor",
+  "spans": [
+    "find_ancestor"
+  ],
+  "target": "context_search::search",
+  "timestamp": "2026-03-03T02:42:42.897539Z"
+}
+
+{
+  "fields": {
+    "message": "starting ancestor search"
+  },
+  "filename": "crates/context-stack/context-search/src/search/mod.rs",
+  "level": "TRACE",
+  "line_number": 99,
+  "span": "find_ancestor",
+  "spans": [
+    "find_ancestor"
+  ],
+  "target": "context_search::search",
+  "timestamp": "2026-03-03T02:42:42.897659Z"
+}
+
+{
+  "fields": {
+    "message": "enter"
+  },
+  "filename": "crates/context-stack/context-search/src/search/searchable.rs",
+  "level": "TRACE",
+  "line_number": 59,
+  "span": "search",
+  "spans": [
+    "find_ancestor",
+    "search"
+  ],
+  "target": "context_search::search::searchable",
+  "timestamp": "2026-03-03T02:42:42.897761Z"
+}
+
+{
+  "fields": {
+    "cursor": {
+      "_type": "PathCursor",
+      "path": {
+        "_type": "PatternRangePath",
+        "end": "entry=0",
+        "path=[]": "",
+        "pattern": [
+          {
+            "index": 0,
+            "text": "a"
+          },
+          {
+            "index": 1,
+            "text": "b"
+          }
+        ],
+        "start": "entry=0"
+      },
+      "position": 1
+    },
+    "message": "creating search state",
+    "start_token": {
+      "index": 0,
+      "text": "a"
+    }
+  },
+  "filename": "crates/context-stack/context-search/src/state/start/core.rs",
+  "level": "TRACE",
+  "line_number": 93,
+  "span": "search",
+  "spans": [
+    "find_ancestor",
+    "search"
+  ],
+  "target": "context_search::state::start::core",
+  "timestamp": "2026-03-03T02:42:42.897884Z"
+}
+
+{
+  "fields": {
+    "message": "PatternRangePath::move_root_index - advancing from 0 to 1, old end.root_entry=0"
+  },
+  "filename": "crates/context-stack/context-trace/src/path/structs/rooted/pattern_range.rs",
+  "level": "TRACE",
+  "line_number": 102,
+  "span": "search",
+  "spans": [
+    "find_ancestor",
+    "search"
+  ],
+  "target": "context_trace::path::structs::rooted::pattern_range",
+  "timestamp": "2026-03-03T02:42:42.898039Z"
+}
+
+{
+  "fields": {
+    "batch_len": 1,
+    "message": "first parent batch obtained"
+  },
+  "filename": "crates/context-stack/context-search/src/state/start/core.rs",
+  "level": "TRACE",
+  "line_number": 96,
+  "span": "search",
+  "spans": [
+    "find_ancestor",
+    "search"
+  ],
+  "target": "context_search::state::start::core",
+  "timestamp": "2026-03-03T02:42:42.898161Z"
+}
+
+{
+  "fields": {
+    "message": "start search successful, beginning fold"
+  },
+  "filename": "crates/context-stack/context-search/src/search/searchable.rs",
+  "level": "TRACE",
+  "line_number": 69,
+  "span": "search",
+  "spans": [
+    "find_ancestor",
+    "search"
+  ],
+  "target": "context_search::search::searchable",
+  "timestamp": "2026-03-03T02:42:42.898271Z"
+}
+
+{
+  "fields": {
+    "message": "initial state",
+    "queue": {
+      "_type": "SearchQueue",
+      "count": 1,
+      "nodes": [
+        "[0] ParentCandidate(vertex:\"ab\"(2), pos:2)"
+      ]
+    }
+  },
+  "filename": "crates/context-stack/context-search/src/search/mod.rs",
+  "level": "TRACE",
+  "line_number": 397,
+  "span": "search",
+  "spans": [
+    "find_ancestor",
+    "search"
+  ],
+  "target": "context_search::search",
+  "timestamp": "2026-03-03T02:42:42.898358Z"
+}
+
+{
+  "fields": {
+    "graph_op": {
+      "description": "Search started — initial queue populated",
+      "location": {
+        "completed_nodes": [],
+        "pending_children": [],
+        "pending_parents": [
+          2
+        ],
+        "root_node": null,
+        "selected_node": null,
+        "trace_path": []
+      },
+      "op_type": "search",
+      "path_graph": {
+        "cursor_pos": 0,
+        "done": false,
+        "end_edges": [],
+        "end_path": [],
+        "root": null,
+        "root_entry_edge": null,
+        "root_exit_edge": null,
+        "start_edges": [],
+        "start_node": {
+          "index": 0,
+          "width": 1
+        },
+        "start_path": [],
+        "success": false
+      },
+      "path_id": "search/context-search/token-0-1772505762898265700",
+      "query": {
+        "cursor_position": 0,
+        "query_tokens": [
+          0,
+          1
+        ],
+        "query_width": 2
+      },
+      "step": 0,
+      "transition": {
+        "kind": "start_node",
+        "node": 0,
+        "width": 1
+      }
+    },
+    "message": "Search started — initial queue populated",
+    "op_type": "Search",
+    "step": 0
+  },
+  "filename": "crates/context-stack/context-trace/src/graph/visualization.rs",
+  "level": "INFO",
+  "line_number": 561,
+  "span": "search",
+  "spans": [
+    "find_ancestor",
+    "search"
+  ],
+  "target": "context_trace::graph::visualization",
+  "timestamp": "2026-03-03T02:42:42.898520Z"
+}
+
+{
+  "fields": {
+    "graph_op": {
+      "description": "Start node 0 exploring parent candidates",
+      "location": {
+        "completed_nodes": [
+          0
+        ],
+        "pending_children": [],
+        "pending_parents": [
+          2
+        ],
+        "root_node": 0,
+        "selected_node": 0,
+        "trace_path": []
+      },
+      "op_type": "search",
+      "path_graph": {
+        "cursor_pos": 0,
+        "done": false,
+        "end_edges": [],
+        "end_path": [],
+        "root": null,
+        "root_entry_edge": null,
+        "root_exit_edge": null,
+        "start_edges": [],
+        "start_node": {
+          "index": 0,
+          "width": 1
+        },
+        "start_path": [],
+        "success": false
+      },
+      "path_id": "search/context-search/token-0-1772505762898265700",
+      "query": {
+        "cursor_position": 0,
+        "query_tokens": [
+          0,
+          1
+        ],
+        "query_width": 2
+      },
+      "step": 1,
+      "transition": {
+        "current_root": 0,
+        "kind": "parent_explore",
+        "parent_candidates": [
+          2
+        ]
+      }
+    },
+    "message": "Start node 0 exploring parent candidates",
+    "op_type": "Search",
+    "step": 1
+  },
+  "filename": "crates/context-stack/context-trace/src/graph/visualization.rs",
+  "level": "INFO",
+  "line_number": 561,
+  "span": "search",
+  "spans": [
+    "find_ancestor",
+    "search"
+  ],
+  "target": "context_trace::graph::visualization",
+  "timestamp": "2026-03-03T02:42:42.898703Z"
+}
+
+{
+  "fields": {
+    "message": "searching for next match"
+  },
+  "filename": "crates/context-stack/context-search/src/search/mod.rs",
+  "level": "TRACE",
+  "line_number": 753,
+  "span": "search",
+  "spans": [
+    "find_ancestor",
+    "search"
+  ],
+  "target": "context_search::search",
+  "timestamp": "2026-03-03T02:42:42.898862Z"
+}
+
+{
+  "fields": {
+    "is_parent": true,
+    "message": "popped search node",
+    "node_index": 2,
+    "queue_remaining": 0
+  },
+  "filename": "crates/context-stack/context-search/src/match/iterator.rs",
+  "level": "DEBUG",
+  "line_number": 104,
+  "span": "search",
+  "spans": [
+    "find_ancestor",
+    "search"
+  ],
+  "target": "context_search::r#match::iterator",
+  "timestamp": "2026-03-03T02:42:42.898948Z"
+}
+
+{
+  "fields": {
+    "graph_op": {
+      "description": "Visiting candidate parent 2 from 0",
+      "location": {
+        "completed_nodes": [
+          0
+        ],
+        "pending_children": [],
+        "pending_parents": [],
+        "root_node": 0,
+        "selected_node": 0,
+        "trace_path": []
+      },
+      "op_type": "search",
+      "path_graph": {
+        "cursor_pos": 0,
+        "done": false,
+        "end_edges": [],
+        "end_path": [],
+        "root": {
+          "index": 2,
+          "width": 1
+        },
+        "root_entry_edge": {
+          "from": 0,
+          "pattern_idx": 0,
+          "sub_index": 0,
+          "to": 2
+        },
+        "root_exit_edge": null,
+        "start_edges": [],
+        "start_node": {
+          "index": 0,
+          "width": 1
+        },
+        "start_path": [],
+        "success": false
+      },
+      "path_id": "search/context-search/token-0-1772505762898265700",
+      "query": {
+        "cursor_position": 0,
+        "query_tokens": [
+          0,
+          1
+        ],
+        "query_width": 2
+      },
+      "step": 2,
+      "transition": {
+        "edge": {
+          "from": 0,
+          "pattern_idx": 0,
+          "sub_index": 0,
+          "to": 2
+        },
+        "entry_pos": 0,
+        "from": 0,
+        "kind": "visit_parent",
+        "to": 2,
+        "width": 1
+      }
+    },
+    "message": "Visiting candidate parent 2 from 0",
+    "op_type": "Search",
+    "step": 2
+  },
+  "filename": "crates/context-stack/context-trace/src/graph/visualization.rs",
+  "level": "INFO",
+  "line_number": 561,
+  "span": "search",
+  "spans": [
+    "find_ancestor",
+    "search"
+  ],
+  "target": "context_trace::graph::visualization",
+  "timestamp": "2026-03-03T02:42:42.899057Z"
+}
+
+{
+  "fields": {
+    "message": "enter"
+  },
+  "filename": "crates/context-stack/context-search/src/compare/parent.rs",
+  "level": "DEBUG",
+  "line_number": 47,
+  "span": "advance_state",
+  "spans": [
+    "find_ancestor",
+    "search",
+    "advance_state"
+  ],
+  "target": "context_search::compare::parent",
+  "timestamp": "2026-03-03T02:42:42.899340Z"
+}
+
+{
+  "fields": {
+    "message": "Found next child in pattern",
+    "next_i": 1
+  },
+  "filename": "crates/context-stack/context-trace/src/trace/state/parent.rs",
+  "level": "DEBUG",
+  "line_number": 43,
+  "span": "advance_state",
+  "spans": [
+    "find_ancestor",
+    "search",
+    "advance_state"
+  ],
+  "target": "context_trace::trace::state::parent",
+  "timestamp": "2026-03-03T02:42:42.899684Z"
+}
+
+{
+  "fields": {
+    "child_cursor": {
+      "_type": "ChildState",
+      "entry_pos": 1,
+      "exit_pos": 1,
+      "path": {
+        "_type": "IndexRangePath",
+        "end": {
+          "_ty": {
+            "_type": "PhantomData",
+            "type_param": "context_trace::path::accessors::role::End"
+          },
+          "_type": "RolePath",
+          "sub_path": {
+            "_type": "SubPath",
+            "path": [],
+            "root_entry": 1
+          }
+        },
+        "path=[]": "",
+        "root": {
+          "_type": "Root",
+          "_values": [
+            {
+              "_type": "PatternLocation",
+              "_values": [
+                {
+                  "index": 2,
+                  "text": "ab"
+                },
+                "97ed21be"
+              ]
+            }
+          ]
+        },
+        "start": "entry=0"
+      }
+    },
+    "message": "Created child_cursor from parent_state"
+  },
+  "filename": "crates/context-stack/context-search/src/compare/parent.rs",
+  "level": "TRACE",
+  "line_number": 55,
+  "span": "advance_state",
+  "spans": [
+    "find_ancestor",
+    "search",
+    "advance_state"
+  ],
+  "target": "context_search::compare::parent",
+  "timestamp": "2026-03-03T02:42:42.900000Z"
+}
+
+{
+  "fields": {
+    "message": "close",
+    "time.busy": "1.08ms",
+    "time.idle": "4.00µs"
+  },
+  "filename": "crates/context-stack/context-search/src/compare/parent.rs",
+  "level": "DEBUG",
+  "line_number": 47,
+  "span": "advance_state",
+  "spans": [
+    "find_ancestor",
+    "search"
+  ],
+  "target": "context_search::compare::parent",
+  "timestamp": "2026-03-03T02:42:42.900420Z"
+}
+
+{
+  "fields": {
+    "checkpoint_pos": "1",
+    "cursor_end_index": 1,
+    "cursor_pos": "2",
+    "message": "comparing candidate tokens (position-annotated)",
+    "mode": "GraphMajor",
+    "path_leaf": {
+      "index": 1,
+      "text": "b"
+    },
+    "path_width": 1,
+    "query_leaf": {
+      "index": 1,
+      "text": "b"
+    },
+    "query_width": 1
+  },
+  "filename": "crates/context-stack/context-search/src/compare/state/decomposition.rs",
+  "level": "TRACE",
+  "line_number": 195,
+  "span": "search",
+  "spans": [
+    "find_ancestor",
+    "search"
+  ],
+  "target": "context_search::compare::state::decomposition",
+  "timestamp": "2026-03-03T02:42:42.900653Z"
+}
+
+{
+  "fields": {
+    "message": "tokens matched",
+    "token": 1,
+    "width": 1
+  },
+  "filename": "crates/context-stack/context-search/src/compare/state/decomposition.rs",
+  "level": "TRACE",
+  "line_number": 208,
+  "span": "search",
+  "spans": [
+    "find_ancestor",
+    "search"
+  ],
+  "target": "context_search::compare::state::decomposition",
+  "timestamp": "2026-03-03T02:42:42.900794Z"
+}
+
+{
+  "fields": {
+    "cursor_end_index": 1,
+    "cursor_pos": "2",
+    "matched_end_index": 1,
+    "message": "mark_match: converting to Matched state and updating checkpoints",
+    "new_checkpoint_pos": "2",
+    "old_checkpoint_pos": "1"
+  },
+  "filename": "crates/context-stack/context-search/src/compare/state/transitions.rs",
+  "level": "TRACE",
+  "line_number": 57,
+  "span": "search",
+  "spans": [
+    "find_ancestor",
+    "search"
+  ],
+  "target": "context_search::compare::state::transitions",
+  "timestamp": "2026-03-03T02:42:42.900894Z"
+}
+
+{
+  "fields": {
+    "message": "found root match",
+    "node_index": 2,
+    "root": {
+      "index": 2,
+      "text": "ab"
+    }
+  },
+  "filename": "crates/context-stack/context-search/src/match/iterator.rs",
+  "level": "DEBUG",
+  "line_number": 133,
+  "span": "search",
+  "spans": [
+    "find_ancestor",
+    "search"
+  ],
+  "target": "context_search::r#match::iterator",
+  "timestamp": "2026-03-03T02:42:42.901001Z"
+}
+
+{
+  "fields": {
+    "graph_op": {
+      "description": "Comparing child node 1",
+      "location": {
+        "completed_nodes": [
+          2
+        ],
+        "pending_children": [],
+        "pending_parents": [],
+        "root_node": 2,
+        "selected_node": 2,
+        "trace_path": []
+      },
+      "op_type": "search",
+      "path_graph": {
+        "cursor_pos": 0,
+        "done": false,
+        "end_edges": [
+          {
+            "from": 2,
+            "pattern_idx": 0,
+            "sub_index": 0,
+            "to": 1
+          }
+        ],
+        "end_path": [
+          {
+            "index": 1,
+            "width": 1
+          }
+        ],
+        "root": {
+          "index": 2,
+          "width": 1
+        },
+        "root_entry_edge": {
+          "from": 0,
+          "pattern_idx": 0,
+          "sub_index": 0,
+          "to": 2
+        },
+        "root_exit_edge": {
+          "from": 2,
+          "pattern_idx": 0,
+          "sub_index": 0,
+          "to": 1
+        },
+        "start_edges": [],
+        "start_node": {
+          "index": 0,
+          "width": 1
+        },
+        "start_path": [],
+        "success": false
+      },
+      "path_id": "search/context-search/token-0-1772505762898265700",
+      "query": {
+        "cursor_position": 0,
+        "query_tokens": [
+          0,
+          1
+        ],
+        "query_width": 2
+      },
+      "step": 3,
+      "transition": {
+        "child_index": 0,
+        "edge": {
+          "from": 2,
+          "pattern_idx": 0,
+          "sub_index": 0,
+          "to": 1
+        },
+        "from": 2,
+        "kind": "visit_child",
+        "replace": false,
+        "to": 1,
+        "width": 1
+      }
+    },
+    "message": "Comparing child node 1",
+    "op_type": "Search",
+    "step": 3
+  },
+  "filename": "crates/context-stack/context-trace/src/graph/visualization.rs",
+  "level": "INFO",
+  "line_number": 561,
+  "span": "search",
+  "spans": [
+    "find_ancestor",
+    "search"
+  ],
+  "target": "context_trace::graph::visualization",
+  "timestamp": "2026-03-03T02:42:42.901148Z"
+}
+
+{
+  "fields": {
+    "graph_op": {
+      "description": "Child match at node 1 (query pos 2)",
+      "location": {
+        "completed_nodes": [
+          1
+        ],
+        "pending_children": [],
+        "pending_parents": [],
+        "root_node": 1,
+        "selected_node": 1,
+        "trace_path": []
+      },
+      "op_type": "search",
+      "path_graph": {
+        "cursor_pos": 2,
+        "done": false,
+        "end_edges": [
+          {
+            "from": 2,
+            "pattern_idx": 0,
+            "sub_index": 0,
+            "to": 1
+          }
+        ],
+        "end_path": [
+          {
+            "index": 1,
+            "width": 1
+          }
+        ],
+        "root": {
+          "index": 2,
+          "width": 1
+        },
+        "root_entry_edge": {
+          "from": 0,
+          "pattern_idx": 0,
+          "sub_index": 0,
+          "to": 2
+        },
+        "root_exit_edge": {
+          "from": 2,
+          "pattern_idx": 0,
+          "sub_index": 0,
+          "to": 1
+        },
+        "start_edges": [],
+        "start_node": {
+          "index": 0,
+          "width": 1
+        },
+        "start_path": [],
+        "success": false
+      },
+      "path_id": "search/context-search/token-0-1772505762898265700",
+      "query": {
+        "active_token": 1,
+        "cursor_position": 2,
+        "matched_positions": [
+          2
+        ],
+        "query_tokens": [
+          0,
+          1
+        ],
+        "query_width": 2
+      },
+      "step": 4,
+      "transition": {
+        "cursor_pos": 2,
+        "kind": "child_match",
+        "node": 1
+      }
+    },
+    "message": "Child match at node 1 (query pos 2)",
+    "op_type": "Search",
+    "step": 4
+  },
+  "filename": "crates/context-stack/context-trace/src/graph/visualization.rs",
+  "level": "INFO",
+  "line_number": 561,
+  "span": "search",
+  "spans": [
+    "find_ancestor",
+    "search"
+  ],
+  "target": "context_trace::graph::visualization",
+  "timestamp": "2026-03-03T02:42:42.901397Z"
+}
+
+{
+  "fields": {
+    "graph_op": {
+      "description": "Setting candidate root at node 2",
+      "location": {
+        "completed_nodes": [
+          2
+        ],
+        "pending_children": [],
+        "pending_parents": [],
+        "root_node": 2,
+        "selected_node": 2,
+        "trace_path": []
+      },
+      "op_type": "search",
+      "path_graph": {
+        "cursor_pos": 2,
+        "done": false,
+        "end_edges": [
+          {
+            "from": 2,
+            "pattern_idx": 0,
+            "sub_index": 0,
+            "to": 1
+          }
+        ],
+        "end_path": [
+          {
+            "index": 1,
+            "width": 1
+          }
+        ],
+        "root": {
+          "index": 2,
+          "width": 1
+        },
+        "root_entry_edge": {
+          "from": 0,
+          "pattern_idx": 0,
+          "sub_index": 0,
+          "to": 2
+        },
+        "root_exit_edge": {
+          "from": 2,
+          "pattern_idx": 0,
+          "sub_index": 0,
+          "to": 1
+        },
+        "start_edges": [],
+        "start_node": {
+          "index": 0,
+          "width": 1
+        },
+        "start_path": [],
+        "success": false
+      },
+      "path_id": "search/context-search/token-0-1772505762898265700",
+      "query": {
+        "cursor_position": 2,
+        "matched_positions": [
+          2
+        ],
+        "query_tokens": [
+          0,
+          1
+        ],
+        "query_width": 2
+      },
+      "step": 5,
+      "transition": {
+        "edge": {
+          "from": 0,
+          "pattern_idx": 0,
+          "sub_index": 0,
+          "to": 2
+        },
+        "kind": "candidate_match",
+        "root": 2,
+        "width": 1
+      }
+    },
+    "message": "Setting candidate root at node 2",
+    "op_type": "Search",
+    "step": 5
+  },
+  "filename": "crates/context-stack/context-trace/src/graph/visualization.rs",
+  "level": "INFO",
+  "line_number": 561,
+  "span": "search",
+  "spans": [
+    "find_ancestor",
+    "search"
+  ],
+  "target": "context_trace::graph::visualization",
+  "timestamp": "2026-03-03T02:42:42.901634Z"
+}
+
+{
+  "fields": {
+    "message": "Found matching root — clearing search queue (will explore via parents)"
+  },
+  "filename": "crates/context-stack/context-search/src/search/mod.rs",
+  "level": "DEBUG",
+  "line_number": 852,
+  "span": "search",
+  "spans": [
+    "find_ancestor",
+    "search"
+  ],
+  "target": "context_search::search",
+  "timestamp": "2026-03-03T02:42:42.901838Z"
+}
+
+{
+  "fields": {
+    "message": "found matching root — creating RootCursor",
+    "root_parent": {
+      "index": 2,
+      "text": "ab"
+    },
+    "root_width": 2
+  },
+  "filename": "crates/context-stack/context-search/src/search/mod.rs",
+  "level": "DEBUG",
+  "line_number": 859,
+  "span": "search",
+  "spans": [
+    "find_ancestor",
+    "search"
+  ],
+  "target": "context_search::search",
+  "timestamp": "2026-03-03T02:42:42.901929Z"
+}
+
+{
+  "fields": {
+    "checkpoint_pos": 2,
+    "message": "New root match - finishing root cursor",
+    "root": {
+      "index": 2,
+      "text": "ab"
+    }
+  },
+  "filename": "crates/context-stack/context-search/src/search/mod.rs",
+  "level": "TRACE",
+  "line_number": 492,
+  "span": "search",
+  "spans": [
+    "find_ancestor",
+    "search"
+  ],
+  "target": "context_search::search",
+  "timestamp": "2026-03-03T02:42:42.902044Z"
+}
+
+{
+  "fields": {
+    "message": "Marking current positions as checkpoints",
+    "query.candidate": {
+      "_type": "PathCursor",
+      "path": {
+        "_type": "PatternRangePath",
+        "end": "entry=1",
+        "path=[]": "",
+        "pattern": [
+          {
+            "index": 0,
+            "text": "a"
+          },
+          {
+            "index": 1,
+            "text": "b"
+          }
+        ],
+        "start": "entry=0"
+      },
+      "position": 2
+    },
+    "query.checkpoint": {
+      "_type": "PathCursor",
+      "path": {
+        "_type": "PatternRangePath",
+        "end": "entry=1",
+        "path=[]": "",
+        "pattern": [
+          {
+            "index": 0,
+            "text": "a"
+          },
+          {
+            "index": 1,
+            "text": "b"
+          }
+        ],
+        "start": "entry=0"
+      },
+      "position": 2
+    }
+  },
+  "filename": "crates/context-stack/context-search/src/compare/state/core.rs",
+  "level": "DEBUG",
+  "line_number": 155,
+  "span": "search",
+  "spans": [
+    "find_ancestor",
+    "search"
+  ],
+  "target": "context_search::compare::state::core",
+  "timestamp": "2026-03-03T02:42:42.902152Z"
+}
+
+{
+  "fields": {
+    "message": "enter"
+  },
+  "filename": "crates/context-stack/context-search/src/match/root_cursor/advance.rs",
+  "level": "DEBUG",
+  "line_number": 55,
+  "span": "advance_to_next_match",
+  "spans": [
+    "find_ancestor",
+    "search",
+    "advance_to_next_match"
+  ],
+  "target": "context_search::r#match::root_cursor::advance",
+  "timestamp": "2026-03-03T02:42:42.902372Z"
+}
+
+{
+  "fields": {
+    "message": "→ advance_to_next_match: starting advancement"
+  },
+  "filename": "crates/context-stack/context-search/src/match/root_cursor/advance.rs",
+  "level": "INFO",
+  "line_number": 57,
+  "span": "advance_to_next_match",
+  "spans": [
+    "find_ancestor",
+    "search",
+    "advance_to_next_match"
+  ],
+  "target": "context_search::r#match::root_cursor::advance",
+  "timestamp": "2026-03-03T02:42:42.902483Z"
+}
+
+{
+  "fields": {
+    "message": "  → advance_both_cursors_internal: Step 1 - calling advance_query"
+  },
+  "filename": "crates/context-stack/context-search/src/match/root_cursor/advance.rs",
+  "level": "TRACE",
+  "line_number": 145,
+  "span": "advance_to_next_match",
+  "spans": [
+    "find_ancestor",
+    "search",
+    "advance_to_next_match"
+  ],
+  "target": "context_search::r#match::root_cursor::advance",
+  "timestamp": "2026-03-03T02:42:42.902591Z"
+}
+
+{
+  "fields": {
+    "message": "enter"
+  },
+  "filename": "crates/context-stack/context-search/src/match/root_cursor/advance.rs",
+  "level": "TRACE",
+  "line_number": 206,
+  "span": "advance_query",
+  "spans": [
+    "find_ancestor",
+    "search",
+    "advance_to_next_match",
+    "advance_query"
+  ],
+  "target": "context_search::r#match::root_cursor::advance",
+  "timestamp": "2026-03-03T02:42:42.902717Z"
+}
+
+{
+  "fields": {
+    "message": "    → advance_query: attempting to advance query cursor",
+    "query_pos": 2,
+    "root": {
+      "index": 2,
+      "text": "ab"
+    }
+  },
+  "filename": "crates/context-stack/context-search/src/match/root_cursor/advance.rs",
+  "level": "TRACE",
+  "line_number": 214,
+  "span": "advance_query",
+  "spans": [
+    "find_ancestor",
+    "search",
+    "advance_to_next_match",
+    "advance_query"
+  ],
+  "target": "context_search::r#match::root_cursor::advance",
+  "timestamp": "2026-03-03T02:42:42.902836Z"
+}
+
+{
+  "fields": {
+    "cursor": {
+      "_type": "PathCursor",
+      "path": {
+        "_type": "PatternRangePath",
+        "end": "entry=1",
+        "path=[]": "",
+        "pattern": [
+          {
+            "index": 0,
+            "text": "a"
+          },
+          {
+            "index": 1,
+            "text": "b"
+          }
+        ],
+        "start": "entry=0"
+      },
+      "position": 2
+    },
+    "message": "advancing query cursor only"
+  },
+  "filename": "crates/context-stack/context-search/src/compare/state/transitions.rs",
+  "level": "TRACE",
+  "line_number": 93,
+  "span": "advance_query",
+  "spans": [
+    "find_ancestor",
+    "search",
+    "advance_to_next_match",
+    "advance_query"
+  ],
+  "target": "context_search::compare::state::transitions",
+  "timestamp": "2026-03-03T02:42:42.902974Z"
+}
+
+{
+  "fields": {
+    "message": "PatternRangePath::move_root_index - reached end of pattern, returning Break"
+  },
+  "filename": "crates/context-stack/context-trace/src/path/structs/rooted/pattern_range.rs",
+  "level": "TRACE",
+  "line_number": 111,
+  "span": "advance_query",
+  "spans": [
+    "find_ancestor",
+    "search",
+    "advance_to_next_match",
+    "advance_query"
+  ],
+  "target": "context_trace::path::structs::rooted::pattern_range",
+  "timestamp": "2026-03-03T02:42:42.903175Z"
+}
+
+{
+  "fields": {
+    "message": "query cursor cannot advance - query pattern ended"
+  },
+  "filename": "crates/context-stack/context-search/src/compare/state/transitions.rs",
+  "level": "DEBUG",
+  "line_number": 117,
+  "span": "advance_query",
+  "spans": [
+    "find_ancestor",
+    "search",
+    "advance_to_next_match",
+    "advance_query"
+  ],
+  "target": "context_search::compare::state::transitions",
+  "timestamp": "2026-03-03T02:42:42.903310Z"
+}
+
+{
+  "fields": {
+    "message": "    → advance_query: QUERY ENDED - creating QueryExhausted state",
+    "query_pos": 2,
+    "root": {
+      "index": 2,
+      "text": "ab"
+    }
+  },
+  "filename": "crates/context-stack/context-search/src/match/root_cursor/advance.rs",
+  "level": "DEBUG",
+  "line_number": 241,
+  "span": "advance_query",
+  "spans": [
+    "find_ancestor",
+    "search",
+    "advance_to_next_match",
+    "advance_query"
+  ],
+  "target": "context_search::r#match::root_cursor::advance",
+  "timestamp": "2026-03-03T02:42:42.903432Z"
+}
+
+{
+  "fields": {
+    "message": "root_cursor advance_query: root_parent=\"ab\"(2), entry_pos=1, exit_pos=1, checkpoint.atom_position=2, last_token_width=1, end_pos=2"
+  },
+  "filename": "crates/context-stack/context-search/src/match/root_cursor/advance.rs",
+  "level": "TRACE",
+  "line_number": 261,
+  "span": "advance_query",
+  "spans": [
+    "find_ancestor",
+    "search",
+    "advance_to_next_match",
+    "advance_query"
+  ],
+  "target": "context_search::r#match::root_cursor::advance",
+  "timestamp": "2026-03-03T02:42:42.903605Z"
+}
+
+{
+  "fields": {
+    "checkpoint_pos": "2",
+    "final_end_index": 1,
+    "message": "advance_query: returning checkpoint cursor for exhausted query"
+  },
+  "filename": "crates/context-stack/context-search/src/match/root_cursor/advance.rs",
+  "level": "TRACE",
+  "line_number": 277,
+  "span": "advance_query",
+  "spans": [
+    "find_ancestor",
+    "search",
+    "advance_to_next_match",
+    "advance_query"
+  ],
+  "target": "context_search::r#match::root_cursor::advance",
+  "timestamp": "2026-03-03T02:42:42.903743Z"
+}
+
+{
+  "fields": {
+    "message": "from_range_path: start_at_border=true, start_path_empty=true, end_at_border=true, end_path_empty=true"
+  },
+  "filename": "crates/context-stack/context-search/src/state/end/mod.rs",
+  "level": "TRACE",
+  "line_number": 112,
+  "span": "advance_query",
+  "spans": [
+    "find_ancestor",
+    "search",
+    "advance_to_next_match",
+    "advance_query"
+  ],
+  "target": "context_search::state::end",
+  "timestamp": "2026-03-03T02:42:42.903872Z"
+}
+
+{
+  "fields": {
+    "message": "close",
+    "time.busy": "1.28ms",
+    "time.idle": "3.20µs"
+  },
+  "filename": "crates/context-stack/context-search/src/match/root_cursor/advance.rs",
+  "level": "TRACE",
+  "line_number": 206,
+  "span": "advance_query",
+  "spans": [
+    "find_ancestor",
+    "search",
+    "advance_to_next_match"
+  ],
+  "target": "context_search::r#match::root_cursor::advance",
+  "timestamp": "2026-03-03T02:42:42.903997Z"
+}
+
+{
+  "fields": {
+    "message": "  → advance_both_cursors_internal: Step 1 - query ended (QueryExhausted)"
+  },
+  "filename": "crates/context-stack/context-search/src/match/root_cursor/advance.rs",
+  "level": "DEBUG",
+  "line_number": 161,
+  "span": "advance_to_next_match",
+  "spans": [
+    "find_ancestor",
+    "search",
+    "advance_to_next_match"
+  ],
+  "target": "context_search::r#match::root_cursor::advance",
+  "timestamp": "2026-03-03T02:42:42.904107Z"
+}
+
+{
+  "fields": {
+    "message": "→ advance_to_next_match: query exhausted - complete match"
+  },
+  "filename": "crates/context-stack/context-search/src/match/root_cursor/advance.rs",
+  "level": "DEBUG",
+  "line_number": 70,
+  "span": "advance_to_next_match",
+  "spans": [
+    "find_ancestor",
+    "search",
+    "advance_to_next_match"
+  ],
+  "target": "context_search::r#match::root_cursor::advance",
+  "timestamp": "2026-03-03T02:42:42.904222Z"
+}
+
+{
+  "fields": {
+    "message": "close",
+    "time.busy": "1.95ms",
+    "time.idle": "4.30µs"
+  },
+  "filename": "crates/context-stack/context-search/src/match/root_cursor/advance.rs",
+  "level": "DEBUG",
+  "line_number": 55,
+  "span": "advance_to_next_match",
+  "spans": [
+    "find_ancestor",
+    "search"
+  ],
+  "target": "context_search::r#match::root_cursor::advance",
+  "timestamp": "2026-03-03T02:42:42.904326Z"
+}
+
+{
+  "fields": {
+    "message": "Conclusive end: Exhausted - keeping best match"
+  },
+  "filename": "crates/context-stack/context-search/src/search/mod.rs",
+  "level": "TRACE",
+  "line_number": 632,
+  "span": "search",
+  "spans": [
+    "find_ancestor",
+    "search"
+  ],
+  "target": "context_search::search",
+  "timestamp": "2026-03-03T02:42:42.904420Z"
+}
+
+{
+  "fields": {
+    "message": "from_range_path: start_at_border=true, start_path_empty=true, end_at_border=true, end_path_empty=true"
+  },
+  "filename": "crates/context-stack/context-search/src/state/end/mod.rs",
+  "level": "TRACE",
+  "line_number": 112,
+  "span": "search",
+  "spans": [
+    "find_ancestor",
+    "search"
+  ],
+  "target": "context_search::state::end",
+  "timestamp": "2026-03-03T02:42:42.904511Z"
+}
+
+{
+  "fields": {
+    "at_end": true,
+    "end_index": 1,
+    "end_path_len": "0",
+    "message": "query_exhausted check",
+    "path_empty": true
+  },
+  "filename": "crates/context-stack/context-search/src/state/matched/mod.rs",
+  "level": "TRACE",
+  "line_number": 156,
+  "span": "search",
+  "spans": [
+    "find_ancestor",
+    "search"
+  ],
+  "target": "context_search::state::matched",
+  "timestamp": "2026-03-03T02:42:42.904603Z"
+}
+
+{
+  "fields": {
+    "checkpoint_pos": 2,
+    "message": "found matched state",
+    "query_exhausted": true
+  },
+  "filename": "crates/context-stack/context-search/src/search/mod.rs",
+  "level": "TRACE",
+  "line_number": 898,
+  "span": "search",
+  "spans": [
+    "find_ancestor",
+    "search"
+  ],
+  "target": "context_search::search",
+  "timestamp": "2026-03-03T02:42:42.904696Z"
+}
+
+{
+  "fields": {
+    "message": "searching for next match"
+  },
+  "filename": "crates/context-stack/context-search/src/search/mod.rs",
+  "level": "TRACE",
+  "line_number": 753,
+  "span": "search",
+  "spans": [
+    "find_ancestor",
+    "search"
+  ],
+  "target": "context_search::search",
+  "timestamp": "2026-03-03T02:42:42.904783Z"
+}
+
+{
+  "fields": {
+    "message": "no more matches found"
+  },
+  "filename": "crates/context-stack/context-search/src/search/mod.rs",
+  "level": "TRACE",
+  "line_number": 765,
+  "span": "search",
+  "spans": [
+    "find_ancestor",
+    "search"
+  ],
+  "target": "context_search::search",
+  "timestamp": "2026-03-03T02:42:42.904864Z"
+}
+
+{
+  "fields": {
+    "at_end": true,
+    "end_index": 1,
+    "end_path_len": "0",
+    "message": "query_exhausted check",
+    "path_empty": true
+  },
+  "filename": "crates/context-stack/context-search/src/state/matched/mod.rs",
+  "level": "TRACE",
+  "line_number": 156,
+  "span": "search",
+  "spans": [
+    "find_ancestor",
+    "search"
+  ],
+  "target": "context_search::state::matched",
+  "timestamp": "2026-03-03T02:42:42.904945Z"
+}
+
+{
+  "fields": {
+    "checkpoint_pos": 2,
+    "message": "Using best_match as final result",
+    "query_exhausted": true,
+    "root": {
+      "index": 2,
+      "text": "ab"
+    }
+  },
+  "filename": "crates/context-stack/context-search/src/search/mod.rs",
+  "level": "TRACE",
+  "line_number": 428,
+  "span": "search",
+  "spans": [
+    "find_ancestor",
+    "search"
+  ],
+  "target": "context_search::search",
+  "timestamp": "2026-03-03T02:42:42.905033Z"
+}
+
+{
+  "fields": {
+    "end": {
+      "_type": "MatchResult",
+      "cursor": {
+        "_type": "AtCheckpoint",
+        "_values": [
+          {
+            "_state": {
+              "_type": "PhantomData",
+              "type_param": "context_search::cursor::checkpointed::AtCheckpoint"
+            },
+            "_type": "Checkpointed",
+            "candidate": null,
+            "checkpoint": {
+              "_state": {
+                "_type": "PhantomData",
+                "type_param": "context_search::cursor::Matched"
+              },
+              "_type": "PathCursor",
+              "atom_position": {
+                "_type": "AtomPosition",
+                "_values": [
+                  2
+                ]
+              },
+              "path": {
+                "_type": "RootedRangePath",
+                "end": {
+                  "_ty": {
+                    "_type": "PhantomData",
+                    "type_param": "context_trace::path::accessors::role::End"
+                  },
+                  "_type": "RolePath",
+                  "sub_path": {
+                    "_type": "SubPath",
+                    "path": [],
+                    "root_entry": 1
+                  }
+                },
+                "root": {
+                  "_type": "Pattern",
+                  "_values": [
+                    [
+                      {
+                        "index": 0,
+                        "text": "a"
+                      },
+                      {
+                        "index": 1,
+                        "text": "b"
+                      }
+                    ]
+                  ]
+                },
+                "start": {
+                  "_ty": {
+                    "_type": "PhantomData",
+                    "type_param": "context_trace::path::accessors::role::Start"
+                  },
+                  "_type": "RolePath",
+                  "sub_path": {
+                    "_type": "SubPath",
+                    "path": [],
+                    "root_entry": 0
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "path": {
+        "_type": "EntireRoot",
+        "_values": [
+          {
+            "_type": "RootedRangePath",
+            "end": {
+              "_ty": {
+                "_type": "PhantomData",
+                "type_param": "context_trace::path::accessors::role::End"
+              },
+              "_type": "RolePath",
+              "sub_path": {
+                "_type": "SubPath",
+                "path": [],
+                "root_entry": 1
+              }
+            },
+            "root": {
+              "_type": "IndexRoot",
+              "location": {
+                "_type": "PatternLocation",
+                "parent": {
+                  "index": 2,
+                  "text": "ab"
+                },
+                "pattern_id": {
+                  "_type": "PatternId",
+                  "_values": [
+                    "97ed21be-fd09-4fb0-bee4-97bf1e17936c"
+                  ]
+                }
+              }
+            },
+            "start": {
+              "_ty": {
+                "_type": "PhantomData",
+                "type_param": "context_trace::path::accessors::role::Start"
+              },
+              "_type": "RolePath",
+              "sub_path": {
+                "_type": "SubPath",
+                "path": [],
+                "root_entry": 0
+              }
+            }
+          }
+        ]
+      }
+    },
+    "message": "final matched state"
+  },
+  "filename": "crates/context-stack/context-search/src/search/mod.rs",
+  "level": "TRACE",
+  "line_number": 458,
+  "span": "search",
+  "spans": [
+    "find_ancestor",
+    "search"
+  ],
+  "target": "context_search::search",
+  "timestamp": "2026-03-03T02:42:42.905144Z"
+}
+
+{
+  "fields": {
+    "graph_op": {
+      "description": "Search complete",
+      "location": {
+        "completed_nodes": [
+          2
+        ],
+        "pending_children": [],
+        "pending_parents": [],
+        "root_node": 2,
+        "selected_node": 2,
+        "trace_path": []
+      },
+      "op_type": "search",
+      "path_graph": {
+        "cursor_pos": 2,
+        "done": true,
+        "end_edges": [
+          {
+            "from": 2,
+            "pattern_idx": 0,
+            "sub_index": 0,
+            "to": 1
+          }
+        ],
+        "end_path": [
+          {
+            "index": 1,
+            "width": 1
+          }
+        ],
+        "root": {
+          "index": 2,
+          "width": 1
+        },
+        "root_entry_edge": {
+          "from": 0,
+          "pattern_idx": 0,
+          "sub_index": 0,
+          "to": 2
+        },
+        "root_exit_edge": {
+          "from": 2,
+          "pattern_idx": 0,
+          "sub_index": 0,
+          "to": 1
+        },
+        "start_edges": [],
+        "start_node": {
+          "index": 0,
+          "width": 1
+        },
+        "start_path": [],
+        "success": true
+      },
+      "path_id": "search/context-search/token-0-1772505762898265700",
+      "query": {
+        "cursor_position": 2,
+        "matched_positions": [
+          2
+        ],
+        "query_tokens": [
+          0,
+          1
+        ],
+        "query_width": 2
+      },
+      "step": 6,
+      "transition": {
+        "final_node": 2,
+        "kind": "done",
+        "success": true
+      }
+    },
+    "message": "Search complete",
+    "op_type": "Search",
+    "step": 6
+  },
+  "filename": "crates/context-stack/context-trace/src/graph/visualization.rs",
+  "level": "INFO",
+  "line_number": 561,
+  "span": "search",
+  "spans": [
+    "find_ancestor",
+    "search"
+  ],
+  "target": "context_trace::graph::visualization",
+  "timestamp": "2026-03-03T02:42:42.905815Z"
+}
+
+{
+  "fields": {
+    "end": {
+      "_type": "MatchResult",
+      "cursor": {
+        "_type": "AtCheckpoint",
+        "_values": [
+          {
+            "_state": {
+              "_type": "PhantomData",
+              "type_param": "context_search::cursor::checkpointed::AtCheckpoint"
+            },
+            "_type": "Checkpointed",
+            "candidate": null,
+            "checkpoint": {
+              "_state": {
+                "_type": "PhantomData",
+                "type_param": "context_search::cursor::Matched"
+              },
+              "_type": "PathCursor",
+              "atom_position": {
+                "_type": "AtomPosition",
+                "_values": [
+                  2
+                ]
+              },
+              "path": {
+                "_type": "RootedRangePath",
+                "end": {
+                  "_ty": {
+                    "_type": "PhantomData",
+                    "type_param": "context_trace::path::accessors::role::End"
+                  },
+                  "_type": "RolePath",
+                  "sub_path": {
+                    "_type": "SubPath",
+                    "path": [],
+                    "root_entry": 1
+                  }
+                },
+                "root": {
+                  "_type": "Pattern",
+                  "_values": [
+                    [
+                      {
+                        "index": 0,
+                        "text": "a"
+                      },
+                      {
+                        "index": 1,
+                        "text": "b"
+                      }
+                    ]
+                  ]
+                },
+                "start": {
+                  "_ty": {
+                    "_type": "PhantomData",
+                    "type_param": "context_trace::path::accessors::role::Start"
+                  },
+                  "_type": "RolePath",
+                  "sub_path": {
+                    "_type": "SubPath",
+                    "path": [],
+                    "root_entry": 0
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "path": {
+        "_type": "EntireRoot",
+        "_values": [
+          {
+            "_type": "RootedRangePath",
+            "end": {
+              "_ty": {
+                "_type": "PhantomData",
+                "type_param": "context_trace::path::accessors::role::End"
+              },
+              "_type": "RolePath",
+              "sub_path": {
+                "_type": "SubPath",
+                "path": [],
+                "root_entry": 1
+              }
+            },
+            "root": {
+              "_type": "IndexRoot",
+              "location": {
+                "_type": "PatternLocation",
+                "parent": {
+                  "index": 2,
+                  "text": "ab"
+                },
+                "pattern_id": {
+                  "_type": "PatternId",
+                  "_values": [
+                    "97ed21be-fd09-4fb0-bee4-97bf1e17936c"
+                  ]
+                }
+              }
+            },
+            "start": {
+              "_ty": {
+                "_type": "PhantomData",
+                "type_param": "context_trace::path::accessors::role::Start"
+              },
+              "_type": "RolePath",
+              "sub_path": {
+                "_type": "SubPath",
+                "path": [],
+                "root_entry": 0
+              }
+            }
+          }
+        ]
+      }
+    },
+    "message": "search complete"
+  },
+  "filename": "crates/context-stack/context-search/src/search/mod.rs",
+  "level": "INFO",
+  "line_number": 479,
+  "span": "search",
+  "spans": [
+    "find_ancestor",
+    "search"
+  ],
+  "target": "context_search::search",
+  "timestamp": "2026-03-03T02:42:42.906008Z"
+}
+
+{
+  "fields": {
+    "message": "close",
+    "time.busy": "8.65ms",
+    "time.idle": "3.10µs"
+  },
+  "filename": "crates/context-stack/context-search/src/search/searchable.rs",
+  "level": "TRACE",
+  "line_number": 59,
+  "span": "search",
+  "spans": [
+    "find_ancestor"
+  ],
+  "target": "context_search::search::searchable",
+  "timestamp": "2026-03-03T02:42:42.906409Z"
+}
+
+{
+  "fields": {
+    "message": "ancestor search succeeded"
+  },
+  "filename": "crates/context-stack/context-search/src/search/mod.rs",
+  "level": "TRACE",
+  "line_number": 103,
+  "span": "find_ancestor",
+  "spans": [
+    "find_ancestor"
+  ],
+  "target": "context_search::search",
+  "timestamp": "2026-03-03T02:42:42.906494Z"
+}
+
+{
+  "fields": {
+    "message": "close",
+    "time.busy": "9.03ms",
+    "time.idle": "6.70µs"
+  },
+  "filename": "crates/context-stack/context-search/src/search/mod.rs",
+  "level": "INFO",
+  "line_number": 91,
+  "span": "find_ancestor",
+  "spans": [],
+  "target": "context_search::search",
+  "timestamp": "2026-03-03T02:42:42.906574Z"
+}
+
+{
+  "fields": {
+    "at_end": true,
+    "end_index": 1,
+    "end_path_len": "0",
+    "message": "query_exhausted check",
+    "path_empty": true
+  },
+  "filename": "crates/context-stack/context-search/src/state/matched/mod.rs",
+  "level": "TRACE",
+  "line_number": 156,
+  "target": "context_search::state::matched",
+  "timestamp": "2026-03-03T02:42:42.906638Z"
+}
+
+{
+  "fields": {
+    "backtrace": "   0: std::backtrace_rs::backtrace::win64::trace\n             at /rustc/9725c4baacef19345e13f91b27e66e10ef5592ae/library/std/src/../../backtrace/src/backtrace/win64.rs:85\n   1: std::backtrace_rs::backtrace::trace_unsynchronized\n             at /rustc/9725c4baacef19345e13f91b27e66e10ef5592ae/library/std/src/../../backtrace/src/backtrace/mod.rs:66\n   2: std::backtrace::Backtrace::create\n             at /rustc/9725c4baacef19345e13f91b27e66e10ef5592ae/library/std/src/backtrace.rs:331\n   3: std::backtrace::Backtrace::force_capture\n             at /rustc/9725c4baacef19345e13f91b27e66e10ef5592ae/library/std/src/backtrace.rs:312\n   4: context_trace::logging::tracing_utils::panic::install_panic_hook::closure$0::closure$0\n             at C:/Users/linus_behrbohm/git/SECOND_CHECKOUT/graph_app/context-engine/crates/context-stack/context-trace/src/logging/tracing_utils/panic.rs:17\n   5: std::panicking::panic_with_hook\n             at /rustc/9725c4baacef19345e13f91b27e66e10ef5592ae/library/std/src/panicking.rs:842\n   6: std::panicking::panic_handler::closure$0\n             at /rustc/9725c4baacef19345e13f91b27e66e10ef5592ae/library/std/src/panicking.rs:707\n   7: std::sys::backtrace::__rust_end_short_backtrace<std::panicking::panic_handler::closure_env$0,never$>\n             at /rustc/9725c4baacef19345e13f91b27e66e10ef5592ae/library/std/src/sys/backtrace.rs:174\n   8: std::panicking::panic_handler\n             at /rustc/9725c4baacef19345e13f91b27e66e10ef5592ae/library/std/src/panicking.rs:698\n   9: core::panicking::panic_fmt\n             at /rustc/9725c4baacef19345e13f91b27e66e10ef5592ae/library/core/src/panicking.rs:80\n  10: context_read::tests::linear::repetition_abab\n             at ./src/tests/linear.rs:329\n  11: context_read::tests::linear::repetition_abab::closure$0\n             at ./src/tests/linear.rs:319\n  12: core::ops::function::FnOnce::call_once<context_read::tests::linear::repetition_abab::closure_env$0,tuple$<> >\n             at C:/Users/linus_behrbohm/.rustup/toolchains/nightly-x86_64-pc-windows-msvc/lib/rustlib/src/rust/library/core/src/ops/function.rs:250\n  13: core::ops::function::FnOnce::call_once\n             at /rustc/9725c4baacef19345e13f91b27e66e10ef5592ae/library/core/src/ops/function.rs:250\n  14: test::__rust_begin_short_backtrace<enum2$<core::result::Result<tuple$<>,alloc::string::String> >,enum2$<core::result::Result<tuple$<>,alloc::string::String> > (*)()>\n             at /rustc/9725c4baacef19345e13f91b27e66e10ef5592ae/library/test/src/lib.rs:663\n  15: test::run_test_in_process\n             at /rustc/9725c4baacef19345e13f91b27e66e10ef5592ae/library/test/src/lib.rs:686\n  16: test::run_test::closure$0\n             at /rustc/9725c4baacef19345e13f91b27e66e10ef5592ae/library/test/src/lib.rs:607\n  17: test::run_test::closure$1\n             at /rustc/9725c4baacef19345e13f91b27e66e10ef5592ae/library/test/src/lib.rs:637\n  18: std::sys::backtrace::__rust_begin_short_backtrace<test::run_test::closure_env$1,tuple$<> >\n             at /rustc/9725c4baacef19345e13f91b27e66e10ef5592ae/library/std/src/sys/backtrace.rs:158\n  19: core::ops::function::FnOnce::call_once<std::thread::impl$0::spawn_unchecked_::closure_env$1<test::run_test::closure_env$1,tuple$<> >,tuple$<> >\n             at /rustc/9725c4baacef19345e13f91b27e66e10ef5592ae/library/core/src/ops/function.rs:250\n  20: alloc::boxed::impl$29::call_once\n             at /rustc/9725c4baacef19345e13f91b27e66e10ef5592ae/library/alloc/src/boxed.rs:2004\n  21: alloc::boxed::impl$29::call_once\n             at /rustc/9725c4baacef19345e13f91b27e66e10ef5592ae/library/alloc/src/boxed.rs:2004\n  22: std::sys::thread::windows::impl$0::new::thread_start\n             at /rustc/9725c4baacef19345e13f91b27e66e10ef5592ae/library/std/src/sys/thread/windows.rs:60\n  23: BaseThreadInitThunk\n  24: RtlUserThreadStart\n",
+    "message": "PANIC: assertion failed: `(left == right)`\n\n\u001b[1mDiff\u001b[0m \u001b[31m< left\u001b[0m / \u001b[32mright >\u001b[0m :\n TokenWidth(\n\u001b[31m<    \u001b[0m\u001b[1;48;5;52;31m2\u001b[0m\u001b[31m,\u001b[0m\n\u001b[32m>    \u001b[0m\u001b[1;48;5;22;32m4\u001b[0m\u001b[32m,\u001b[0m\n )\n\n",
+    "panic_column": 5,
+    "panic_file": "crates/context-stack/context-read/src/tests/linear.rs",
+    "panic_line": 329
+  },
+  "filename": "crates/context-stack/context-trace/src/logging/tracing_utils/panic.rs",
+  "level": "ERROR",
+  "line_number": 39,
+  "target": "context_trace::logging::tracing_utils::panic",
+  "timestamp": "2026-03-03T02:42:43.079331Z"
+}
+

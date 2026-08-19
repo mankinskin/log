@@ -1,0 +1,60 @@
+# Log Viewer Configuration
+# Copy this to log-viewer.toml to use
+#
+# Config file search order:
+# 1. Path in `LOG_VIEWER_CONFIG` environment variable
+# 2. ./log-viewer.toml (current directory)
+# 3. ./config/log-viewer.toml (config subdirectory)
+# 4. ~/.config/log-viewer/config.toml (user config directory)
+#
+# Environment variables override config file values:
+# - LOG_DIR          - Directory containing log files
+# - WORKSPACE_ROOT   - Workspace root for source file resolution
+# - LOG_LEVEL        - Logging level (trace, debug, info, warn, error)
+# - LOG_FILE         - Enable file logging (any value)
+# - GITHUB_ACTIONS   - Set to "true" to activate remote source mode
+# - GITHUB_REPOSITORY - GitHub repository in "owner/repo" format
+# - GITHUB_SHA       - Full commit SHA used for remote raw file URLs
+
+# Directory containing log files to view
+# Default: {workspace_root}/target/test-logs
+log_dir = "../../target/test-logs"
+
+# Workspace root for source file resolution (for source links)
+# Default: auto-detected by looking for Cargo.toml
+# workspace_root = "/path/to/workspace"
+
+# Repository configuration for remote source file access.
+# When the log-viewer is deployed (e.g. in CI/GitHub Pages) it cannot read
+# source files from the local disk.  Configuring these settings lets the
+# server fetch files from the public GitHub repository instead.
+#
+# If GITHUB_ACTIONS, GITHUB_REPOSITORY, and GITHUB_SHA are all set in the
+# environment the remote backend is activated automatically – you only need
+# to set these values when running outside GitHub Actions or when overriding
+# the auto-detected values.
+[repository]
+# Public GitHub repository URL, e.g. "https://github.com/owner/repo"
+# repo_url = "https://github.com/mankinskin/context-engine"
+
+# Git commit hash to pin raw file requests to.
+# Defaults to the GITHUB_SHA environment variable when unset.
+# commit_hash = "abc1234"
+
+# Optional sub-directory within the repository that corresponds to the
+# workspace root.  Set this when the code lives in a monorepo sub-folder.
+# source_tree_path = ""
+
+# Server configuration
+[server]
+# Host to bind to (default: 127.0.0.1)
+host = "127.0.0.1"
+# Port to listen on (default: 3000)
+port = 3000
+
+# Logging configuration
+[logging]
+# Log level: trace, debug, info, warn, error (default: info)
+level = "info"
+# Enable file logging to logs/log-viewer.log (default: false)
+file_logging = false

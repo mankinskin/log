@@ -1,0 +1,20 @@
+[package]
+name = "log-viewer-dioxus"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "log-viewer-dioxus"
+path = "src/main.rs"
+
+[dependencies]
+dioxus = { version = "0.7", features = ["web"] }
+viewer-api-dioxus = { git = "https://github.com/mankinskin/viewer-api", branch = "main" }
+gloo-net = { version = "0.6", features = ["http", "json"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+percent-encoding = "2"
+urlencoding = "2"
+tracing = "0.1"
+tracing-wasm = "0.2"
+web-sys = { version = "0.3", features = ["Window", "Location"] }

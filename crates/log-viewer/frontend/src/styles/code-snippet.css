@@ -1,0 +1,152 @@
+/* Source Code Snippet */
+
+.entry-source {
+  margin-top: 0;
+}
+
+.snippet-toggle {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 11px;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 1px;
+}
+
+.snippet-toggle:hover {
+  color: var(--text-primary);
+}
+
+.code-snippet {
+  margin-top: 0;
+  background: transparent;
+  border: 1px solid var(--border-color);
+  border-radius: 2px;
+  max-height: 400px;
+  overflow: auto;
+  position: relative;
+}
+
+.code-snippet.loading {
+  opacity: 0.7;
+}
+
+.code-snippet.full-file {
+  flex: 1;
+  min-height: 0;
+  max-height: 100%;
+  overflow: auto;
+}
+
+.full-file-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 8px;
+  background: transparent;
+  border-bottom: 1px solid var(--border-color);
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.full-file-path {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: #57606a;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.full-file-lines {
+  font-size: 10px;
+  color: #6e7781;
+}
+
+.full-file-collapse {
+  background: transparent;
+  border: 1px solid var(--border-color);
+  border-radius: 2px;
+  color: #57606a;
+  font-size: 10px;
+  padding: 1px 6px;
+  cursor: pointer;
+}
+
+.full-file-collapse:hover {
+  background: rgba(0, 0, 0, 0.06);
+  color: #24292e;
+}
+
+.snippet-loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.snippet-code {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: #24292e;
+}
+
+.snippet-line {
+  display: flex;
+  padding: 0 2px;
+}
+
+.snippet-line.clickable {
+  cursor: pointer;
+}
+
+.snippet-line.clickable:hover {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.snippet-line.highlight {
+  background: rgba(255, 213, 0, 0.15);
+}
+
+.snippet-line.clickable.highlight:hover {
+  background: rgba(255, 213, 0, 0.25);
+}
+
+.snippet-line .line-number {
+  width: 36px;
+  min-width: 36px;
+  text-align: right;
+  padding-right: 4px;
+  color: #8c959f;
+  user-select: none;
+}
+
+.full-file-code .snippet-line .line-number {
+  width: 48px;
+  min-width: 48px;
+}
+
+.snippet-line code {
+  flex: 1;
+  white-space: pre;
+}
+
+.snippet-error {
+  color: var(--level-error);
+  font-size: 18px;
+  padding: 0 2px;
+}

@@ -1,0 +1,196 @@
+/* Filter Panel */
+
+.filter-panel {
+  position: relative;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  padding: 4px;
+  padding-bottom: 8px;
+  overflow-y: auto;
+  max-height: 50vh;
+}
+
+.filter-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.filter-panel-header h3 {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* Filter Columns Layout */
+.filter-columns {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 4px;
+}
+
+.filter-column {
+  flex: 1;
+  min-width: 150px;
+  background: var(--bg-tertiary);
+  border-radius: 6px;
+  padding: 2px;
+}
+
+.filter-column-wide {
+  flex: 2;
+  min-width: 250px;
+}
+
+.filter-column h4 {
+  margin: 0 0 2px 0;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.filter-section {
+  margin-bottom: 4px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.filter-section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.filter-section h4 {
+  margin: 0 0 2px 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.filter-presets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+}
+
+.preset-btn {
+  padding: 0 4px;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  color: var(--text-primary);
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.preset-btn:hover {
+  background: var(--accent-blue);
+  border-color: var(--accent-blue);
+}
+
+.filter-row {
+  display: flex;
+  gap: 2px;
+  align-items: center;
+}
+
+.filter-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 2px;
+}
+
+.filter-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.filter-field label {
+  font-size: 17px;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.filter-input {
+  padding: 0 4px;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  color: var(--text-primary);
+  font-size: 15px;
+}
+
+.filter-input:focus {
+  outline: none;
+  border-color: var(--accent-blue);
+  box-shadow: 0 0 0 2px rgba(0, 120, 212, 0.2);
+}
+
+.filter-input::placeholder {
+  color: var(--text-muted);
+}
+
+.jq-input-large {
+  flex: 1;
+  font-family: 'Cascadia Code', 'Consolas', monospace;
+}
+
+.filter-actions {
+  display: flex;
+  gap: 2px;
+  margin-top: 2px;
+}
+
+.custom-jq-form {
+  display: flex;
+  gap: 2px;
+}
+
+.current-filter {
+  margin-top: 2px;
+  padding: 0 4px;
+  background: var(--bg-tertiary);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.current-filter-label {
+  font-size: 17px;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.current-filter-code {
+  font-family: 'Cascadia Code', 'Consolas', monospace;
+  font-size: 17px;
+  color: var(--accent-orange);
+  word-break: break-all;
+}
+
+/* Resize handle at the bottom edge of the filter panel */
+.filter-panel-resize-handle {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 5px;
+  cursor: ns-resize;
+  background: transparent;
+  z-index: 10;
+  transition: background 0.15s;
+}
+
+.filter-panel-resize-handle:hover,
+.filter-panel-resize-handle:active {
+  background: var(--accent-blue);
+}

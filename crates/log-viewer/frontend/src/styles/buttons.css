@@ -1,0 +1,70 @@
+/* Button Components */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0 6px;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  border-radius: 2px;
+  color: var(--text-primary);
+  font-size: 12px;
+  cursor: pointer;
+  transition: background 0.15s;
+  white-space: nowrap;
+}
+
+.btn svg {
+  flex-shrink: 0;
+}
+
+.btn:hover {
+  background: var(--bg-hover);
+}
+
+.btn-primary {
+  background: var(--accent-blue);
+  border-color: var(--accent-blue);
+}
+
+.btn-primary:hover {
+  background: #005a9e;
+}
+
+.btn-secondary {
+  background: var(--accent-orange);
+  border-color: var(--accent-orange);
+}
+
+.btn-secondary:hover {
+  background: #b85200;
+}
+
+.btn-active {
+  background: var(--accent-blue);
+  border-color: var(--accent-blue);
+}
+
+.btn-small {
+  padding: 0 4px;
+  font-size: 18px;
+}
+
+.btn-gpu {
+  color: var(--accent-purple);
+  border-color: var(--accent-purple);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+}
+
+.btn-gpu:hover {
+  background: rgba(160, 109, 208, 0.15);
+}
+
+.btn-gpu.btn-active {
+  background: rgba(160, 109, 208, 0.3);
+  border-color: var(--accent-purple);
+  color: var(--accent-purple);
+  text-shadow: 0 0 6px rgba(160, 109, 208, 0.6);
+}

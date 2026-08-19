@@ -1,0 +1,58 @@
+/* Base Reset and Root Styles */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  font-family: var(--font-sans);
+  font-size: 17px;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+/* Style native select dropdowns to match theme */
+select {
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-family: var(--font-sans);
+  font-size: inherit;
+  cursor: pointer;
+  outline: none;
+}
+
+select:hover {
+  border-color: var(--accent-orange);
+}
+
+select:focus {
+  border-color: var(--accent-orange);
+  box-shadow: 0 0 3px rgba(200, 90, 24, 0.3);
+}
+
+select option {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
+#app {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}

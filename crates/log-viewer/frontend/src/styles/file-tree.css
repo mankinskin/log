@@ -1,0 +1,158 @@
+/* File Tree Styles */
+
+.filter-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2px;
+}
+
+.filter-section-header h4 {
+  margin: 0;
+}
+
+.tree-actions {
+  display: flex;
+  gap: 2px;
+}
+
+.selected-file {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 4px;
+  background: var(--bg-active);
+  border-radius: 4px;
+  margin-bottom: 2px;
+  font-size: 15px;
+}
+
+.selected-file code {
+  font-family: 'Cascadia Code', 'Consolas', monospace;
+  color: var(--accent-green);
+}
+
+.file-tree-container {
+  max-height: 180px;
+  overflow-y: auto;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  padding: 0;
+  flex: 1;
+}
+
+.file-tree-item {
+  user-select: none;
+}
+
+.file-tree-row {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 0 4px;
+  cursor: pointer;
+  font-size: 15px;
+  transition: background 0.1s;
+}
+
+.file-tree-row:hover {
+  background: var(--bg-hover);
+}
+
+.file-tree-row.selected {
+  background: var(--bg-active);
+}
+
+.tree-toggle {
+  width: 16px;
+  text-align: center;
+  font-size: 18px;
+  color: var(--text-muted);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.tree-toggle:hover {
+  color: var(--text-primary);
+}
+
+.tree-toggle-placeholder {
+  width: 16px;
+  flex-shrink: 0;
+}
+
+.tree-icon {
+  font-size: 17px;
+  flex-shrink: 0;
+}
+
+.tree-name {
+  flex: 1;
+  color: var(--text-primary);
+  word-break: break-all;
+}
+
+.tree-count {
+  font-size: 18px;
+  color: var(--text-muted);
+  background: var(--bg-tertiary);
+  padding: 0 4px;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+.file-tree-children {
+  /* Children inherit parent's indentation via paddingLeft */
+}
+
+/* JQ Examples */
+.jq-examples {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 4px;
+}
+
+.jq-example {
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 4px;
+}
+
+.jq-example-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2px;
+}
+
+.jq-example-label {
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--text-primary);
+}
+
+.jq-example-actions {
+  display: flex;
+  gap: 2px;
+}
+
+.jq-example-code {
+  display: block;
+  font-family: 'Cascadia Code', 'Consolas', monospace;
+  font-size: 17px;
+  color: var(--accent-green);
+  background: var(--bg-primary);
+  padding: 2px;
+  border-radius: 4px;
+  overflow-x: auto;
+  white-space: nowrap;
+  margin-bottom: 2px;
+}
+
+.jq-example-desc {
+  margin: 0;
+  font-size: 17px;
+  color: var(--text-muted);
+}

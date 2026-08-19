@@ -1,0 +1,15 @@
+name: source
+description: Source file resolution and language detection
+
+files:
+  - name: source.rs
+    description: Source file viewing with language detection and line highlighting
+
+key_types:
+  - get_source: Handler for source file requests
+  - detect_language: Function to detect language from file extension
+
+submodules: []
+source_files:
+  - src/source.rs
+last_synced: null

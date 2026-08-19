@@ -1,0 +1,226 @@
+/* Panic Entry Styling and Diff Display */
+
+.panic-entry {
+  border-left: 3px solid var(--level-error);
+  background: linear-gradient(90deg, rgba(231, 76, 60, 0.1) 0%, transparent 100%);
+}
+
+.panic-badge {
+  background: var(--level-error);
+  color: white;
+  padding: 0 2px;
+  border-radius: 2px;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+@keyframes panic-pulse {
+  from { opacity: 0.8; }
+  to { opacity: 1; }
+}
+
+.panic-message {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--level-error);
+}
+
+/* Formatted panic message with diff */
+.panic-message-formatted {
+  margin: 0;
+}
+
+.panic-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--level-error);
+  padding: 0 4px;
+  background: rgba(231, 76, 60, 0.15);
+  border-radius: 3px;
+  margin-bottom: 0;
+}
+
+.panic-diff {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.diff-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 0 4px;
+  background: var(--bg-tertiary);
+  border-bottom: 1px solid var(--border-color);
+  font-weight: 600;
+  font-size: 17px;
+}
+
+.diff-label {
+  padding: 0 4px;
+  border-radius: 3px;
+}
+
+.diff-label.diff-left {
+  background: rgba(231, 76, 60, 0.2);
+  color: var(--level-error);
+}
+
+.diff-label.diff-right {
+  background: rgba(46, 204, 113, 0.2);
+  color: var(--accent-green);
+}
+
+.diff-vs {
+  color: var(--text-muted);
+  font-size: 18px;
+}
+
+.diff-content {
+  display: flex;
+  gap: 1px;
+  background: var(--border-color);
+}
+
+.diff-column {
+  flex: 1;
+  padding: 0;
+  background: var(--bg-primary);
+  font-family: var(--font-mono);
+  font-size: 17px;
+}
+
+.diff-left-column {
+  border-right: 1px solid var(--border-color);
+}
+
+.diff-item {
+  padding: 0 2px;
+  margin: 0;
+  border-radius: 2px;
+}
+
+.diff-left-item {
+  background: rgba(231, 76, 60, 0.15);
+  color: var(--level-error);
+  border-left: 3px solid var(--level-error);
+}
+
+.diff-right-item {
+  background: rgba(46, 204, 113, 0.15);
+  color: var(--accent-green);
+  border-left: 3px solid var(--accent-green);
+}
+
+.diff-empty {
+  color: var(--text-muted);
+  font-style: italic;
+  padding: 0 2px;
+}
+
+.diff-value {
+  margin: 0;
+  padding: 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-family: var(--font-mono);
+  font-size: 17px;
+  line-height: 1.2;
+}
+
+.diff-left-column .diff-value {
+  background: rgba(231, 76, 60, 0.1);
+  color: var(--level-error);
+  border-left: 3px solid var(--level-error);
+}
+
+.diff-right-column .diff-value {
+  background: rgba(46, 204, 113, 0.1);
+  color: var(--accent-green);
+  border-left: 3px solid var(--accent-green);
+}
+
+.panic-source {
+  margin-top: 0;
+  border: 1px solid var(--level-error);
+  border-radius: 3px;
+  overflow: hidden;
+  background: var(--bg-primary);
+}
+
+.panic-location {
+  padding: 0 4px;
+  background: rgba(231, 76, 60, 0.2);
+  font-family: var(--font-mono);
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--level-error);
+  border-bottom: 1px solid var(--level-error);
+}
+
+.panic-snippet {
+  margin: 0;
+  border: none;
+  border-radius: 0;
+}
+
+.panic-snippet .snippet-line.highlight {
+  background: rgba(231, 76, 60, 0.3);
+  border-left: 3px solid var(--level-error);
+}
+
+/* Caller frames display */
+.entry-callers {
+  margin-top: 0;
+  border: 1px solid var(--border-color);
+  border-radius: 2px;
+  background: var(--bg-secondary);
+}
+
+.callers-summary {
+  padding: 0 4px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+}
+
+.callers-list {
+  padding: 0 4px;
+  background: var(--bg-tertiary);
+  border-top: 1px solid var(--border-color);
+}
+
+.caller-frame {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  padding: 0;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.caller-frame:last-child {
+  border-bottom: none;
+}
+
+.frame-index {
+  color: var(--text-muted);
+  min-width: 20px;
+}
+
+.frame-function {
+  color: var(--accent-yellow);
+  font-weight: 500;
+}
+
+.frame-location {
+  color: var(--text-muted);
+  font-size: 10px;
+  width: 100%;
+  padding-left: 24px;
+}

@@ -1,0 +1,303 @@
+/* Override viewer-api sidebar-content so FileTree fills it and scrolls
+   via its own .tree-view, preventing a double-scrollbar in the sidebar. */
+.sidebar-content {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Center + right split */
+
+.center-right-split {
+  display: flex;
+  height: 100%;
+  overflow: hidden;
+  min-width: 0;
+  position: relative;
+}
+
+.center-pane {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-width: 0;
+  min-height: 0;
+  border-right: 1px solid var(--border-color);
+}
+
+.view-container {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.hypergraph-tab {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+
+
+
+
+.file-item {
+  padding: 4px 8px;
+  cursor: pointer;
+  border-left: 3px solid transparent;
+  transition: all 0.15s;
+  margin: 1px 0;
+}
+
+.file-item:hover {
+  background: var(--bg-hover);
+  border-left-color: var(--border-subtle);
+}
+
+.file-item.active {
+  background: var(--bg-active);
+  border-left-color: var(--accent-blue);
+}
+
+.log-sidebar .sidebar-content {
+  padding: 0;
+  overflow: hidden;
+}
+
+/* Keyboard focus styles */
+.tabs:focus {
+  outline: none;
+}
+
+.tabs.focused {
+  outline: 1px solid var(--accent-blue);
+  outline-offset: -1px;
+  border-radius: 3px;
+}
+
+.log-entries:focus {
+  outline: none;
+}
+
+.log-entries.focused {
+  outline: 1px solid var(--accent-blue);
+  outline-offset: -1px;
+}
+
+.file-name {
+  font-size: 12px;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  color: var(--text-primary);
+  word-break: break-all;
+}
+
+.file-item.active .file-name {
+  color: var(--accent-blue);
+}
+
+.file-meta {
+  font-size: 11px;
+  font-family: var(--font-sans);
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+
+
+/* Graph snapshot badge on file items */
+.graph-badge {
+  color: var(--accent-purple);
+  font-size: 10px;
+  margin-right: 4px;
+  opacity: 0.7;
+}
+
+.file-item:hover .graph-badge,
+.file-item.active .graph-badge {
+  opacity: 1;
+}
+
+/* Search ops badge */
+.search-badge {
+  font-size: 9px;
+  margin-right: 3px;
+  opacity: 0.7;
+}
+
+.file-item:hover .search-badge,
+.file-item.active .search-badge {
+  opacity: 1;
+}
+
+/* Insert ops badge */
+.insert-badge {
+  color: var(--accent-green);
+  font-size: 11px;
+  font-weight: 700;
+  margin-right: 3px;
+  opacity: 0.7;
+}
+
+/* File tree tooltip styles */
+.file-tooltip {
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.file-tooltip-name {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+  word-break: break-all;
+}
+
+.file-tooltip-meta {
+  color: var(--text-muted);
+  font-size: 11px;
+}
+
+.file-tooltip-badges {
+  color: var(--accent-purple);
+  font-size: 11px;
+  margin-top: 4px;
+}
+
+/* Tab Bar */
+.tab-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: var(--tab-height);
+  padding: 0 8px;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  flex-shrink: 0;
+}
+
+.tabs {
+  display: flex;
+  gap: 2px;
+}
+
+.tab {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  background: transparent;
+  border: none;
+  border-radius: 3px;
+  color: var(--text-muted);
+  font-size: 12px;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.tab:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.tab.active {
+  background: var(--bg-tertiary);
+  color: var(--accent-blue);
+}
+
+.tab-icon {
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.tab.active .tab-icon {
+  opacity: 1;
+}
+
+.tab-label {
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.tab-info {
+  font-size: 11px;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+}
+
+/* View Container */
+.view-container {
+  flex: 1;
+  overflow: hidden;
+  min-width: 0;
+  min-height: 0;
+}
+
+.view-container:focus {
+  outline: none;
+}
+
+.view-container.focused {
+  outline: 1px solid var(--accent-blue);
+  outline-offset: -1px;
+}
+
+/* ── Generic Panel header / body for global side panels (file tree etc.) ── */
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-bottom: 1px solid var(--border-color);
+  background: var(--bg-tertiary);
+  flex-shrink: 0;
+}
+
+:root.gpu-active .panel-header {
+  background: rgba(0, 0, 0, 0.35);
+  border-bottom-color: rgba(255, 255, 255, 0.12);
+}
+
+.panel-title {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent-purple);
+}
+
+.panel-badge {
+  font-size: 10px;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  background: var(--bg-primary);
+  padding: 1px 6px;
+  border-radius: 8px;
+}
+
+:root.gpu-active .panel-badge {
+  background: rgba(0, 0, 0, 0.55);
+  color: #b0a898;
+}
+
+.panel-body {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Make sure the file-tree fills the panel body and scrolls internally. */
+.log-files-panel .panel-body .file-tree {
+  flex: 1;
+  min-height: 0;
+}

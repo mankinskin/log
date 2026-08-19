@@ -1,0 +1,178 @@
+/* Field Display Styles */
+
+.entry-fields-inline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  margin-top: 0;
+}
+
+.field-inline {
+  font-family: var(--font-mono);
+  font-size: 17px;
+  color: var(--text-secondary);
+}
+
+.field-inline .field-key {
+  color: var(--accent-purple);
+}
+
+.field-inline .field-value {
+  color: var(--accent-green);
+}
+
+/* Fields as JSON */
+.entry-fields-json {
+  margin-top: 0;
+}
+
+.entry-fields-json summary {
+  font-size: 18px;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 0;
+}
+
+.entry-fields-json summary:hover {
+  color: var(--text-secondary);
+}
+
+.fields-json-code {
+  margin: 0;
+  padding: 0 2px;
+  background: var(--bg-tertiary);
+  border-radius: 3px;
+  border: 1px solid var(--border-color);
+  font-family: var(--font-mono);
+  font-size: 17px;
+  line-height: 1.2;
+  overflow-x: auto;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+/* Field value with code highlighting */
+.field-value-code {
+  display: inline-block;
+  margin: 0;
+  padding: 0 2px;
+  background: var(--bg-tertiary);
+  border-radius: 3px;
+  font-family: var(--font-mono);
+  font-size: 17px;
+  line-height: 1.2;
+  max-width: 100%;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.field-value-plain {
+  font-family: var(--font-mono);
+  font-size: 17px;
+  color: var(--accent-green);
+}
+
+.rust-debug {
+  color: var(--accent-orange);
+}
+
+.entry-fields-details {
+  margin-top: 0;
+}
+
+.entry-fields-details summary {
+  font-size: 18px;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.entry-fields-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 0;
+  margin-top: 0;
+  padding: 0;
+  background: var(--bg-tertiary);
+  border-radius: 3px;
+}
+
+.field-item {
+  font-family: var(--font-mono);
+  font-size: 17px;
+}
+
+.field-item .field-key {
+  color: var(--accent-purple);
+}
+
+.field-item .field-value {
+  color: var(--accent-green);
+  margin-left: 2px;
+}
+
+/* Backtrace display */
+.entry-backtrace {
+  margin-top: 0;
+  border: 1px solid var(--level-error);
+  border-radius: 2px;
+  background: rgba(231, 76, 60, 0.1);
+}
+
+.backtrace-summary {
+  padding: 0 4px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--level-error);
+  cursor: pointer;
+}
+
+.backtrace-content {
+  margin: 0;
+  padding: 0 4px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 1.2;
+  color: var(--text-primary);
+  background: var(--bg-tertiary);
+  border-top: 1px solid var(--border-color);
+  white-space: pre-wrap;
+  word-break: break-all;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+/* Updated field display for JSON values */
+.entry-fields-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 0;
+  padding: 2px;
+  background: var(--bg-tertiary);
+  border-radius: 4px;
+}
+
+.field-item-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 4px;
+  font-family: var(--font-mono);
+  font-size: 17px;
+}
+
+.field-item-row .field-key {
+  color: var(--accent-purple);
+  min-width: 120px;
+  flex-shrink: 0;
+}
+
+.field-item-row .field-key::after {
+  content: ':';
+  color: var(--text-secondary);
+}
+
+.field-item-row .field-value {
+  flex: 1;
+  overflow-x: auto;
+}

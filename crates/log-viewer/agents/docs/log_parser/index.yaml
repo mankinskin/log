@@ -1,0 +1,15 @@
+name: log_parser
+description: Log file parsing and structured data extraction
+
+files:
+  - name: log_parser.rs
+    description: Parser for JSON tracing logs with ANSI stripping and panic detection
+
+key_types:
+  - LogParser: Parser instance for log files
+  - LogEntry: Parsed log entry structure
+
+submodules: []
+source_files:
+  - src/log_parser.rs
+last_synced: null

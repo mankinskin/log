@@ -1,0 +1,826 @@
+[
+  {
+    "name": "simple_start_only",
+    "transitions": [
+      {
+        "kind": "set_start_node",
+        "node": {
+          "index": 1,
+          "width": 1
+        }
+      }
+    ],
+    "expected": {
+      "start_node": {
+        "index": 1,
+        "width": 1
+      },
+      "start_path": [],
+      "start_edges": [],
+      "root": null,
+      "root_entry_edge": null,
+      "root_exit_edge": null,
+      "end_path": [],
+      "end_edges": [],
+      "cursor_pos": 0,
+      "done": false,
+      "success": false,
+      "root_tentative": false
+    }
+  },
+  {
+    "name": "start_with_parents",
+    "transitions": [
+      {
+        "kind": "set_start_node",
+        "node": {
+          "index": 1,
+          "width": 1
+        }
+      },
+      {
+        "kind": "push_parent",
+        "parent": {
+          "index": 10,
+          "width": 2
+        },
+        "edge": {
+          "from": 1,
+          "to": 10,
+          "pattern_idx": 0,
+          "sub_index": 0
+        }
+      },
+      {
+        "kind": "push_parent",
+        "parent": {
+          "index": 20,
+          "width": 4
+        },
+        "edge": {
+          "from": 10,
+          "to": 20,
+          "pattern_idx": 0,
+          "sub_index": 1
+        }
+      }
+    ],
+    "expected": {
+      "start_node": {
+        "index": 1,
+        "width": 1
+      },
+      "start_path": [
+        {
+          "index": 10,
+          "width": 2
+        },
+        {
+          "index": 20,
+          "width": 4
+        }
+      ],
+      "start_edges": [
+        {
+          "from": 1,
+          "to": 10,
+          "pattern_idx": 0,
+          "sub_index": 0
+        },
+        {
+          "from": 10,
+          "to": 20,
+          "pattern_idx": 0,
+          "sub_index": 1
+        }
+      ],
+      "root": null,
+      "root_entry_edge": null,
+      "root_exit_edge": null,
+      "end_path": [],
+      "end_edges": [],
+      "cursor_pos": 0,
+      "done": false,
+      "success": false,
+      "root_tentative": false
+    }
+  },
+  {
+    "name": "full_search_path",
+    "transitions": [
+      {
+        "kind": "set_start_node",
+        "node": {
+          "index": 1,
+          "width": 1
+        }
+      },
+      {
+        "kind": "push_parent",
+        "parent": {
+          "index": 10,
+          "width": 2
+        },
+        "edge": {
+          "from": 1,
+          "to": 10,
+          "pattern_idx": 0,
+          "sub_index": 0
+        }
+      },
+      {
+        "kind": "set_root",
+        "root": {
+          "index": 20,
+          "width": 4
+        },
+        "edge": {
+          "from": 10,
+          "to": 20,
+          "pattern_idx": 0,
+          "sub_index": 0
+        }
+      },
+      {
+        "kind": "push_child",
+        "child": {
+          "index": 5,
+          "width": 1
+        },
+        "edge": {
+          "from": 20,
+          "to": 5,
+          "pattern_idx": 0,
+          "sub_index": 1
+        }
+      },
+      {
+        "kind": "child_match",
+        "cursor_pos": 2
+      },
+      {
+        "kind": "done",
+        "success": true
+      }
+    ],
+    "expected": {
+      "start_node": {
+        "index": 1,
+        "width": 1
+      },
+      "start_path": [
+        {
+          "index": 10,
+          "width": 2
+        }
+      ],
+      "start_edges": [
+        {
+          "from": 1,
+          "to": 10,
+          "pattern_idx": 0,
+          "sub_index": 0
+        }
+      ],
+      "root": {
+        "index": 20,
+        "width": 4
+      },
+      "root_entry_edge": {
+        "from": 10,
+        "to": 20,
+        "pattern_idx": 0,
+        "sub_index": 0
+      },
+      "root_exit_edge": {
+        "from": 20,
+        "to": 5,
+        "pattern_idx": 0,
+        "sub_index": 1
+      },
+      "end_path": [
+        {
+          "index": 5,
+          "width": 1
+        }
+      ],
+      "end_edges": [
+        {
+          "from": 20,
+          "to": 5,
+          "pattern_idx": 0,
+          "sub_index": 1
+        }
+      ],
+      "cursor_pos": 2,
+      "done": true,
+      "success": true,
+      "root_tentative": false
+    }
+  },
+  {
+    "name": "mismatch_path",
+    "transitions": [
+      {
+        "kind": "set_start_node",
+        "node": {
+          "index": 1,
+          "width": 1
+        }
+      },
+      {
+        "kind": "set_root",
+        "root": {
+          "index": 10,
+          "width": 2
+        },
+        "edge": {
+          "from": 1,
+          "to": 10,
+          "pattern_idx": 0,
+          "sub_index": 0
+        }
+      },
+      {
+        "kind": "push_child",
+        "child": {
+          "index": 3,
+          "width": 1
+        },
+        "edge": {
+          "from": 10,
+          "to": 3,
+          "pattern_idx": 0,
+          "sub_index": 1
+        }
+      },
+      {
+        "kind": "child_mismatch",
+        "cursor_pos": 1
+      },
+      {
+        "kind": "done",
+        "success": false
+      }
+    ],
+    "expected": {
+      "start_node": {
+        "index": 1,
+        "width": 1
+      },
+      "start_path": [],
+      "start_edges": [],
+      "root": {
+        "index": 10,
+        "width": 2
+      },
+      "root_entry_edge": {
+        "from": 1,
+        "to": 10,
+        "pattern_idx": 0,
+        "sub_index": 0
+      },
+      "root_exit_edge": {
+        "from": 10,
+        "to": 3,
+        "pattern_idx": 0,
+        "sub_index": 1
+      },
+      "end_path": [
+        {
+          "index": 3,
+          "width": 1
+        }
+      ],
+      "end_edges": [
+        {
+          "from": 10,
+          "to": 3,
+          "pattern_idx": 0,
+          "sub_index": 1
+        }
+      ],
+      "cursor_pos": 1,
+      "done": true,
+      "success": false,
+      "root_tentative": false
+    }
+  },
+  {
+    "name": "backtrack_and_retry",
+    "transitions": [
+      {
+        "kind": "set_start_node",
+        "node": {
+          "index": 1,
+          "width": 1
+        }
+      },
+      {
+        "kind": "set_root",
+        "root": {
+          "index": 10,
+          "width": 3
+        },
+        "edge": {
+          "from": 1,
+          "to": 10,
+          "pattern_idx": 0,
+          "sub_index": 0
+        }
+      },
+      {
+        "kind": "push_child",
+        "child": {
+          "index": 3,
+          "width": 1
+        },
+        "edge": {
+          "from": 10,
+          "to": 3,
+          "pattern_idx": 0,
+          "sub_index": 1
+        }
+      },
+      {
+        "kind": "child_mismatch",
+        "cursor_pos": 1
+      },
+      {
+        "kind": "pop_child"
+      },
+      {
+        "kind": "push_child",
+        "child": {
+          "index": 4,
+          "width": 1
+        },
+        "edge": {
+          "from": 10,
+          "to": 4,
+          "pattern_idx": 0,
+          "sub_index": 2
+        }
+      },
+      {
+        "kind": "child_match",
+        "cursor_pos": 2
+      },
+      {
+        "kind": "done",
+        "success": true
+      }
+    ],
+    "expected": {
+      "start_node": {
+        "index": 1,
+        "width": 1
+      },
+      "start_path": [],
+      "start_edges": [],
+      "root": {
+        "index": 10,
+        "width": 3
+      },
+      "root_entry_edge": {
+        "from": 1,
+        "to": 10,
+        "pattern_idx": 0,
+        "sub_index": 0
+      },
+      "root_exit_edge": {
+        "from": 10,
+        "to": 4,
+        "pattern_idx": 0,
+        "sub_index": 2
+      },
+      "end_path": [
+        {
+          "index": 4,
+          "width": 1
+        }
+      ],
+      "end_edges": [
+        {
+          "from": 10,
+          "to": 4,
+          "pattern_idx": 0,
+          "sub_index": 2
+        }
+      ],
+      "cursor_pos": 2,
+      "done": true,
+      "success": true,
+      "root_tentative": false
+    }
+  },
+  {
+    "name": "replace_child",
+    "transitions": [
+      {
+        "kind": "set_start_node",
+        "node": {
+          "index": 1,
+          "width": 1
+        }
+      },
+      {
+        "kind": "set_root",
+        "root": {
+          "index": 10,
+          "width": 3
+        },
+        "edge": {
+          "from": 1,
+          "to": 10,
+          "pattern_idx": 0,
+          "sub_index": 0
+        }
+      },
+      {
+        "kind": "push_child",
+        "child": {
+          "index": 3,
+          "width": 1
+        },
+        "edge": {
+          "from": 10,
+          "to": 3,
+          "pattern_idx": 0,
+          "sub_index": 1
+        }
+      },
+      {
+        "kind": "replace_child",
+        "child": {
+          "index": 4,
+          "width": 1
+        },
+        "edge": {
+          "from": 10,
+          "to": 4,
+          "pattern_idx": 0,
+          "sub_index": 2
+        }
+      },
+      {
+        "kind": "child_match",
+        "cursor_pos": 2
+      },
+      {
+        "kind": "done",
+        "success": true
+      }
+    ],
+    "expected": {
+      "start_node": {
+        "index": 1,
+        "width": 1
+      },
+      "start_path": [],
+      "start_edges": [],
+      "root": {
+        "index": 10,
+        "width": 3
+      },
+      "root_entry_edge": {
+        "from": 1,
+        "to": 10,
+        "pattern_idx": 0,
+        "sub_index": 0
+      },
+      "root_exit_edge": {
+        "from": 10,
+        "to": 4,
+        "pattern_idx": 0,
+        "sub_index": 2
+      },
+      "end_path": [
+        {
+          "index": 4,
+          "width": 1
+        }
+      ],
+      "end_edges": [
+        {
+          "from": 10,
+          "to": 4,
+          "pattern_idx": 0,
+          "sub_index": 2
+        }
+      ],
+      "cursor_pos": 2,
+      "done": true,
+      "success": true,
+      "root_tentative": false
+    }
+  },
+  {
+    "name": "deep_nested_path",
+    "transitions": [
+      {
+        "kind": "set_start_node",
+        "node": {
+          "index": 0,
+          "width": 1
+        }
+      },
+      {
+        "kind": "push_parent",
+        "parent": {
+          "index": 5,
+          "width": 2
+        },
+        "edge": {
+          "from": 0,
+          "to": 5,
+          "pattern_idx": 0,
+          "sub_index": 0
+        }
+      },
+      {
+        "kind": "push_parent",
+        "parent": {
+          "index": 10,
+          "width": 3
+        },
+        "edge": {
+          "from": 5,
+          "to": 10,
+          "pattern_idx": 0,
+          "sub_index": 1
+        }
+      },
+      {
+        "kind": "set_root",
+        "root": {
+          "index": 20,
+          "width": 6
+        },
+        "edge": {
+          "from": 10,
+          "to": 20,
+          "pattern_idx": 0,
+          "sub_index": 0
+        }
+      },
+      {
+        "kind": "push_child",
+        "child": {
+          "index": 15,
+          "width": 3
+        },
+        "edge": {
+          "from": 20,
+          "to": 15,
+          "pattern_idx": 0,
+          "sub_index": 1
+        }
+      },
+      {
+        "kind": "push_child",
+        "child": {
+          "index": 8,
+          "width": 2
+        },
+        "edge": {
+          "from": 15,
+          "to": 8,
+          "pattern_idx": 0,
+          "sub_index": 0
+        }
+      },
+      {
+        "kind": "push_child",
+        "child": {
+          "index": 3,
+          "width": 1
+        },
+        "edge": {
+          "from": 8,
+          "to": 3,
+          "pattern_idx": 0,
+          "sub_index": 1
+        }
+      },
+      {
+        "kind": "child_match",
+        "cursor_pos": 5
+      },
+      {
+        "kind": "done",
+        "success": true
+      }
+    ],
+    "expected": {
+      "start_node": {
+        "index": 0,
+        "width": 1
+      },
+      "start_path": [
+        {
+          "index": 5,
+          "width": 2
+        },
+        {
+          "index": 10,
+          "width": 3
+        }
+      ],
+      "start_edges": [
+        {
+          "from": 0,
+          "to": 5,
+          "pattern_idx": 0,
+          "sub_index": 0
+        },
+        {
+          "from": 5,
+          "to": 10,
+          "pattern_idx": 0,
+          "sub_index": 1
+        }
+      ],
+      "root": {
+        "index": 20,
+        "width": 6
+      },
+      "root_entry_edge": {
+        "from": 10,
+        "to": 20,
+        "pattern_idx": 0,
+        "sub_index": 0
+      },
+      "root_exit_edge": {
+        "from": 20,
+        "to": 15,
+        "pattern_idx": 0,
+        "sub_index": 1
+      },
+      "end_path": [
+        {
+          "index": 15,
+          "width": 3
+        },
+        {
+          "index": 8,
+          "width": 2
+        },
+        {
+          "index": 3,
+          "width": 1
+        }
+      ],
+      "end_edges": [
+        {
+          "from": 20,
+          "to": 15,
+          "pattern_idx": 0,
+          "sub_index": 1
+        },
+        {
+          "from": 15,
+          "to": 8,
+          "pattern_idx": 0,
+          "sub_index": 0
+        },
+        {
+          "from": 8,
+          "to": 3,
+          "pattern_idx": 0,
+          "sub_index": 1
+        }
+      ],
+      "cursor_pos": 5,
+      "done": true,
+      "success": true,
+      "root_tentative": false
+    }
+  },
+  {
+    "name": "push_parent_after_root",
+    "transitions": [
+      {
+        "kind": "set_start_node",
+        "node": {
+          "index": 1,
+          "width": 1
+        }
+      },
+      {
+        "kind": "set_root",
+        "root": {
+          "index": 10,
+          "width": 3
+        },
+        "edge": {
+          "from": 1,
+          "to": 10,
+          "pattern_idx": 0,
+          "sub_index": 0
+        }
+      },
+      {
+        "kind": "push_parent",
+        "parent": {
+          "index": 20,
+          "width": 6
+        },
+        "edge": {
+          "from": 10,
+          "to": 20,
+          "pattern_idx": 0,
+          "sub_index": 0
+        }
+      },
+      {
+        "kind": "set_root",
+        "root": {
+          "index": 20,
+          "width": 6
+        },
+        "edge": {
+          "from": 1,
+          "to": 20,
+          "pattern_idx": 0,
+          "sub_index": 0
+        }
+      },
+      {
+        "kind": "push_child",
+        "child": {
+          "index": 5,
+          "width": 1
+        },
+        "edge": {
+          "from": 20,
+          "to": 5,
+          "pattern_idx": 0,
+          "sub_index": 1
+        }
+      },
+      {
+        "kind": "child_match",
+        "cursor_pos": 3
+      },
+      {
+        "kind": "done",
+        "success": true
+      }
+    ],
+    "expected": {
+      "start_node": {
+        "index": 1,
+        "width": 1
+      },
+      "start_path": [
+        {
+          "index": 10,
+          "width": 3
+        }
+      ],
+      "start_edges": [
+        {
+          "from": 1,
+          "to": 10,
+          "pattern_idx": 0,
+          "sub_index": 0
+        }
+      ],
+      "root": {
+        "index": 20,
+        "width": 6
+      },
+      "root_entry_edge": {
+        "from": 10,
+        "to": 20,
+        "pattern_idx": 0,
+        "sub_index": 0
+      },
+      "root_exit_edge": {
+        "from": 20,
+        "to": 5,
+        "pattern_idx": 0,
+        "sub_index": 1
+      },
+      "end_path": [
+        {
+          "index": 5,
+          "width": 1
+        }
+      ],
+      "end_edges": [
+        {
+          "from": 20,
+          "to": 5,
+          "pattern_idx": 0,
+          "sub_index": 1
+        }
+      ],
+      "cursor_pos": 3,
+      "done": true,
+      "success": true,
+      "root_tentative": false
+    }
+  }
+]

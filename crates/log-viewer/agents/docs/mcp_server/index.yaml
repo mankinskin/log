@@ -1,0 +1,15 @@
+name: mcp_server
+description: MCP server implementation for agent integration
+
+files:
+  - name: mcp_server.rs
+    description: MCP tools for log viewing and JQ querying
+
+key_types:
+  - LogServer: MCP server providing log querying tools
+  - run_mcp: Function to start the MCP server
+
+submodules: []
+source_files:
+  - src/mcp_server.rs
+last_synced: null

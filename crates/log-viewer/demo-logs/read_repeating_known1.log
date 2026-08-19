@@ -1,0 +1,468 @@
+{
+  "fields": {
+    "log_file": {
+      "_type": "Option",
+      "_values": [
+        "C:/Users/linus_behrbohm/git/SECOND_CHECKOUT/graph_app/context-engine/target/test-logs/read_repeating_known1.log"
+      ],
+      "_variant": "Some"
+    },
+    "message": "Test tracing initialized",
+    "test_name": "read_repeating_known1"
+  },
+  "filename": "crates/context-stack/context-trace/src/logging/tracing_utils/test_tracing.rs",
+  "level": "INFO",
+  "line_number": 299,
+  "target": "context_trace::logging::tracing_utils::test_tracing",
+  "timestamp": "2026-03-03T02:42:40.605672Z"
+}
+
+{
+  "fields": {
+    "message": "New ReadCtx"
+  },
+  "filename": "crates/context-stack/context-read/src/context/mod.rs",
+  "level": "DEBUG",
+  "line_number": 44,
+  "target": "context_read::context",
+  "timestamp": "2026-03-03T02:42:40.605990Z"
+}
+
+{
+  "fields": {
+    "known": {
+      "_type": "Pattern",
+      "_values": [
+        [
+          {
+            "index": 1,
+            "text": "y"
+          },
+          {
+            "index": 0,
+            "text": "x"
+          },
+          {
+            "index": 1,
+            "text": "y"
+          }
+        ]
+      ]
+    },
+    "known_len": 3,
+    "message": "read_segment",
+    "unknown": {
+      "_type": "Pattern",
+      "_values": [
+        [
+          {
+            "index": 0,
+            "text": "x"
+          },
+          {
+            "index": 1,
+            "text": "y"
+          }
+        ]
+      ]
+    },
+    "unknown_len": 2
+  },
+  "filename": "crates/context-stack/context-read/src/context/mod.rs",
+  "level": "DEBUG",
+  "line_number": 72,
+  "target": "context_read::context",
+  "timestamp": "2026-03-03T02:42:40.606194Z"
+}
+
+{
+  "fields": {
+    "known": {
+      "_type": "Pattern",
+      "_values": [
+        [
+          {
+            "index": 1,
+            "text": "y"
+          },
+          {
+            "index": 0,
+            "text": "x"
+          },
+          {
+            "index": 1,
+            "text": "y"
+          }
+        ]
+      ]
+    },
+    "known_len": 3,
+    "message": "BlockExpansionCtx::new"
+  },
+  "filename": "crates/context-stack/context-read/src/expansion/block.rs",
+  "level": "DEBUG",
+  "line_number": 36,
+  "target": "context_read::expansion::block",
+  "timestamp": "2026-03-03T02:42:40.606362Z"
+}
+
+{
+  "fields": {
+    "has_root": true,
+    "message": "Starting block expansion",
+    "root_last_token": {
+      "_type": "Option",
+      "_values": [
+        {
+          "index": 1,
+          "text": "y"
+        }
+      ],
+      "_variant": "Some"
+    }
+  },
+  "filename": "crates/context-stack/context-read/src/expansion/block.rs",
+  "level": "DEBUG",
+  "line_number": 44,
+  "target": "context_read::expansion::block",
+  "timestamp": "2026-03-03T02:42:40.606451Z"
+}
+
+{
+  "fields": {
+    "initial_band": {
+      "_type": "Band",
+      "end_bound": {
+        "_type": "AtomPosition",
+        "_values": [
+          1
+        ]
+      },
+      "pattern": {
+        "_type": "Pattern",
+        "_values": [
+          [
+            {
+              "index": 1,
+              "text": "y"
+            }
+          ]
+        ]
+      },
+      "start_bound": {
+        "_type": "AtomPosition",
+        "_values": [
+          0
+        ]
+      }
+    },
+    "message": "New BandState"
+  },
+  "filename": "crates/context-stack/context-read/src/expansion/chain/mod.rs",
+  "level": "DEBUG",
+  "line_number": 55,
+  "target": "context_read::expansion::chain",
+  "timestamp": "2026-03-03T02:42:40.606516Z"
+}
+
+{
+  "fields": {
+    "cursor_root": {
+      "_type": "Pattern",
+      "_values": [
+        [
+          {
+            "index": 1,
+            "text": "y"
+          },
+          {
+            "index": 0,
+            "text": "x"
+          },
+          {
+            "index": 1,
+            "text": "y"
+          }
+        ]
+      ]
+    },
+    "message": "New ExpansionCtx"
+  },
+  "filename": "crates/context-stack/context-read/src/expansion/mod.rs",
+  "level": "DEBUG",
+  "line_number": 81,
+  "target": "context_read::expansion",
+  "timestamp": "2026-03-03T02:42:40.606601Z"
+}
+
+{
+  "fields": {
+    "band": {
+      "_type": "Single",
+      "band": {
+        "_type": "Band",
+        "end_bound": {
+          "_type": "AtomPosition",
+          "_values": [
+            1
+          ]
+        },
+        "pattern": {
+          "_type": "Pattern",
+          "_values": [
+            [
+              {
+                "index": 1,
+                "text": "y"
+              }
+            ]
+          ]
+        },
+        "start_bound": {
+          "_type": "AtomPosition",
+          "_values": [
+            0
+          ]
+        }
+      }
+    },
+    "message": "Using root's last token for overlap detection"
+  },
+  "filename": "crates/context-stack/context-read/src/expansion/mod.rs",
+  "level": "DEBUG",
+  "line_number": 89,
+  "target": "context_read::expansion",
+  "timestamp": "2026-03-03T02:42:40.606668Z"
+}
+
+{
+  "fields": {
+    "cursor_root": {
+      "_type": "Pattern",
+      "_values": [
+        [
+          {
+            "index": 1,
+            "text": "y"
+          },
+          {
+            "index": 0,
+            "text": "x"
+          },
+          {
+            "index": 1,
+            "text": "y"
+          }
+        ]
+      ]
+    },
+    "end_path": {
+      "_ty": {
+        "_type": "PhantomData",
+        "type_param": "context_trace::path::accessors::role::End"
+      },
+      "_type": "RolePath",
+      "sub_path": {
+        "_type": "SubPath",
+        "path": [],
+        "root_entry": 0
+      }
+    },
+    "message": "New CursorCtx",
+    "start_path": {
+      "_ty": {
+        "_type": "PhantomData",
+        "type_param": "context_trace::path::accessors::role::Start"
+      },
+      "_type": "RolePath",
+      "sub_path": {
+        "_type": "SubPath",
+        "path": [],
+        "root_entry": 0
+      }
+    }
+  },
+  "filename": "crates/context-stack/context-read/src/expansion/cursor.rs",
+  "level": "DEBUG",
+  "line_number": 21,
+  "target": "context_read::expansion::cursor",
+  "timestamp": "2026-03-03T02:42:40.606777Z"
+}
+
+{
+  "fields": {
+    "first": {
+      "_type": "Option",
+      "_values": [
+        {
+          "index": 1,
+          "text": "y"
+        }
+      ],
+      "_variant": "Some"
+    },
+    "message": "expansion state before processing",
+    "state": {
+      "_type": "Single",
+      "band": {
+        "_type": "Band",
+        "end_bound": {
+          "_type": "AtomPosition",
+          "_values": [
+            1
+          ]
+        },
+        "pattern": {
+          "_type": "Pattern",
+          "_values": [
+            [
+              {
+                "index": 1,
+                "text": "y"
+              }
+            ]
+          ]
+        },
+        "start_bound": {
+          "_type": "AtomPosition",
+          "_values": [
+            0
+          ]
+        }
+      }
+    }
+  },
+  "filename": "crates/context-stack/context-read/src/expansion/block.rs",
+  "level": "DEBUG",
+  "line_number": 66,
+  "target": "context_read::expansion::block",
+  "timestamp": "2026-03-03T02:42:40.606897Z"
+}
+
+{
+  "fields": {
+    "last_end_postfix": {
+      "index": 1,
+      "text": "y"
+    },
+    "message": "Try new ExpandCtx"
+  },
+  "filename": "crates/context-stack/context-read/src/expansion/chain/expand.rs",
+  "level": "DEBUG",
+  "line_number": 29,
+  "target": "context_read::expansion::chain::expand",
+  "timestamp": "2026-03-03T02:42:40.606992Z"
+}
+
+{
+  "fields": {
+    "message": "ExpandCtx: no postfix positions available"
+  },
+  "filename": "crates/context-stack/context-read/src/expansion/chain/expand.rs",
+  "level": "DEBUG",
+  "line_number": 39,
+  "target": "context_read::expansion::chain::expand",
+  "timestamp": "2026-03-03T02:42:40.607069Z"
+}
+
+{
+  "fields": {
+    "final_state": {
+      "_type": "Single",
+      "band": {
+        "_type": "Band",
+        "end_bound": {
+          "_type": "AtomPosition",
+          "_values": [
+            1
+          ]
+        },
+        "pattern": {
+          "_type": "Pattern",
+          "_values": [
+            [
+              {
+                "index": 1,
+                "text": "y"
+              }
+            ]
+          ]
+        },
+        "start_bound": {
+          "_type": "AtomPosition",
+          "_values": [
+            0
+          ]
+        }
+      }
+    },
+    "message": "BlockExpansionCtx::process complete"
+  },
+  "filename": "crates/context-stack/context-read/src/expansion/block.rs",
+  "level": "DEBUG",
+  "line_number": 72,
+  "target": "context_read::expansion::block",
+  "timestamp": "2026-03-03T02:42:40.607114Z"
+}
+
+{
+  "fields": {
+    "edge_count": 2,
+    "graph_data": {
+      "edges": [
+        {
+          "from": 2,
+          "pattern_idx": 0,
+          "sub_index": 0,
+          "to": 0
+        },
+        {
+          "from": 2,
+          "pattern_idx": 0,
+          "sub_index": 1,
+          "to": 1
+        }
+      ],
+      "nodes": [
+        {
+          "index": 0,
+          "label": "x",
+          "width": 1
+        },
+        {
+          "index": 1,
+          "label": "y",
+          "width": 1
+        },
+        {
+          "index": 2,
+          "label": "xy",
+          "width": 2
+        }
+      ]
+    },
+    "message": "graph_snapshot",
+    "node_count": 3
+  },
+  "filename": "crates/context-stack/context-trace/src/graph/snapshot.rs",
+  "level": "INFO",
+  "line_number": 112,
+  "target": "context_trace::graph::snapshot",
+  "timestamp": "2026-03-03T02:42:40.607272Z"
+}
+
+{
+  "fields": {
+    "backtrace": "   0: std::backtrace_rs::backtrace::win64::trace\n             at /rustc/9725c4baacef19345e13f91b27e66e10ef5592ae/library/std/src/../../backtrace/src/backtrace/win64.rs:85\n   1: std::backtrace_rs::backtrace::trace_unsynchronized\n             at /rustc/9725c4baacef19345e13f91b27e66e10ef5592ae/library/std/src/../../backtrace/src/backtrace/mod.rs:66\n   2: std::backtrace::Backtrace::create\n             at /rustc/9725c4baacef19345e13f91b27e66e10ef5592ae/library/std/src/backtrace.rs:331\n   3: std::backtrace::Backtrace::force_capture\n             at /rustc/9725c4baacef19345e13f91b27e66e10ef5592ae/library/std/src/backtrace.rs:312\n   4: context_trace::logging::tracing_utils::panic::install_panic_hook::closure$0::closure$0\n             at C:/Users/linus_behrbohm/git/SECOND_CHECKOUT/graph_app/context-engine/crates/context-stack/context-trace/src/logging/tracing_utils/panic.rs:17\n   5: std::panicking::panic_with_hook\n             at /rustc/9725c4baacef19345e13f91b27e66e10ef5592ae/library/std/src/panicking.rs:842\n   6: std::panicking::panic_handler::closure$0\n             at /rustc/9725c4baacef19345e13f91b27e66e10ef5592ae/library/std/src/panicking.rs:707\n   7: std::sys::backtrace::__rust_end_short_backtrace<std::panicking::panic_handler::closure_env$0,never$>\n             at /rustc/9725c4baacef19345e13f91b27e66e10ef5592ae/library/std/src/sys/backtrace.rs:174\n   8: std::panicking::panic_handler\n             at /rustc/9725c4baacef19345e13f91b27e66e10ef5592ae/library/std/src/panicking.rs:698\n   9: core::panicking::panic_fmt\n             at /rustc/9725c4baacef19345e13f91b27e66e10ef5592ae/library/core/src/panicking.rs:80\n  10: context_read::tests::read::read_repeating_known1\n             at ./src/tests/read/mod.rs:289\n  11: context_read::tests::read::read_repeating_known1::closure$0\n             at ./src/tests/read/mod.rs:284\n  12: core::ops::function::FnOnce::call_once<context_read::tests::read::read_repeating_known1::closure_env$0,tuple$<> >\n             at C:/Users/linus_behrbohm/.rustup/toolchains/nightly-x86_64-pc-windows-msvc/lib/rustlib/src/rust/library/core/src/ops/function.rs:250\n  13: core::ops::function::FnOnce::call_once\n             at /rustc/9725c4baacef19345e13f91b27e66e10ef5592ae/library/core/src/ops/function.rs:250\n  14: test::__rust_begin_short_backtrace<enum2$<core::result::Result<tuple$<>,alloc::string::String> >,enum2$<core::result::Result<tuple$<>,alloc::string::String> > (*)()>\n             at /rustc/9725c4baacef19345e13f91b27e66e10ef5592ae/library/test/src/lib.rs:663\n  15: test::run_test_in_process\n             at /rustc/9725c4baacef19345e13f91b27e66e10ef5592ae/library/test/src/lib.rs:686\n  16: test::run_test::closure$0\n             at /rustc/9725c4baacef19345e13f91b27e66e10ef5592ae/library/test/src/lib.rs:607\n  17: test::run_test::closure$1\n             at /rustc/9725c4baacef19345e13f91b27e66e10ef5592ae/library/test/src/lib.rs:637\n  18: std::sys::backtrace::__rust_begin_short_backtrace<test::run_test::closure_env$1,tuple$<> >\n             at /rustc/9725c4baacef19345e13f91b27e66e10ef5592ae/library/std/src/sys/backtrace.rs:158\n  19: core::ops::function::FnOnce::call_once<std::thread::impl$0::spawn_unchecked_::closure_env$1<test::run_test::closure_env$1,tuple$<> >,tuple$<> >\n             at /rustc/9725c4baacef19345e13f91b27e66e10ef5592ae/library/core/src/ops/function.rs:250\n  20: alloc::boxed::impl$29::call_once\n             at /rustc/9725c4baacef19345e13f91b27e66e10ef5592ae/library/alloc/src/boxed.rs:2004\n  21: alloc::boxed::impl$29::call_once\n             at /rustc/9725c4baacef19345e13f91b27e66e10ef5592ae/library/alloc/src/boxed.rs:2004\n  22: std::sys::thread::windows::impl$0::new::thread_start\n             at /rustc/9725c4baacef19345e13f91b27e66e10ef5592ae/library/std/src/sys/thread/windows.rs:60\n  23: BaseThreadInitThunk\n  24: RtlUserThreadStart\n",
+    "message": "PANIC: assertion failed: `(left == right)`\n\n\u001b[1mDiff\u001b[0m \u001b[31m< left\u001b[0m / \u001b[32mright >\u001b[0m :\n\u001b[31m<TokenWidth(\u001b[0m\n\u001b[31m<    2,\u001b[0m\n\u001b[31m<)\u001b[0m\n\u001b[32m>5\u001b[0m\n\n",
+    "panic_column": 5,
+    "panic_file": "crates/context-stack/context-read/src/tests/read/mod.rs",
+    "panic_line": 289
+  },
+  "filename": "crates/context-stack/context-trace/src/logging/tracing_utils/panic.rs",
+  "level": "ERROR",
+  "line_number": 39,
+  "target": "context_trace::logging::tracing_utils::panic",
+  "timestamp": "2026-03-03T02:42:40.772922Z"
+}
+

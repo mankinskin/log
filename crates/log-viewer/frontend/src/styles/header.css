@@ -1,0 +1,166 @@
+/* Header Bar and Search */
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 8px;
+  height: var(--header-height);
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  flex-shrink: 0;
+  overflow: hidden;
+  width: 100%;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.header-title {
+  font-size: 13px;
+  font-weight: 600;
+  font-family: var(--font-sans);
+  color: var(--accent-blue);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.search-form {
+  display: flex;
+  flex: 1;
+  min-width: 100px;
+  gap: 4px;
+}
+
+.jq-form {
+  display: flex;
+  flex: 1;
+  min-width: 100px;
+  gap: 4px;
+}
+
+.jq-input {
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+
+.jq-input::placeholder {
+  font-size: 11px;
+}
+
+.search-input {
+  flex: 1;
+  padding: 2px 6px;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  border-radius: 3px;
+  color: var(--text-primary);
+  font-size: 12px;
+  font-family: var(--font-mono);
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--accent-blue);
+  background: var(--bg-primary);
+}
+
+.header-filters {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.filter-select {
+  padding: 2px 6px;
+  font-size: 11px;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  font-family: var(--font-sans);
+  color: var(--text-secondary);
+  cursor: pointer;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+/* ── Mobile responsive header ── */
+
+@media (max-width: 768px) {
+  .header {
+    flex-wrap: wrap;
+    height: auto;
+    min-height: var(--header-height);
+    padding: 4px 8px;
+    gap: 4px;
+  }
+
+  .header-left {
+    order: 1;
+  }
+
+  .header-right {
+    order: 2;
+    gap: 4px;
+  }
+
+  .search-form {
+    order: 3;
+    flex-basis: 100%;
+    min-width: 0;
+  }
+
+  /* Hide status text on tablet */
+  .status-text {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 3px 6px;
+    gap: 3px;
+  }
+
+  .header-title {
+    font-size: 12px;
+  }
+
+  /* Hide filter/clear buttons inline — use the panel toggle */
+  .header-filters {
+    display: none;
+  }
+
+  .header-right .btn-gpu {
+    display: none;
+  }
+
+  .search-form .btn {
+    padding: 2px 6px;
+    font-size: 10px;
+  }
+
+  .search-input {
+    font-size: 11px;
+  }
+}
+
+.status-text {
+  color: var(--text-muted);
+  font-size: 10px;
+  font-family: var(--font-mono);
+}

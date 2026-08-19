@@ -1,0 +1,191 @@
+/* Rust-Style Value Renderer */
+
+.entry-fields-rust {
+  margin-top: 0;
+}
+
+.entry-fields-rust summary {
+  font-size: 11px;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 0;
+  user-select: none;
+}
+
+.entry-fields-rust summary:hover {
+  color: var(--text-secondary);
+}
+
+.fields-rust-container {
+  margin: 0;
+  padding: 2px 4px;
+  background: var(--bg-tertiary);
+  border-radius: 2px;
+  border: 1px solid var(--border-color);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 1.2;
+  overflow-x: auto;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.rust-fields-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.rust-field-row {
+  display: block;
+  padding: 0;
+  padding-left: 12px;
+  line-height: 1.2;
+}
+
+/* Collapsible header */
+.rust-collapsible-header {
+  cursor: pointer;
+  display: inline;
+}
+
+.rust-collapsible-header:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 2px;
+}
+
+.rust-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 10px;
+  height: 10px;
+  color: var(--text-muted);
+  margin-right: 2px;
+  margin-left: -12px;
+  user-select: none;
+}
+
+/* Type names */
+.rust-type {
+  display: inline;
+}
+
+.rust-module {
+  color: var(--text-muted);
+  font-size: 0.9em;
+}
+
+.rust-type-name {
+  color: var(--accent-green);
+  font-weight: 500;
+}
+
+/* Field names */
+.rust-field-name {
+  color: var(--accent-purple);
+}
+
+/* Syntax */
+.rust-colon {
+  color: var(--text-secondary);
+}
+
+.rust-comma {
+  color: var(--text-secondary);
+}
+
+.rust-brace {
+  color: var(--accent-yellow);
+}
+
+.rust-bracket {
+  color: var(--accent-yellow);
+}
+
+.rust-paren {
+  color: var(--text-secondary);
+}
+
+/* Values */
+.rust-string {
+  color: var(--accent-orange);
+}
+
+.rust-number {
+  color: #b5cea8;
+}
+
+.rust-keyword {
+  color: var(--accent-purple);
+  font-style: italic;
+}
+
+.rust-unknown {
+  color: var(--text-secondary);
+}
+
+/* Token display */
+.rust-token {
+  display: inline;
+}
+
+/* Preview text for collapsed */
+.rust-preview {
+  color: var(--text-muted);
+  font-style: italic;
+  margin: 0 4px;
+}
+
+/* Nested structures */
+.rust-array-items,
+.rust-typed-values,
+.rust-struct-fields,
+.rust-object-fields {
+  display: flex;
+  flex-direction: column;
+  border-left: 1px dashed var(--border-color);
+  padding-left: 8px;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* Closing brackets should align with opening */
+.rust-array-items > .rust-bracket,
+.rust-typed-values > .rust-paren,
+.rust-struct-fields > .rust-brace,
+.rust-object-fields > .rust-brace {
+  margin-left: -8px;
+  padding-left: 0;
+}
+
+.rust-array-item,
+.rust-typed-value,
+.rust-struct-field,
+.rust-object-field {
+  line-height: 1.6;
+}
+
+/* Inline variants */
+.rust-value {
+  display: inline;
+}
+
+.rust-array,
+.rust-typed,
+.rust-struct,
+.rust-object {
+  display: block;
+}
+
+.rust-array-inline,
+.rust-typed-inline,
+.rust-struct-inline {
+  display: inline;
+}
+
+/* Depth-based styling */
+.rust-array-items .rust-array-items,
+.rust-struct-fields .rust-struct-fields {
+  margin-left: 0;
+}

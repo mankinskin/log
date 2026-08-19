@@ -1,0 +1,14 @@
+name: query
+description: JQ query engine for log filtering
+
+files:
+  - name: query.rs
+    description: JQ-style query language implementation using jaq
+
+key_types:
+  - JqFilter: Compiled JQ filter for log querying
+
+submodules: []
+source_files:
+  - src/query.rs
+last_synced: null

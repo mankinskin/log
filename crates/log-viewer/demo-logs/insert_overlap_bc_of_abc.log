@@ -1,0 +1,4709 @@
+{
+  "fields": {
+    "log_file": {
+      "_type": "Option",
+      "_values": [
+        "C:/Users/linus_behrbohm/git/SECOND_CHECKOUT/graph_app/context-engine/target/test-logs/insert_postfix_bc_of_abc.log"
+      ],
+      "_variant": "Some"
+    },
+    "message": "Test tracing initialized",
+    "test_name": "insert_postfix_bc_of_abc"
+  },
+  "filename": "crates/context-stack/context-trace/src/logging/tracing_utils/test_tracing.rs",
+  "level": "INFO",
+  "line_number": 299,
+  "target": "context_trace::logging::tracing_utils::test_tracing",
+  "timestamp": "2026-03-03T02:42:35.609521Z"
+}
+
+{
+  "fields": {
+    "edge_count": 4,
+    "graph_data": {
+      "edges": [
+        {
+          "from": 5,
+          "pattern_idx": 0,
+          "sub_index": 0,
+          "to": 0
+        },
+        {
+          "from": 5,
+          "pattern_idx": 0,
+          "sub_index": 1,
+          "to": 1
+        },
+        {
+          "from": 6,
+          "pattern_idx": 0,
+          "sub_index": 0,
+          "to": 5
+        },
+        {
+          "from": 6,
+          "pattern_idx": 0,
+          "sub_index": 1,
+          "to": 2
+        }
+      ],
+      "nodes": [
+        {
+          "index": 0,
+          "label": "a",
+          "width": 1
+        },
+        {
+          "index": 1,
+          "label": "b",
+          "width": 1
+        },
+        {
+          "index": 2,
+          "label": "c",
+          "width": 1
+        },
+        {
+          "index": 3,
+          "label": "d",
+          "width": 1
+        },
+        {
+          "index": 4,
+          "label": "e",
+          "width": 1
+        },
+        {
+          "index": 5,
+          "label": "ab",
+          "width": 2
+        },
+        {
+          "index": 6,
+          "label": "abc",
+          "width": 3
+        }
+      ]
+    },
+    "message": "graph_snapshot",
+    "node_count": 7
+  },
+  "filename": "crates/context-stack/context-trace/src/graph/snapshot.rs",
+  "level": "INFO",
+  "line_number": 112,
+  "target": "context_trace::graph::snapshot",
+  "timestamp": "2026-03-03T02:42:35.609914Z"
+}
+
+{
+  "fields": {
+    "message": "enter"
+  },
+  "filename": "crates/context-stack/context-insert/src/insert/context.rs",
+  "level": "INFO",
+  "line_number": 61,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_insert::insert::context",
+  "timestamp": "2026-03-03T02:42:35.610157Z"
+}
+
+{
+  "fields": {
+    "message": "enter"
+  },
+  "filename": "crates/context-stack/context-search/src/search/searchable.rs",
+  "level": "TRACE",
+  "line_number": 59,
+  "span": "search",
+  "spans": [
+    "insert_or_get_complete",
+    "search"
+  ],
+  "target": "context_search::search::searchable",
+  "timestamp": "2026-03-03T02:42:35.610345Z"
+}
+
+{
+  "fields": {
+    "cursor": {
+      "_type": "PathCursor",
+      "path": {
+        "_type": "PatternRangePath",
+        "end": "entry=0",
+        "path=[]": "",
+        "pattern": [
+          {
+            "index": 1,
+            "text": "b"
+          },
+          {
+            "index": 2,
+            "text": "c"
+          }
+        ],
+        "start": "entry=0"
+      },
+      "position": 1
+    },
+    "message": "creating search state",
+    "start_token": {
+      "index": 1,
+      "text": "b"
+    }
+  },
+  "filename": "crates/context-stack/context-search/src/state/start/core.rs",
+  "level": "TRACE",
+  "line_number": 93,
+  "span": "search",
+  "spans": [
+    "insert_or_get_complete",
+    "search"
+  ],
+  "target": "context_search::state::start::core",
+  "timestamp": "2026-03-03T02:42:35.610498Z"
+}
+
+{
+  "fields": {
+    "message": "PatternRangePath::move_root_index - advancing from 0 to 1, old end.root_entry=0"
+  },
+  "filename": "crates/context-stack/context-trace/src/path/structs/rooted/pattern_range.rs",
+  "level": "TRACE",
+  "line_number": 102,
+  "span": "search",
+  "spans": [
+    "insert_or_get_complete",
+    "search"
+  ],
+  "target": "context_trace::path::structs::rooted::pattern_range",
+  "timestamp": "2026-03-03T02:42:35.610709Z"
+}
+
+{
+  "fields": {
+    "batch_len": 1,
+    "message": "first parent batch obtained"
+  },
+  "filename": "crates/context-stack/context-search/src/state/start/core.rs",
+  "level": "TRACE",
+  "line_number": 96,
+  "span": "search",
+  "spans": [
+    "insert_or_get_complete",
+    "search"
+  ],
+  "target": "context_search::state::start::core",
+  "timestamp": "2026-03-03T02:42:35.610998Z"
+}
+
+{
+  "fields": {
+    "message": "start search successful, beginning fold"
+  },
+  "filename": "crates/context-stack/context-search/src/search/searchable.rs",
+  "level": "TRACE",
+  "line_number": 69,
+  "span": "search",
+  "spans": [
+    "insert_or_get_complete",
+    "search"
+  ],
+  "target": "context_search::search::searchable",
+  "timestamp": "2026-03-03T02:42:35.611207Z"
+}
+
+{
+  "fields": {
+    "message": "initial state",
+    "queue": {
+      "_type": "SearchQueue",
+      "count": 1,
+      "nodes": [
+        "[0] ParentCandidate(vertex:\"ab\"(5), pos:2)"
+      ]
+    }
+  },
+  "filename": "crates/context-stack/context-search/src/search/mod.rs",
+  "level": "TRACE",
+  "line_number": 397,
+  "span": "search",
+  "spans": [
+    "insert_or_get_complete",
+    "search"
+  ],
+  "target": "context_search::search",
+  "timestamp": "2026-03-03T02:42:35.611330Z"
+}
+
+{
+  "fields": {
+    "graph_op": {
+      "description": "Search started — initial queue populated",
+      "location": {
+        "completed_nodes": [],
+        "pending_children": [],
+        "pending_parents": [
+          5
+        ],
+        "root_node": null,
+        "selected_node": null,
+        "trace_path": []
+      },
+      "op_type": "search",
+      "path_graph": {
+        "cursor_pos": 0,
+        "done": false,
+        "end_edges": [],
+        "end_path": [],
+        "root": null,
+        "root_entry_edge": null,
+        "root_exit_edge": null,
+        "start_edges": [],
+        "start_node": {
+          "index": 1,
+          "width": 1
+        },
+        "start_path": [],
+        "success": false
+      },
+      "path_id": "search/context-search/token-1-1772505755611197900",
+      "query": {
+        "cursor_position": 0,
+        "query_tokens": [
+          1,
+          2
+        ],
+        "query_width": 2
+      },
+      "step": 0,
+      "transition": {
+        "kind": "start_node",
+        "node": 1,
+        "width": 1
+      }
+    },
+    "message": "Search started — initial queue populated",
+    "op_type": "Search",
+    "step": 0
+  },
+  "filename": "crates/context-stack/context-trace/src/graph/visualization.rs",
+  "level": "INFO",
+  "line_number": 561,
+  "span": "search",
+  "spans": [
+    "insert_or_get_complete",
+    "search"
+  ],
+  "target": "context_trace::graph::visualization",
+  "timestamp": "2026-03-03T02:42:35.611531Z"
+}
+
+{
+  "fields": {
+    "graph_op": {
+      "description": "Start node 1 exploring parent candidates",
+      "location": {
+        "completed_nodes": [
+          1
+        ],
+        "pending_children": [],
+        "pending_parents": [
+          5
+        ],
+        "root_node": 1,
+        "selected_node": 1,
+        "trace_path": []
+      },
+      "op_type": "search",
+      "path_graph": {
+        "cursor_pos": 0,
+        "done": false,
+        "end_edges": [],
+        "end_path": [],
+        "root": null,
+        "root_entry_edge": null,
+        "root_exit_edge": null,
+        "start_edges": [],
+        "start_node": {
+          "index": 1,
+          "width": 1
+        },
+        "start_path": [],
+        "success": false
+      },
+      "path_id": "search/context-search/token-1-1772505755611197900",
+      "query": {
+        "cursor_position": 0,
+        "query_tokens": [
+          1,
+          2
+        ],
+        "query_width": 2
+      },
+      "step": 1,
+      "transition": {
+        "current_root": 1,
+        "kind": "parent_explore",
+        "parent_candidates": [
+          5
+        ]
+      }
+    },
+    "message": "Start node 1 exploring parent candidates",
+    "op_type": "Search",
+    "step": 1
+  },
+  "filename": "crates/context-stack/context-trace/src/graph/visualization.rs",
+  "level": "INFO",
+  "line_number": 561,
+  "span": "search",
+  "spans": [
+    "insert_or_get_complete",
+    "search"
+  ],
+  "target": "context_trace::graph::visualization",
+  "timestamp": "2026-03-03T02:42:35.611745Z"
+}
+
+{
+  "fields": {
+    "message": "searching for next match"
+  },
+  "filename": "crates/context-stack/context-search/src/search/mod.rs",
+  "level": "TRACE",
+  "line_number": 753,
+  "span": "search",
+  "spans": [
+    "insert_or_get_complete",
+    "search"
+  ],
+  "target": "context_search::search",
+  "timestamp": "2026-03-03T02:42:35.611924Z"
+}
+
+{
+  "fields": {
+    "is_parent": true,
+    "message": "popped search node",
+    "node_index": 5,
+    "queue_remaining": 0
+  },
+  "filename": "crates/context-stack/context-search/src/match/iterator.rs",
+  "level": "DEBUG",
+  "line_number": 104,
+  "span": "search",
+  "spans": [
+    "insert_or_get_complete",
+    "search"
+  ],
+  "target": "context_search::r#match::iterator",
+  "timestamp": "2026-03-03T02:42:35.612034Z"
+}
+
+{
+  "fields": {
+    "graph_op": {
+      "description": "Visiting candidate parent 5 from 1",
+      "location": {
+        "completed_nodes": [
+          1
+        ],
+        "pending_children": [],
+        "pending_parents": [],
+        "root_node": 1,
+        "selected_node": 1,
+        "trace_path": []
+      },
+      "op_type": "search",
+      "path_graph": {
+        "cursor_pos": 0,
+        "done": false,
+        "end_edges": [],
+        "end_path": [],
+        "root": {
+          "index": 5,
+          "width": 1
+        },
+        "root_entry_edge": {
+          "from": 1,
+          "pattern_idx": 0,
+          "sub_index": 0,
+          "to": 5
+        },
+        "root_exit_edge": null,
+        "start_edges": [],
+        "start_node": {
+          "index": 1,
+          "width": 1
+        },
+        "start_path": [],
+        "success": false
+      },
+      "path_id": "search/context-search/token-1-1772505755611197900",
+      "query": {
+        "cursor_position": 0,
+        "query_tokens": [
+          1,
+          2
+        ],
+        "query_width": 2
+      },
+      "step": 2,
+      "transition": {
+        "edge": {
+          "from": 1,
+          "pattern_idx": 0,
+          "sub_index": 0,
+          "to": 5
+        },
+        "entry_pos": 0,
+        "from": 1,
+        "kind": "visit_parent",
+        "to": 5,
+        "width": 1
+      }
+    },
+    "message": "Visiting candidate parent 5 from 1",
+    "op_type": "Search",
+    "step": 2
+  },
+  "filename": "crates/context-stack/context-trace/src/graph/visualization.rs",
+  "level": "INFO",
+  "line_number": 561,
+  "span": "search",
+  "spans": [
+    "insert_or_get_complete",
+    "search"
+  ],
+  "target": "context_trace::graph::visualization",
+  "timestamp": "2026-03-03T02:42:35.612165Z"
+}
+
+{
+  "fields": {
+    "message": "enter"
+  },
+  "filename": "crates/context-stack/context-search/src/compare/parent.rs",
+  "level": "DEBUG",
+  "line_number": 47,
+  "span": "advance_state",
+  "spans": [
+    "insert_or_get_complete",
+    "search",
+    "advance_state"
+  ],
+  "target": "context_search::compare::parent",
+  "timestamp": "2026-03-03T02:42:35.612481Z"
+}
+
+{
+  "fields": {
+    "entry_sub_index": 1,
+    "message": "No next child in pattern - at end of pattern",
+    "pattern_len": 2
+  },
+  "filename": "crates/context-stack/context-trace/src/trace/state/parent.rs",
+  "level": "DEBUG",
+  "line_number": 60,
+  "span": "advance_state",
+  "spans": [
+    "insert_or_get_complete",
+    "search",
+    "advance_state"
+  ],
+  "target": "context_trace::trace::state::parent",
+  "timestamp": "2026-03-03T02:42:35.613011Z"
+}
+
+{
+  "fields": {
+    "message": "close",
+    "time.busy": "1.04ms",
+    "time.idle": "4.60µs"
+  },
+  "filename": "crates/context-stack/context-search/src/compare/parent.rs",
+  "level": "DEBUG",
+  "line_number": 47,
+  "span": "advance_state",
+  "spans": [
+    "insert_or_get_complete",
+    "search"
+  ],
+  "target": "context_search::compare::parent",
+  "timestamp": "2026-03-03T02:42:35.613520Z"
+}
+
+{
+  "fields": {
+    "is_parent": true,
+    "message": "node expanded — queuing new candidates",
+    "node_index": 5,
+    "num_added": 1
+  },
+  "filename": "crates/context-stack/context-search/src/match/iterator.rs",
+  "level": "DEBUG",
+  "line_number": 122,
+  "span": "search",
+  "spans": [
+    "insert_or_get_complete",
+    "search"
+  ],
+  "target": "context_search::r#match::iterator",
+  "timestamp": "2026-03-03T02:42:35.613831Z"
+}
+
+{
+  "fields": {
+    "graph_op": {
+      "description": "Node 5 boundary reached — exploring parents",
+      "location": {
+        "completed_nodes": [
+          5
+        ],
+        "pending_children": [],
+        "pending_parents": [
+          6
+        ],
+        "root_node": 5,
+        "selected_node": 5,
+        "trace_path": []
+      },
+      "op_type": "search",
+      "path_graph": {
+        "cursor_pos": 0,
+        "done": false,
+        "end_edges": [],
+        "end_path": [],
+        "root": {
+          "index": 5,
+          "width": 1
+        },
+        "root_entry_edge": {
+          "from": 1,
+          "pattern_idx": 0,
+          "sub_index": 0,
+          "to": 5
+        },
+        "root_exit_edge": null,
+        "start_edges": [],
+        "start_node": {
+          "index": 1,
+          "width": 1
+        },
+        "start_path": [],
+        "success": false
+      },
+      "path_id": "search/context-search/token-1-1772505755611197900",
+      "query": {
+        "cursor_position": 0,
+        "query_tokens": [
+          1,
+          2
+        ],
+        "query_width": 2
+      },
+      "step": 3,
+      "transition": {
+        "current_root": 5,
+        "kind": "parent_explore",
+        "parent_candidates": [
+          6
+        ]
+      }
+    },
+    "message": "Node 5 boundary reached — exploring parents",
+    "op_type": "Search",
+    "step": 3
+  },
+  "filename": "crates/context-stack/context-trace/src/graph/visualization.rs",
+  "level": "INFO",
+  "line_number": 561,
+  "span": "search",
+  "spans": [
+    "insert_or_get_complete",
+    "search"
+  ],
+  "target": "context_trace::graph::visualization",
+  "timestamp": "2026-03-03T02:42:35.614003Z"
+}
+
+{
+  "fields": {
+    "is_parent": true,
+    "message": "popped search node",
+    "node_index": 6,
+    "queue_remaining": 0
+  },
+  "filename": "crates/context-stack/context-search/src/match/iterator.rs",
+  "level": "DEBUG",
+  "line_number": 104,
+  "span": "search",
+  "spans": [
+    "insert_or_get_complete",
+    "search"
+  ],
+  "target": "context_search::r#match::iterator",
+  "timestamp": "2026-03-03T02:42:35.614210Z"
+}
+
+{
+  "fields": {
+    "graph_op": {
+      "description": "Visiting candidate parent 6 from 1",
+      "location": {
+        "completed_nodes": [
+          1
+        ],
+        "pending_children": [],
+        "pending_parents": [],
+        "root_node": 1,
+        "selected_node": 1,
+        "trace_path": []
+      },
+      "op_type": "search",
+      "path_graph": {
+        "cursor_pos": 0,
+        "done": false,
+        "end_edges": [],
+        "end_path": [],
+        "root": {
+          "index": 6,
+          "width": 1
+        },
+        "root_entry_edge": {
+          "from": 1,
+          "pattern_idx": 0,
+          "sub_index": 0,
+          "to": 6
+        },
+        "root_exit_edge": null,
+        "start_edges": [
+          {
+            "from": 1,
+            "pattern_idx": 0,
+            "sub_index": 0,
+            "to": 5
+          }
+        ],
+        "start_node": {
+          "index": 1,
+          "width": 1
+        },
+        "start_path": [
+          {
+            "index": 5,
+            "width": 1
+          }
+        ],
+        "success": false
+      },
+      "path_id": "search/context-search/token-1-1772505755611197900",
+      "query": {
+        "cursor_position": 0,
+        "query_tokens": [
+          1,
+          2
+        ],
+        "query_width": 2
+      },
+      "step": 4,
+      "transition": {
+        "edge": {
+          "from": 1,
+          "pattern_idx": 0,
+          "sub_index": 0,
+          "to": 6
+        },
+        "entry_pos": 0,
+        "from": 1,
+        "kind": "visit_parent",
+        "to": 6,
+        "width": 1
+      }
+    },
+    "message": "Visiting candidate parent 6 from 1",
+    "op_type": "Search",
+    "step": 4
+  },
+  "filename": "crates/context-stack/context-trace/src/graph/visualization.rs",
+  "level": "INFO",
+  "line_number": 561,
+  "span": "search",
+  "spans": [
+    "insert_or_get_complete",
+    "search"
+  ],
+  "target": "context_trace::graph::visualization",
+  "timestamp": "2026-03-03T02:42:35.614345Z"
+}
+
+{
+  "fields": {
+    "message": "enter"
+  },
+  "filename": "crates/context-stack/context-search/src/compare/parent.rs",
+  "level": "DEBUG",
+  "line_number": 47,
+  "span": "advance_state",
+  "spans": [
+    "insert_or_get_complete",
+    "search",
+    "advance_state"
+  ],
+  "target": "context_search::compare::parent",
+  "timestamp": "2026-03-03T02:42:35.614676Z"
+}
+
+{
+  "fields": {
+    "message": "Found next child in pattern",
+    "next_i": 1
+  },
+  "filename": "crates/context-stack/context-trace/src/trace/state/parent.rs",
+  "level": "DEBUG",
+  "line_number": 43,
+  "span": "advance_state",
+  "spans": [
+    "insert_or_get_complete",
+    "search",
+    "advance_state"
+  ],
+  "target": "context_trace::trace::state::parent",
+  "timestamp": "2026-03-03T02:42:35.615080Z"
+}
+
+{
+  "fields": {
+    "child_cursor": {
+      "_type": "ChildState",
+      "entry_pos": 1,
+      "exit_pos": 1,
+      "path": {
+        "_type": "IndexRangePath",
+        "end": {
+          "_ty": {
+            "_type": "PhantomData",
+            "type_param": "context_trace::path::accessors::role::End"
+          },
+          "_type": "RolePath",
+          "sub_path": {
+            "_type": "SubPath",
+            "path": [],
+            "root_entry": 1
+          }
+        },
+        "path=[ChildLocation(\"ab\"(5), 9dbf13e0, 1)]": "",
+        "root": {
+          "_type": "Root",
+          "_values": [
+            {
+              "_type": "PatternLocation",
+              "_values": [
+                {
+                  "index": 6,
+                  "text": "abc"
+                },
+                "1f82d6b0"
+              ]
+            }
+          ]
+        },
+        "start": "entry=0"
+      }
+    },
+    "message": "Created child_cursor from parent_state"
+  },
+  "filename": "crates/context-stack/context-search/src/compare/parent.rs",
+  "level": "TRACE",
+  "line_number": 55,
+  "span": "advance_state",
+  "spans": [
+    "insert_or_get_complete",
+    "search",
+    "advance_state"
+  ],
+  "target": "context_search::compare::parent",
+  "timestamp": "2026-03-03T02:42:35.615422Z"
+}
+
+{
+  "fields": {
+    "message": "close",
+    "time.busy": "1.20ms",
+    "time.idle": "4.20µs"
+  },
+  "filename": "crates/context-stack/context-search/src/compare/parent.rs",
+  "level": "DEBUG",
+  "line_number": 47,
+  "span": "advance_state",
+  "spans": [
+    "insert_or_get_complete",
+    "search"
+  ],
+  "target": "context_search::compare::parent",
+  "timestamp": "2026-03-03T02:42:35.615880Z"
+}
+
+{
+  "fields": {
+    "checkpoint_pos": "1",
+    "cursor_end_index": 1,
+    "cursor_pos": "2",
+    "message": "comparing candidate tokens (position-annotated)",
+    "mode": "GraphMajor",
+    "path_leaf": {
+      "index": 2,
+      "text": "c"
+    },
+    "path_width": 1,
+    "query_leaf": {
+      "index": 2,
+      "text": "c"
+    },
+    "query_width": 1
+  },
+  "filename": "crates/context-stack/context-search/src/compare/state/decomposition.rs",
+  "level": "TRACE",
+  "line_number": 195,
+  "span": "search",
+  "spans": [
+    "insert_or_get_complete",
+    "search"
+  ],
+  "target": "context_search::compare::state::decomposition",
+  "timestamp": "2026-03-03T02:42:35.616103Z"
+}
+
+{
+  "fields": {
+    "message": "tokens matched",
+    "token": 2,
+    "width": 1
+  },
+  "filename": "crates/context-stack/context-search/src/compare/state/decomposition.rs",
+  "level": "TRACE",
+  "line_number": 208,
+  "span": "search",
+  "spans": [
+    "insert_or_get_complete",
+    "search"
+  ],
+  "target": "context_search::compare::state::decomposition",
+  "timestamp": "2026-03-03T02:42:35.616251Z"
+}
+
+{
+  "fields": {
+    "cursor_end_index": 1,
+    "cursor_pos": "2",
+    "matched_end_index": 1,
+    "message": "mark_match: converting to Matched state and updating checkpoints",
+    "new_checkpoint_pos": "2",
+    "old_checkpoint_pos": "1"
+  },
+  "filename": "crates/context-stack/context-search/src/compare/state/transitions.rs",
+  "level": "TRACE",
+  "line_number": 57,
+  "span": "search",
+  "spans": [
+    "insert_or_get_complete",
+    "search"
+  ],
+  "target": "context_search::compare::state::transitions",
+  "timestamp": "2026-03-03T02:42:35.616362Z"
+}
+
+{
+  "fields": {
+    "message": "found root match",
+    "node_index": 6,
+    "root": {
+      "index": 6,
+      "text": "abc"
+    }
+  },
+  "filename": "crates/context-stack/context-search/src/match/iterator.rs",
+  "level": "DEBUG",
+  "line_number": 133,
+  "span": "search",
+  "spans": [
+    "insert_or_get_complete",
+    "search"
+  ],
+  "target": "context_search::r#match::iterator",
+  "timestamp": "2026-03-03T02:42:35.616485Z"
+}
+
+{
+  "fields": {
+    "graph_op": {
+      "description": "Comparing child node 2",
+      "location": {
+        "completed_nodes": [
+          6
+        ],
+        "pending_children": [],
+        "pending_parents": [],
+        "root_node": 6,
+        "selected_node": 6,
+        "trace_path": []
+      },
+      "op_type": "search",
+      "path_graph": {
+        "cursor_pos": 0,
+        "done": false,
+        "end_edges": [
+          {
+            "from": 6,
+            "pattern_idx": 0,
+            "sub_index": 0,
+            "to": 2
+          }
+        ],
+        "end_path": [
+          {
+            "index": 2,
+            "width": 1
+          }
+        ],
+        "root": {
+          "index": 6,
+          "width": 1
+        },
+        "root_entry_edge": {
+          "from": 1,
+          "pattern_idx": 0,
+          "sub_index": 0,
+          "to": 6
+        },
+        "root_exit_edge": {
+          "from": 6,
+          "pattern_idx": 0,
+          "sub_index": 0,
+          "to": 2
+        },
+        "start_edges": [
+          {
+            "from": 1,
+            "pattern_idx": 0,
+            "sub_index": 0,
+            "to": 5
+          }
+        ],
+        "start_node": {
+          "index": 1,
+          "width": 1
+        },
+        "start_path": [
+          {
+            "index": 5,
+            "width": 1
+          }
+        ],
+        "success": false
+      },
+      "path_id": "search/context-search/token-1-1772505755611197900",
+      "query": {
+        "cursor_position": 0,
+        "query_tokens": [
+          1,
+          2
+        ],
+        "query_width": 2
+      },
+      "step": 5,
+      "transition": {
+        "child_index": 0,
+        "edge": {
+          "from": 6,
+          "pattern_idx": 0,
+          "sub_index": 0,
+          "to": 2
+        },
+        "from": 6,
+        "kind": "visit_child",
+        "replace": false,
+        "to": 2,
+        "width": 1
+      }
+    },
+    "message": "Comparing child node 2",
+    "op_type": "Search",
+    "step": 5
+  },
+  "filename": "crates/context-stack/context-trace/src/graph/visualization.rs",
+  "level": "INFO",
+  "line_number": 561,
+  "span": "search",
+  "spans": [
+    "insert_or_get_complete",
+    "search"
+  ],
+  "target": "context_trace::graph::visualization",
+  "timestamp": "2026-03-03T02:42:35.616653Z"
+}
+
+{
+  "fields": {
+    "graph_op": {
+      "description": "Child match at node 2 (query pos 2)",
+      "location": {
+        "completed_nodes": [
+          2
+        ],
+        "pending_children": [],
+        "pending_parents": [],
+        "root_node": 2,
+        "selected_node": 2,
+        "trace_path": []
+      },
+      "op_type": "search",
+      "path_graph": {
+        "cursor_pos": 2,
+        "done": false,
+        "end_edges": [
+          {
+            "from": 6,
+            "pattern_idx": 0,
+            "sub_index": 0,
+            "to": 2
+          }
+        ],
+        "end_path": [
+          {
+            "index": 2,
+            "width": 1
+          }
+        ],
+        "root": {
+          "index": 6,
+          "width": 1
+        },
+        "root_entry_edge": {
+          "from": 1,
+          "pattern_idx": 0,
+          "sub_index": 0,
+          "to": 6
+        },
+        "root_exit_edge": {
+          "from": 6,
+          "pattern_idx": 0,
+          "sub_index": 0,
+          "to": 2
+        },
+        "start_edges": [
+          {
+            "from": 1,
+            "pattern_idx": 0,
+            "sub_index": 0,
+            "to": 5
+          }
+        ],
+        "start_node": {
+          "index": 1,
+          "width": 1
+        },
+        "start_path": [
+          {
+            "index": 5,
+            "width": 1
+          }
+        ],
+        "success": false
+      },
+      "path_id": "search/context-search/token-1-1772505755611197900",
+      "query": {
+        "active_token": 2,
+        "cursor_position": 2,
+        "matched_positions": [
+          2
+        ],
+        "query_tokens": [
+          1,
+          2
+        ],
+        "query_width": 2
+      },
+      "step": 6,
+      "transition": {
+        "cursor_pos": 2,
+        "kind": "child_match",
+        "node": 2
+      }
+    },
+    "message": "Child match at node 2 (query pos 2)",
+    "op_type": "Search",
+    "step": 6
+  },
+  "filename": "crates/context-stack/context-trace/src/graph/visualization.rs",
+  "level": "INFO",
+  "line_number": 561,
+  "span": "search",
+  "spans": [
+    "insert_or_get_complete",
+    "search"
+  ],
+  "target": "context_trace::graph::visualization",
+  "timestamp": "2026-03-03T02:42:35.616930Z"
+}
+
+{
+  "fields": {
+    "graph_op": {
+      "description": "Setting candidate root at node 6",
+      "location": {
+        "completed_nodes": [
+          6
+        ],
+        "pending_children": [],
+        "pending_parents": [],
+        "root_node": 6,
+        "selected_node": 6,
+        "trace_path": []
+      },
+      "op_type": "search",
+      "path_graph": {
+        "cursor_pos": 2,
+        "done": false,
+        "end_edges": [
+          {
+            "from": 6,
+            "pattern_idx": 0,
+            "sub_index": 0,
+            "to": 2
+          }
+        ],
+        "end_path": [
+          {
+            "index": 2,
+            "width": 1
+          }
+        ],
+        "root": {
+          "index": 6,
+          "width": 1
+        },
+        "root_entry_edge": {
+          "from": 1,
+          "pattern_idx": 0,
+          "sub_index": 0,
+          "to": 6
+        },
+        "root_exit_edge": {
+          "from": 6,
+          "pattern_idx": 0,
+          "sub_index": 0,
+          "to": 2
+        },
+        "start_edges": [
+          {
+            "from": 1,
+            "pattern_idx": 0,
+            "sub_index": 0,
+            "to": 5
+          }
+        ],
+        "start_node": {
+          "index": 1,
+          "width": 1
+        },
+        "start_path": [
+          {
+            "index": 5,
+            "width": 1
+          }
+        ],
+        "success": false
+      },
+      "path_id": "search/context-search/token-1-1772505755611197900",
+      "query": {
+        "cursor_position": 2,
+        "matched_positions": [
+          2
+        ],
+        "query_tokens": [
+          1,
+          2
+        ],
+        "query_width": 2
+      },
+      "step": 7,
+      "transition": {
+        "edge": {
+          "from": 5,
+          "pattern_idx": 0,
+          "sub_index": 0,
+          "to": 6
+        },
+        "kind": "candidate_match",
+        "root": 6,
+        "width": 1
+      }
+    },
+    "message": "Setting candidate root at node 6",
+    "op_type": "Search",
+    "step": 7
+  },
+  "filename": "crates/context-stack/context-trace/src/graph/visualization.rs",
+  "level": "INFO",
+  "line_number": 561,
+  "span": "search",
+  "spans": [
+    "insert_or_get_complete",
+    "search"
+  ],
+  "target": "context_trace::graph::visualization",
+  "timestamp": "2026-03-03T02:42:35.617198Z"
+}
+
+{
+  "fields": {
+    "message": "Found matching root — clearing search queue (will explore via parents)"
+  },
+  "filename": "crates/context-stack/context-search/src/search/mod.rs",
+  "level": "DEBUG",
+  "line_number": 852,
+  "span": "search",
+  "spans": [
+    "insert_or_get_complete",
+    "search"
+  ],
+  "target": "context_search::search",
+  "timestamp": "2026-03-03T02:42:35.617448Z"
+}
+
+{
+  "fields": {
+    "message": "found matching root — creating RootCursor",
+    "root_parent": {
+      "index": 6,
+      "text": "abc"
+    },
+    "root_width": 3
+  },
+  "filename": "crates/context-stack/context-search/src/search/mod.rs",
+  "level": "DEBUG",
+  "line_number": 859,
+  "span": "search",
+  "spans": [
+    "insert_or_get_complete",
+    "search"
+  ],
+  "target": "context_search::search",
+  "timestamp": "2026-03-03T02:42:35.617560Z"
+}
+
+{
+  "fields": {
+    "checkpoint_pos": 2,
+    "message": "New root match - finishing root cursor",
+    "root": {
+      "index": 6,
+      "text": "abc"
+    }
+  },
+  "filename": "crates/context-stack/context-search/src/search/mod.rs",
+  "level": "TRACE",
+  "line_number": 492,
+  "span": "search",
+  "spans": [
+    "insert_or_get_complete",
+    "search"
+  ],
+  "target": "context_search::search",
+  "timestamp": "2026-03-03T02:42:35.617699Z"
+}
+
+{
+  "fields": {
+    "message": "Marking current positions as checkpoints",
+    "query.candidate": {
+      "_type": "PathCursor",
+      "path": {
+        "_type": "PatternRangePath",
+        "end": "entry=1",
+        "path=[]": "",
+        "pattern": [
+          {
+            "index": 1,
+            "text": "b"
+          },
+          {
+            "index": 2,
+            "text": "c"
+          }
+        ],
+        "start": "entry=0"
+      },
+      "position": 2
+    },
+    "query.checkpoint": {
+      "_type": "PathCursor",
+      "path": {
+        "_type": "PatternRangePath",
+        "end": "entry=1",
+        "path=[]": "",
+        "pattern": [
+          {
+            "index": 1,
+            "text": "b"
+          },
+          {
+            "index": 2,
+            "text": "c"
+          }
+        ],
+        "start": "entry=0"
+      },
+      "position": 2
+    }
+  },
+  "filename": "crates/context-stack/context-search/src/compare/state/core.rs",
+  "level": "DEBUG",
+  "line_number": 155,
+  "span": "search",
+  "spans": [
+    "insert_or_get_complete",
+    "search"
+  ],
+  "target": "context_search::compare::state::core",
+  "timestamp": "2026-03-03T02:42:35.617837Z"
+}
+
+{
+  "fields": {
+    "message": "enter"
+  },
+  "filename": "crates/context-stack/context-search/src/match/root_cursor/advance.rs",
+  "level": "DEBUG",
+  "line_number": 55,
+  "span": "advance_to_next_match",
+  "spans": [
+    "insert_or_get_complete",
+    "search",
+    "advance_to_next_match"
+  ],
+  "target": "context_search::r#match::root_cursor::advance",
+  "timestamp": "2026-03-03T02:42:35.618073Z"
+}
+
+{
+  "fields": {
+    "message": "→ advance_to_next_match: starting advancement"
+  },
+  "filename": "crates/context-stack/context-search/src/match/root_cursor/advance.rs",
+  "level": "INFO",
+  "line_number": 57,
+  "span": "advance_to_next_match",
+  "spans": [
+    "insert_or_get_complete",
+    "search",
+    "advance_to_next_match"
+  ],
+  "target": "context_search::r#match::root_cursor::advance",
+  "timestamp": "2026-03-03T02:42:35.618204Z"
+}
+
+{
+  "fields": {
+    "message": "  → advance_both_cursors_internal: Step 1 - calling advance_query"
+  },
+  "filename": "crates/context-stack/context-search/src/match/root_cursor/advance.rs",
+  "level": "TRACE",
+  "line_number": 145,
+  "span": "advance_to_next_match",
+  "spans": [
+    "insert_or_get_complete",
+    "search",
+    "advance_to_next_match"
+  ],
+  "target": "context_search::r#match::root_cursor::advance",
+  "timestamp": "2026-03-03T02:42:35.618339Z"
+}
+
+{
+  "fields": {
+    "message": "enter"
+  },
+  "filename": "crates/context-stack/context-search/src/match/root_cursor/advance.rs",
+  "level": "TRACE",
+  "line_number": 206,
+  "span": "advance_query",
+  "spans": [
+    "insert_or_get_complete",
+    "search",
+    "advance_to_next_match",
+    "advance_query"
+  ],
+  "target": "context_search::r#match::root_cursor::advance",
+  "timestamp": "2026-03-03T02:42:35.618493Z"
+}
+
+{
+  "fields": {
+    "message": "    → advance_query: attempting to advance query cursor",
+    "query_pos": 2,
+    "root": {
+      "index": 6,
+      "text": "abc"
+    }
+  },
+  "filename": "crates/context-stack/context-search/src/match/root_cursor/advance.rs",
+  "level": "TRACE",
+  "line_number": 214,
+  "span": "advance_query",
+  "spans": [
+    "insert_or_get_complete",
+    "search",
+    "advance_to_next_match",
+    "advance_query"
+  ],
+  "target": "context_search::r#match::root_cursor::advance",
+  "timestamp": "2026-03-03T02:42:35.618628Z"
+}
+
+{
+  "fields": {
+    "cursor": {
+      "_type": "PathCursor",
+      "path": {
+        "_type": "PatternRangePath",
+        "end": "entry=1",
+        "path=[]": "",
+        "pattern": [
+          {
+            "index": 1,
+            "text": "b"
+          },
+          {
+            "index": 2,
+            "text": "c"
+          }
+        ],
+        "start": "entry=0"
+      },
+      "position": 2
+    },
+    "message": "advancing query cursor only"
+  },
+  "filename": "crates/context-stack/context-search/src/compare/state/transitions.rs",
+  "level": "TRACE",
+  "line_number": 93,
+  "span": "advance_query",
+  "spans": [
+    "insert_or_get_complete",
+    "search",
+    "advance_to_next_match",
+    "advance_query"
+  ],
+  "target": "context_search::compare::state::transitions",
+  "timestamp": "2026-03-03T02:42:35.618800Z"
+}
+
+{
+  "fields": {
+    "message": "PatternRangePath::move_root_index - reached end of pattern, returning Break"
+  },
+  "filename": "crates/context-stack/context-trace/src/path/structs/rooted/pattern_range.rs",
+  "level": "TRACE",
+  "line_number": 111,
+  "span": "advance_query",
+  "spans": [
+    "insert_or_get_complete",
+    "search",
+    "advance_to_next_match",
+    "advance_query"
+  ],
+  "target": "context_trace::path::structs::rooted::pattern_range",
+  "timestamp": "2026-03-03T02:42:35.619114Z"
+}
+
+{
+  "fields": {
+    "message": "query cursor cannot advance - query pattern ended"
+  },
+  "filename": "crates/context-stack/context-search/src/compare/state/transitions.rs",
+  "level": "DEBUG",
+  "line_number": 117,
+  "span": "advance_query",
+  "spans": [
+    "insert_or_get_complete",
+    "search",
+    "advance_to_next_match",
+    "advance_query"
+  ],
+  "target": "context_search::compare::state::transitions",
+  "timestamp": "2026-03-03T02:42:35.619286Z"
+}
+
+{
+  "fields": {
+    "message": "    → advance_query: QUERY ENDED - creating QueryExhausted state",
+    "query_pos": 2,
+    "root": {
+      "index": 6,
+      "text": "abc"
+    }
+  },
+  "filename": "crates/context-stack/context-search/src/match/root_cursor/advance.rs",
+  "level": "DEBUG",
+  "line_number": 241,
+  "span": "advance_query",
+  "spans": [
+    "insert_or_get_complete",
+    "search",
+    "advance_to_next_match",
+    "advance_query"
+  ],
+  "target": "context_search::r#match::root_cursor::advance",
+  "timestamp": "2026-03-03T02:42:35.619432Z"
+}
+
+{
+  "fields": {
+    "message": "root_cursor advance_query: root_parent=\"abc\"(6), entry_pos=1, exit_pos=1, checkpoint.atom_position=2, last_token_width=1, end_pos=2"
+  },
+  "filename": "crates/context-stack/context-search/src/match/root_cursor/advance.rs",
+  "level": "TRACE",
+  "line_number": 261,
+  "span": "advance_query",
+  "spans": [
+    "insert_or_get_complete",
+    "search",
+    "advance_to_next_match",
+    "advance_query"
+  ],
+  "target": "context_search::r#match::root_cursor::advance",
+  "timestamp": "2026-03-03T02:42:35.619713Z"
+}
+
+{
+  "fields": {
+    "checkpoint_pos": "2",
+    "final_end_index": 1,
+    "message": "advance_query: returning checkpoint cursor for exhausted query"
+  },
+  "filename": "crates/context-stack/context-search/src/match/root_cursor/advance.rs",
+  "level": "TRACE",
+  "line_number": 277,
+  "span": "advance_query",
+  "spans": [
+    "insert_or_get_complete",
+    "search",
+    "advance_to_next_match",
+    "advance_query"
+  ],
+  "target": "context_search::r#match::root_cursor::advance",
+  "timestamp": "2026-03-03T02:42:35.619942Z"
+}
+
+{
+  "fields": {
+    "message": "from_range_path BEFORE simplify: start_path.len=1, end_path.len=0"
+  },
+  "filename": "crates/context-stack/context-search/src/state/end/mod.rs",
+  "level": "TRACE",
+  "line_number": 90,
+  "span": "advance_query",
+  "spans": [
+    "insert_or_get_complete",
+    "search",
+    "advance_to_next_match",
+    "advance_query"
+  ],
+  "target": "context_search::state::end",
+  "timestamp": "2026-03-03T02:42:35.620096Z"
+}
+
+{
+  "fields": {
+    "message": "from_range_path AFTER simplify: start_path.len=1, end_path.len=0"
+  },
+  "filename": "crates/context-stack/context-search/src/state/end/mod.rs",
+  "level": "TRACE",
+  "line_number": 97,
+  "span": "advance_query",
+  "spans": [
+    "insert_or_get_complete",
+    "search",
+    "advance_to_next_match",
+    "advance_query"
+  ],
+  "target": "context_search::state::end",
+  "timestamp": "2026-03-03T02:42:35.620236Z"
+}
+
+{
+  "fields": {
+    "message": "from_range_path: start_at_border=true, start_path_empty=false, end_at_border=true, end_path_empty=true"
+  },
+  "filename": "crates/context-stack/context-search/src/state/end/mod.rs",
+  "level": "TRACE",
+  "line_number": 112,
+  "span": "advance_query",
+  "spans": [
+    "insert_or_get_complete",
+    "search",
+    "advance_to_next_match",
+    "advance_query"
+  ],
+  "target": "context_search::state::end",
+  "timestamp": "2026-03-03T02:42:35.620379Z"
+}
+
+{
+  "fields": {
+    "message": "Creating PostfixEnd with exit_pos=1"
+  },
+  "filename": "crates/context-stack/context-search/src/state/end/mod.rs",
+  "level": "TRACE",
+  "line_number": 131,
+  "span": "advance_query",
+  "spans": [
+    "insert_or_get_complete",
+    "search",
+    "advance_to_next_match",
+    "advance_query"
+  ],
+  "target": "context_search::state::end",
+  "timestamp": "2026-03-03T02:42:35.620516Z"
+}
+
+{
+  "fields": {
+    "message": "close",
+    "time.busy": "2.19ms",
+    "time.idle": "3.60µs"
+  },
+  "filename": "crates/context-stack/context-search/src/match/root_cursor/advance.rs",
+  "level": "TRACE",
+  "line_number": 206,
+  "span": "advance_query",
+  "spans": [
+    "insert_or_get_complete",
+    "search",
+    "advance_to_next_match"
+  ],
+  "target": "context_search::r#match::root_cursor::advance",
+  "timestamp": "2026-03-03T02:42:35.620683Z"
+}
+
+{
+  "fields": {
+    "message": "  → advance_both_cursors_internal: Step 1 - query ended (QueryExhausted)"
+  },
+  "filename": "crates/context-stack/context-search/src/match/root_cursor/advance.rs",
+  "level": "DEBUG",
+  "line_number": 161,
+  "span": "advance_to_next_match",
+  "spans": [
+    "insert_or_get_complete",
+    "search",
+    "advance_to_next_match"
+  ],
+  "target": "context_search::r#match::root_cursor::advance",
+  "timestamp": "2026-03-03T02:42:35.620816Z"
+}
+
+{
+  "fields": {
+    "message": "→ advance_to_next_match: query exhausted - complete match"
+  },
+  "filename": "crates/context-stack/context-search/src/match/root_cursor/advance.rs",
+  "level": "DEBUG",
+  "line_number": 70,
+  "span": "advance_to_next_match",
+  "spans": [
+    "insert_or_get_complete",
+    "search",
+    "advance_to_next_match"
+  ],
+  "target": "context_search::r#match::root_cursor::advance",
+  "timestamp": "2026-03-03T02:42:35.620938Z"
+}
+
+{
+  "fields": {
+    "message": "close",
+    "time.busy": "2.98ms",
+    "time.idle": "3.70µs"
+  },
+  "filename": "crates/context-stack/context-search/src/match/root_cursor/advance.rs",
+  "level": "DEBUG",
+  "line_number": 55,
+  "span": "advance_to_next_match",
+  "spans": [
+    "insert_or_get_complete",
+    "search"
+  ],
+  "target": "context_search::r#match::root_cursor::advance",
+  "timestamp": "2026-03-03T02:42:35.621056Z"
+}
+
+{
+  "fields": {
+    "message": "Conclusive end: Exhausted - keeping best match"
+  },
+  "filename": "crates/context-stack/context-search/src/search/mod.rs",
+  "level": "TRACE",
+  "line_number": 632,
+  "span": "search",
+  "spans": [
+    "insert_or_get_complete",
+    "search"
+  ],
+  "target": "context_search::search",
+  "timestamp": "2026-03-03T02:42:35.621175Z"
+}
+
+{
+  "fields": {
+    "message": "from_range_path BEFORE simplify: start_path.len=1, end_path.len=0"
+  },
+  "filename": "crates/context-stack/context-search/src/state/end/mod.rs",
+  "level": "TRACE",
+  "line_number": 90,
+  "span": "search",
+  "spans": [
+    "insert_or_get_complete",
+    "search"
+  ],
+  "target": "context_search::state::end",
+  "timestamp": "2026-03-03T02:42:35.621293Z"
+}
+
+{
+  "fields": {
+    "message": "from_range_path AFTER simplify: start_path.len=1, end_path.len=0"
+  },
+  "filename": "crates/context-stack/context-search/src/state/end/mod.rs",
+  "level": "TRACE",
+  "line_number": 97,
+  "span": "search",
+  "spans": [
+    "insert_or_get_complete",
+    "search"
+  ],
+  "target": "context_search::state::end",
+  "timestamp": "2026-03-03T02:42:35.621504Z"
+}
+
+{
+  "fields": {
+    "message": "from_range_path: start_at_border=true, start_path_empty=false, end_at_border=true, end_path_empty=true"
+  },
+  "filename": "crates/context-stack/context-search/src/state/end/mod.rs",
+  "level": "TRACE",
+  "line_number": 112,
+  "span": "search",
+  "spans": [
+    "insert_or_get_complete",
+    "search"
+  ],
+  "target": "context_search::state::end",
+  "timestamp": "2026-03-03T02:42:35.621630Z"
+}
+
+{
+  "fields": {
+    "message": "Creating PostfixEnd with exit_pos=1"
+  },
+  "filename": "crates/context-stack/context-search/src/state/end/mod.rs",
+  "level": "TRACE",
+  "line_number": 131,
+  "span": "search",
+  "spans": [
+    "insert_or_get_complete",
+    "search"
+  ],
+  "target": "context_search::state::end",
+  "timestamp": "2026-03-03T02:42:35.621739Z"
+}
+
+{
+  "fields": {
+    "at_end": true,
+    "end_index": 1,
+    "end_path_len": "0",
+    "message": "query_exhausted check",
+    "path_empty": true
+  },
+  "filename": "crates/context-stack/context-search/src/state/matched/mod.rs",
+  "level": "TRACE",
+  "line_number": 156,
+  "span": "search",
+  "spans": [
+    "insert_or_get_complete",
+    "search"
+  ],
+  "target": "context_search::state::matched",
+  "timestamp": "2026-03-03T02:42:35.621851Z"
+}
+
+{
+  "fields": {
+    "checkpoint_pos": 2,
+    "message": "found matched state",
+    "query_exhausted": true
+  },
+  "filename": "crates/context-stack/context-search/src/search/mod.rs",
+  "level": "TRACE",
+  "line_number": 898,
+  "span": "search",
+  "spans": [
+    "insert_or_get_complete",
+    "search"
+  ],
+  "target": "context_search::search",
+  "timestamp": "2026-03-03T02:42:35.621994Z"
+}
+
+{
+  "fields": {
+    "message": "searching for next match"
+  },
+  "filename": "crates/context-stack/context-search/src/search/mod.rs",
+  "level": "TRACE",
+  "line_number": 753,
+  "span": "search",
+  "spans": [
+    "insert_or_get_complete",
+    "search"
+  ],
+  "target": "context_search::search",
+  "timestamp": "2026-03-03T02:42:35.622101Z"
+}
+
+{
+  "fields": {
+    "message": "no more matches found"
+  },
+  "filename": "crates/context-stack/context-search/src/search/mod.rs",
+  "level": "TRACE",
+  "line_number": 765,
+  "span": "search",
+  "spans": [
+    "insert_or_get_complete",
+    "search"
+  ],
+  "target": "context_search::search",
+  "timestamp": "2026-03-03T02:42:35.622199Z"
+}
+
+{
+  "fields": {
+    "at_end": true,
+    "end_index": 1,
+    "end_path_len": "0",
+    "message": "query_exhausted check",
+    "path_empty": true
+  },
+  "filename": "crates/context-stack/context-search/src/state/matched/mod.rs",
+  "level": "TRACE",
+  "line_number": 156,
+  "span": "search",
+  "spans": [
+    "insert_or_get_complete",
+    "search"
+  ],
+  "target": "context_search::state::matched",
+  "timestamp": "2026-03-03T02:42:35.622301Z"
+}
+
+{
+  "fields": {
+    "checkpoint_pos": 2,
+    "message": "Using best_match as final result",
+    "query_exhausted": true,
+    "root": {
+      "index": 6,
+      "text": "abc"
+    }
+  },
+  "filename": "crates/context-stack/context-search/src/search/mod.rs",
+  "level": "TRACE",
+  "line_number": 428,
+  "span": "search",
+  "spans": [
+    "insert_or_get_complete",
+    "search"
+  ],
+  "target": "context_search::search",
+  "timestamp": "2026-03-03T02:42:35.622410Z"
+}
+
+{
+  "fields": {
+    "end": {
+      "_type": "MatchResult",
+      "cursor": {
+        "_type": "AtCheckpoint",
+        "_values": [
+          {
+            "_state": {
+              "_type": "PhantomData",
+              "type_param": "context_search::cursor::checkpointed::AtCheckpoint"
+            },
+            "_type": "Checkpointed",
+            "candidate": null,
+            "checkpoint": {
+              "_state": {
+                "_type": "PhantomData",
+                "type_param": "context_search::cursor::Matched"
+              },
+              "_type": "PathCursor",
+              "atom_position": {
+                "_type": "AtomPosition",
+                "_values": [
+                  2
+                ]
+              },
+              "path": {
+                "_type": "RootedRangePath",
+                "end": {
+                  "_ty": {
+                    "_type": "PhantomData",
+                    "type_param": "context_trace::path::accessors::role::End"
+                  },
+                  "_type": "RolePath",
+                  "sub_path": {
+                    "_type": "SubPath",
+                    "path": [],
+                    "root_entry": 1
+                  }
+                },
+                "root": {
+                  "_type": "Pattern",
+                  "_values": [
+                    [
+                      {
+                        "index": 1,
+                        "text": "b"
+                      },
+                      {
+                        "index": 2,
+                        "text": "c"
+                      }
+                    ]
+                  ]
+                },
+                "start": {
+                  "_ty": {
+                    "_type": "PhantomData",
+                    "type_param": "context_trace::path::accessors::role::Start"
+                  },
+                  "_type": "RolePath",
+                  "sub_path": {
+                    "_type": "SubPath",
+                    "path": [],
+                    "root_entry": 0
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "path": {
+        "_type": "Postfix",
+        "_values": [
+          {
+            "_type": "PostfixEnd",
+            "entry_pos": {
+              "_type": "UpPosition",
+              "_values": [
+                {
+                  "_type": "AtomPosition",
+                  "_values": [
+                    1
+                  ]
+                }
+              ]
+            },
+            "path": {
+              "_type": "RootedRolePath",
+              "role_path": {
+                "_ty": {
+                  "_type": "PhantomData",
+                  "type_param": "context_trace::path::accessors::role::Start"
+                },
+                "_type": "RolePath",
+                "sub_path": {
+                  "_type": "SubPath",
+                  "path": [
+                    {
+                      "_type": "ChildLocation",
+                      "parent": {
+                        "index": 5,
+                        "text": "ab"
+                      },
+                      "pattern_id": {
+                        "_type": "PatternId",
+                        "_values": [
+                          "9dbf13e0-6f6e-4149-82c0-2e9ace296fd1"
+                        ]
+                      },
+                      "sub_index": 1
+                    }
+                  ],
+                  "root_entry": 0
+                }
+              },
+              "root": {
+                "_type": "IndexRoot",
+                "location": {
+                  "_type": "PatternLocation",
+                  "parent": {
+                    "index": 6,
+                    "text": "abc"
+                  },
+                  "pattern_id": {
+                    "_type": "PatternId",
+                    "_values": [
+                      "1f82d6b0-46f0-43c3-9e85-c7098bf1269a"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "message": "final matched state"
+  },
+  "filename": "crates/context-stack/context-search/src/search/mod.rs",
+  "level": "TRACE",
+  "line_number": 458,
+  "span": "search",
+  "spans": [
+    "insert_or_get_complete",
+    "search"
+  ],
+  "target": "context_search::search",
+  "timestamp": "2026-03-03T02:42:35.622547Z"
+}
+
+{
+  "fields": {
+    "graph_op": {
+      "description": "Search complete",
+      "location": {
+        "completed_nodes": [
+          6
+        ],
+        "pending_children": [],
+        "pending_parents": [],
+        "root_node": 6,
+        "selected_node": 6,
+        "trace_path": []
+      },
+      "op_type": "search",
+      "path_graph": {
+        "cursor_pos": 2,
+        "done": true,
+        "end_edges": [
+          {
+            "from": 6,
+            "pattern_idx": 0,
+            "sub_index": 0,
+            "to": 2
+          }
+        ],
+        "end_path": [
+          {
+            "index": 2,
+            "width": 1
+          }
+        ],
+        "root": {
+          "index": 6,
+          "width": 1
+        },
+        "root_entry_edge": {
+          "from": 1,
+          "pattern_idx": 0,
+          "sub_index": 0,
+          "to": 6
+        },
+        "root_exit_edge": {
+          "from": 6,
+          "pattern_idx": 0,
+          "sub_index": 0,
+          "to": 2
+        },
+        "start_edges": [
+          {
+            "from": 1,
+            "pattern_idx": 0,
+            "sub_index": 0,
+            "to": 5
+          }
+        ],
+        "start_node": {
+          "index": 1,
+          "width": 1
+        },
+        "start_path": [
+          {
+            "index": 5,
+            "width": 1
+          }
+        ],
+        "success": true
+      },
+      "path_id": "search/context-search/token-1-1772505755611197900",
+      "query": {
+        "cursor_position": 2,
+        "matched_positions": [
+          2
+        ],
+        "query_tokens": [
+          1,
+          2
+        ],
+        "query_width": 2
+      },
+      "step": 8,
+      "transition": {
+        "final_node": 6,
+        "kind": "done",
+        "success": true
+      }
+    },
+    "message": "Search complete",
+    "op_type": "Search",
+    "step": 8
+  },
+  "filename": "crates/context-stack/context-trace/src/graph/visualization.rs",
+  "level": "INFO",
+  "line_number": 561,
+  "span": "search",
+  "spans": [
+    "insert_or_get_complete",
+    "search"
+  ],
+  "target": "context_trace::graph::visualization",
+  "timestamp": "2026-03-03T02:42:35.623431Z"
+}
+
+{
+  "fields": {
+    "message": "Creating PostfixCommand from PostfixEnd: entry_pos=1"
+  },
+  "filename": "crates/context-stack/context-search/src/state/end/postfix.rs",
+  "level": "TRACE",
+  "line_number": 45,
+  "span": "search",
+  "spans": [
+    "insert_or_get_complete",
+    "search"
+  ],
+  "target": "context_search::state::end::postfix",
+  "timestamp": "2026-03-03T02:42:35.623652Z"
+}
+
+{
+  "fields": {
+    "message": "PostfixCommand::trace - entry_pos=UpPosition(AtomPosition(1))"
+  },
+  "filename": "crates/context-stack/context-trace/src/trace/traceable/mod.rs",
+  "level": "DEBUG",
+  "line_number": 299,
+  "span": "search",
+  "spans": [
+    "insert_or_get_complete",
+    "search"
+  ],
+  "target": "context_trace::trace::traceable",
+  "timestamp": "2026-03-03T02:42:35.623764Z"
+}
+
+{
+  "fields": {
+    "message": "trace_role_sub_path - starting with prev=UpKey { index: \"b\"(1), pos: UpPosition(AtomPosition(1)) }, path_len=1"
+  },
+  "filename": "crates/context-stack/context-trace/src/trace/traceable/role.rs",
+  "level": "DEBUG",
+  "line_number": 90,
+  "span": "search",
+  "spans": [
+    "insert_or_get_complete",
+    "search"
+  ],
+  "target": "context_trace::trace::traceable::role",
+  "timestamp": "2026-03-03T02:42:35.623877Z"
+}
+
+{
+  "fields": {
+    "message": "trace_role_sub_path - step 0: prev=UpKey { index: \"b\"(1), pos: UpPosition(AtomPosition(1)) }, location=ChildLocation { parent: \"ab\"(5), pattern_id: PatternId(9dbf13e0-6f6e-4149-82c0-2e9ace296fd1), sub_index: 1 }, target=UpKey { index: \"ab\"(5), pos: UpPosition(AtomPosition(1)) }"
+  },
+  "filename": "crates/context-stack/context-trace/src/trace/traceable/role.rs",
+  "level": "DEBUG",
+  "line_number": 102,
+  "span": "search",
+  "spans": [
+    "insert_or_get_complete",
+    "search"
+  ],
+  "target": "context_trace::trace::traceable::role",
+  "timestamp": "2026-03-03T02:42:35.623994Z"
+}
+
+{
+  "fields": {
+    "message": "add_state: index=\"ab\"(5), pos=BottomUp(UpPosition(AtomPosition(1)))"
+  },
+  "filename": "crates/context-stack/context-trace/src/trace/cache/mod.rs",
+  "level": "DEBUG",
+  "line_number": 49,
+  "span": "search",
+  "spans": [
+    "insert_or_get_complete",
+    "search"
+  ],
+  "target": "context_trace::trace::cache",
+  "timestamp": "2026-03-03T02:42:35.624139Z"
+}
+
+{
+  "fields": {
+    "message": "trace_role_sub_path - step 0: added key=DirectedKey { index: \"ab\"(5), pos: BottomUp(UpPosition(AtomPosition(1))) }, was_new=true"
+  },
+  "filename": "crates/context-stack/context-trace/src/trace/traceable/role.rs",
+  "level": "DEBUG",
+  "line_number": 106,
+  "span": "search",
+  "spans": [
+    "insert_or_get_complete",
+    "search"
+  ],
+  "target": "context_trace::trace::traceable::role",
+  "timestamp": "2026-03-03T02:42:35.624261Z"
+}
+
+{
+  "fields": {
+    "message": "trace_role_sub_path - complete, result=UpKey { index: \"ab\"(5), pos: UpPosition(AtomPosition(1)) }"
+  },
+  "filename": "crates/context-stack/context-trace/src/trace/traceable/role.rs",
+  "level": "DEBUG",
+  "line_number": 110,
+  "span": "search",
+  "spans": [
+    "insert_or_get_complete",
+    "search"
+  ],
+  "target": "context_trace::trace::traceable::role",
+  "timestamp": "2026-03-03T02:42:35.624382Z"
+}
+
+{
+  "fields": {
+    "message": "PostfixRootCommand::trace_root - entry_key=UpKey { index: \"abc\"(6), pos: UpPosition(AtomPosition(1)) }, prev=UpKey { index: \"ab\"(5), pos: UpPosition(AtomPosition(1)) }, location=ChildLocation { parent: \"abc\"(6), pattern_id: PatternId(1f82d6b0-46f0-43c3-9e85-c7098bf1269a), sub_index: 0 }"
+  },
+  "filename": "crates/context-stack/context-trace/src/trace/traceable/root.rs",
+  "level": "DEBUG",
+  "line_number": 80,
+  "span": "search",
+  "spans": [
+    "insert_or_get_complete",
+    "search"
+  ],
+  "target": "context_trace::trace::traceable::root",
+  "timestamp": "2026-03-03T02:42:35.624501Z"
+}
+
+{
+  "fields": {
+    "message": "add_state: index=\"abc\"(6), pos=BottomUp(UpPosition(AtomPosition(1)))"
+  },
+  "filename": "crates/context-stack/context-trace/src/trace/cache/mod.rs",
+  "level": "DEBUG",
+  "line_number": 49,
+  "span": "search",
+  "spans": [
+    "insert_or_get_complete",
+    "search"
+  ],
+  "target": "context_trace::trace::cache",
+  "timestamp": "2026-03-03T02:42:35.624662Z"
+}
+
+{
+  "fields": {
+    "message": "PostfixRootCommand::trace_root - added to cache: key=DirectedKey { index: \"abc\"(6), pos: BottomUp(UpPosition(AtomPosition(1))) }, was_new=true"
+  },
+  "filename": "crates/context-stack/context-trace/src/trace/traceable/root.rs",
+  "level": "DEBUG",
+  "line_number": 92,
+  "span": "search",
+  "spans": [
+    "insert_or_get_complete",
+    "search"
+  ],
+  "target": "context_trace::trace::traceable::root",
+  "timestamp": "2026-03-03T02:42:35.624790Z"
+}
+
+{
+  "fields": {
+    "message": "PostfixCommand::trace - complete"
+  },
+  "filename": "crates/context-stack/context-trace/src/trace/traceable/mod.rs",
+  "level": "DEBUG",
+  "line_number": 304,
+  "span": "search",
+  "spans": [
+    "insert_or_get_complete",
+    "search"
+  ],
+  "target": "context_trace::trace::traceable",
+  "timestamp": "2026-03-03T02:42:35.624920Z"
+}
+
+{
+  "fields": {
+    "end": {
+      "_type": "MatchResult",
+      "cursor": {
+        "_type": "AtCheckpoint",
+        "_values": [
+          {
+            "_state": {
+              "_type": "PhantomData",
+              "type_param": "context_search::cursor::checkpointed::AtCheckpoint"
+            },
+            "_type": "Checkpointed",
+            "candidate": null,
+            "checkpoint": {
+              "_state": {
+                "_type": "PhantomData",
+                "type_param": "context_search::cursor::Matched"
+              },
+              "_type": "PathCursor",
+              "atom_position": {
+                "_type": "AtomPosition",
+                "_values": [
+                  2
+                ]
+              },
+              "path": {
+                "_type": "RootedRangePath",
+                "end": {
+                  "_ty": {
+                    "_type": "PhantomData",
+                    "type_param": "context_trace::path::accessors::role::End"
+                  },
+                  "_type": "RolePath",
+                  "sub_path": {
+                    "_type": "SubPath",
+                    "path": [],
+                    "root_entry": 1
+                  }
+                },
+                "root": {
+                  "_type": "Pattern",
+                  "_values": [
+                    [
+                      {
+                        "index": 1,
+                        "text": "b"
+                      },
+                      {
+                        "index": 2,
+                        "text": "c"
+                      }
+                    ]
+                  ]
+                },
+                "start": {
+                  "_ty": {
+                    "_type": "PhantomData",
+                    "type_param": "context_trace::path::accessors::role::Start"
+                  },
+                  "_type": "RolePath",
+                  "sub_path": {
+                    "_type": "SubPath",
+                    "path": [],
+                    "root_entry": 0
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "path": {
+        "_type": "Postfix",
+        "_values": [
+          {
+            "_type": "PostfixEnd",
+            "entry_pos": {
+              "_type": "UpPosition",
+              "_values": [
+                {
+                  "_type": "AtomPosition",
+                  "_values": [
+                    1
+                  ]
+                }
+              ]
+            },
+            "path": {
+              "_type": "RootedRolePath",
+              "role_path": {
+                "_ty": {
+                  "_type": "PhantomData",
+                  "type_param": "context_trace::path::accessors::role::Start"
+                },
+                "_type": "RolePath",
+                "sub_path": {
+                  "_type": "SubPath",
+                  "path": [
+                    {
+                      "_type": "ChildLocation",
+                      "parent": {
+                        "index": 5,
+                        "text": "ab"
+                      },
+                      "pattern_id": {
+                        "_type": "PatternId",
+                        "_values": [
+                          "9dbf13e0-6f6e-4149-82c0-2e9ace296fd1"
+                        ]
+                      },
+                      "sub_index": 1
+                    }
+                  ],
+                  "root_entry": 0
+                }
+              },
+              "root": {
+                "_type": "IndexRoot",
+                "location": {
+                  "_type": "PatternLocation",
+                  "parent": {
+                    "index": 6,
+                    "text": "abc"
+                  },
+                  "pattern_id": {
+                    "_type": "PatternId",
+                    "_values": [
+                      "1f82d6b0-46f0-43c3-9e85-c7098bf1269a"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "message": "search complete"
+  },
+  "filename": "crates/context-stack/context-search/src/search/mod.rs",
+  "level": "INFO",
+  "line_number": 479,
+  "span": "search",
+  "spans": [
+    "insert_or_get_complete",
+    "search"
+  ],
+  "target": "context_search::search",
+  "timestamp": "2026-03-03T02:42:35.625022Z"
+}
+
+{
+  "fields": {
+    "message": "close",
+    "time.busy": "15.2ms",
+    "time.idle": "3.30µs"
+  },
+  "filename": "crates/context-stack/context-search/src/search/searchable.rs",
+  "level": "TRACE",
+  "line_number": 59,
+  "span": "search",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_search::search::searchable",
+  "timestamp": "2026-03-03T02:42:35.625521Z"
+}
+
+{
+  "fields": {
+    "graph_op": {
+      "description": "Starting split phase on root 6",
+      "location": {
+        "completed_nodes": [],
+        "pending_children": [],
+        "pending_parents": [],
+        "root_node": null,
+        "selected_node": 6,
+        "trace_path": []
+      },
+      "op_type": "insert",
+      "path_graph": {
+        "cursor_pos": 0,
+        "done": false,
+        "end_edges": [],
+        "end_path": [],
+        "root": null,
+        "root_entry_edge": null,
+        "root_exit_edge": null,
+        "start_edges": [],
+        "start_node": null,
+        "start_path": [],
+        "success": false
+      },
+      "path_id": "insert/context-insert/1772505755625630800",
+      "query": {
+        "cursor_position": 0,
+        "query_tokens": [],
+        "query_width": 0
+      },
+      "step": 0,
+      "transition": {
+        "kind": "split_start",
+        "node": 6,
+        "split_position": 2
+      }
+    },
+    "message": "Starting split phase on root 6",
+    "op_type": "Insert",
+    "step": 0
+  },
+  "filename": "crates/context-stack/context-trace/src/graph/visualization.rs",
+  "level": "INFO",
+  "line_number": 561,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_trace::graph::visualization",
+  "timestamp": "2026-03-03T02:42:35.625663Z"
+}
+
+{
+  "fields": {
+    "message": "IntervalGraph::from - init"
+  },
+  "filename": "crates/context-stack/context-insert/src/split/run.rs",
+  "level": "DEBUG",
+  "line_number": 72,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_insert::split::run",
+  "timestamp": "2026-03-03T02:42:35.625952Z"
+}
+
+{
+  "fields": {
+    "message": "root_augmentation",
+    "root_mode": "Postfix",
+    "root_patterns": {
+      "PatternId(1f82d6b0-46f0-43c3-9e85-c7098bf1269a)": {
+        "_type": "Pattern",
+        "_values": [
+          [
+            {
+              "index": 5,
+              "text": "ab"
+            },
+            {
+              "index": 2,
+              "text": "c"
+            }
+          ]
+        ]
+      }
+    },
+    "target_positions": [
+      1
+    ]
+  },
+  "filename": "crates/context-stack/context-insert/src/split/cache/vertex.rs",
+  "level": "DEBUG",
+  "line_number": 206,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_insert::split::cache::vertex",
+  "timestamp": "2026-03-03T02:42:35.626074Z"
+}
+
+{
+  "fields": {
+    "inner_offsets": [],
+    "message": "After add_inner_offsets"
+  },
+  "filename": "crates/context-stack/context-insert/src/split/cache/vertex.rs",
+  "level": "DEBUG",
+  "line_number": 226,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_insert::split::cache::vertex",
+  "timestamp": "2026-03-03T02:42:35.626298Z"
+}
+
+{
+  "fields": {
+    "message": "ADD_WRAPPER_OFFSETS_POSTFIX",
+    "split_pos": {
+      "_type": "Option",
+      "_values": [
+        1
+      ],
+      "_variant": "Some"
+    }
+  },
+  "filename": "crates/context-stack/context-insert/src/split/cache/vertex.rs",
+  "level": "DEBUG",
+  "line_number": 488,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_insert::split::cache::vertex",
+  "timestamp": "2026-03-03T02:42:35.626412Z"
+}
+
+{
+  "fields": {
+    "message": "Processing pattern",
+    "pid": {
+      "_type": "PatternId",
+      "_values": [
+        "1f82d6b0-46f0-43c3-9e85-c7098bf1269a"
+      ]
+    },
+    "trace_pos": {
+      "_type": "TokenTracePos",
+      "inner_offset": {
+        "_type": "Option",
+        "_values": [
+          1
+        ],
+        "_variant": "Some"
+      },
+      "sub_index": 0
+    }
+  },
+  "filename": "crates/context-stack/context-insert/src/split/cache/vertex.rs",
+  "level": "DEBUG",
+  "line_number": 497,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_insert::split::cache::vertex",
+  "timestamp": "2026-03-03T02:42:35.626524Z"
+}
+
+{
+  "fields": {
+    "child_index": 0,
+    "message": "Wrapper child info",
+    "wrapper_child": {
+      "index": 5,
+      "text": "ab"
+    },
+    "wrapper_start_offset": 0
+  },
+  "filename": "crates/context-stack/context-insert/src/split/cache/vertex.rs",
+  "level": "DEBUG",
+  "line_number": 516,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_insert::split::cache::vertex",
+  "timestamp": "2026-03-03T02:42:35.626647Z"
+}
+
+{
+  "fields": {
+    "inner_offset": "1",
+    "intermediate_offset": 1,
+    "message": "Found inner offset in wrapper"
+  },
+  "filename": "crates/context-stack/context-insert/src/split/cache/vertex.rs",
+  "level": "DEBUG",
+  "line_number": 547,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_insert::split::cache::vertex",
+  "timestamp": "2026-03-03T02:42:35.626774Z"
+}
+
+{
+  "fields": {
+    "count": 0,
+    "message": "Total wrapper_splits"
+  },
+  "filename": "crates/context-stack/context-insert/src/split/cache/vertex.rs",
+  "level": "DEBUG",
+  "line_number": 573,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_insert::split::cache::vertex",
+  "timestamp": "2026-03-03T02:42:35.626883Z"
+}
+
+{
+  "fields": {
+    "message": "After add_wrapper_offsets",
+    "wrapper_offsets": []
+  },
+  "filename": "crates/context-stack/context-insert/src/split/cache/vertex.rs",
+  "level": "DEBUG",
+  "line_number": 239,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_insert::split::cache::vertex",
+  "timestamp": "2026-03-03T02:42:35.626983Z"
+}
+
+{
+  "fields": {
+    "final_positions": [
+      1
+    ],
+    "message": "Final positions"
+  },
+  "filename": "crates/context-stack/context-insert/src/split/cache/vertex.rs",
+  "level": "DEBUG",
+  "line_number": 245,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_insert::split::cache::vertex",
+  "timestamp": "2026-03-03T02:42:35.627093Z"
+}
+
+{
+  "fields": {
+    "message": "target offset indices",
+    "toi": [
+      0
+    ]
+  },
+  "filename": "crates/context-stack/context-insert/src/split/cache/vertex.rs",
+  "level": "DEBUG",
+  "line_number": 256,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_insert::split::cache::vertex",
+  "timestamp": "2026-03-03T02:42:35.627198Z"
+}
+
+{
+  "fields": {
+    "message": "calculated target_range",
+    "target_range": {
+      "_type": "PartitionRange",
+      "_values": [
+        "1..=1"
+      ]
+    }
+  },
+  "filename": "crates/context-stack/context-insert/src/split/cache/vertex.rs",
+  "level": "DEBUG",
+  "line_number": 295,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_insert::split::cache::vertex",
+  "timestamp": "2026-03-03T02:42:35.627308Z"
+}
+
+{
+  "fields": {
+    "message": "calculated wrapper_range",
+    "wrapper_range": {
+      "_type": "PartitionRange",
+      "_values": [
+        "1..=1"
+      ]
+    }
+  },
+  "filename": "crates/context-stack/context-insert/src/split/cache/vertex.rs",
+  "level": "DEBUG",
+  "line_number": 316,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_insert::split::cache::vertex",
+  "timestamp": "2026-03-03T02:42:35.627415Z"
+}
+
+{
+  "fields": {
+    "message": "RequiredPartitions: adding",
+    "range": {
+      "_type": "PartitionRange",
+      "_values": [
+        "1..=1"
+      ]
+    }
+  },
+  "filename": "crates/context-stack/context-insert/src/join/context/node/merge/required.rs",
+  "level": "DEBUG",
+  "line_number": 43,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_insert::join::context::node::merge::required",
+  "timestamp": "2026-03-03T02:42:35.627520Z"
+}
+
+{
+  "fields": {
+    "message": "computed required partitions",
+    "required": [
+      {
+        "_type": "PartitionRange",
+        "_values": [
+          "1..=1"
+        ]
+      }
+    ]
+  },
+  "filename": "crates/context-stack/context-insert/src/split/cache/vertex.rs",
+  "level": "DEBUG",
+  "line_number": 320,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_insert::split::cache::vertex",
+  "timestamp": "2026-03-03T02:42:35.627633Z"
+}
+
+{
+  "fields": {
+    "message": "IntervalGraph::from - run iterator to end"
+  },
+  "filename": "crates/context-stack/context-insert/src/split/run.rs",
+  "level": "DEBUG",
+  "line_number": 75,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_insert::split::run",
+  "timestamp": "2026-03-03T02:42:35.627744Z"
+}
+
+{
+  "fields": {
+    "message": "augment_nodes"
+  },
+  "filename": "crates/context-stack/context-insert/src/split/cache/mod.rs",
+  "level": "DEBUG",
+  "line_number": 70,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_insert::split::cache",
+  "timestamp": "2026-03-03T02:42:35.627875Z"
+}
+
+{
+  "fields": {
+    "message": "SplitRun::from - calling finish"
+  },
+  "filename": "crates/context-stack/context-insert/src/split/run.rs",
+  "level": "DEBUG",
+  "line_number": 77,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_insert::split::run",
+  "timestamp": "2026-03-03T02:42:35.627983Z"
+}
+
+{
+  "fields": {
+    "message": "augment_nodes"
+  },
+  "filename": "crates/context-stack/context-insert/src/split/cache/mod.rs",
+  "level": "DEBUG",
+  "line_number": 70,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_insert::split::cache",
+  "timestamp": "2026-03-03T02:42:35.628080Z"
+}
+
+{
+  "fields": {
+    "message": "node_augmentation",
+    "num_offsets": "1",
+    "root_patterns": {
+      "PatternId(9dbf13e0-6f6e-4149-82c0-2e9ace296fd1)": {
+        "_type": "Pattern",
+        "_values": [
+          [
+            {
+              "index": 0,
+              "text": "a"
+            },
+            {
+              "index": 1,
+              "text": "b"
+            }
+          ]
+        ]
+      }
+    }
+  },
+  "filename": "crates/context-stack/context-insert/src/split/cache/vertex.rs",
+  "level": "DEBUG",
+  "line_number": 184,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_insert::split::cache::vertex",
+  "timestamp": "2026-03-03T02:42:35.628181Z"
+}
+
+{
+  "fields": {
+    "message": "SplitRun::from - finish done, creating IntervalGraph"
+  },
+  "filename": "crates/context-stack/context-insert/src/split/run.rs",
+  "level": "DEBUG",
+  "line_number": 79,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_insert::split::run",
+  "timestamp": "2026-03-03T02:42:35.628318Z"
+}
+
+{
+  "fields": {
+    "graph_op": {
+      "description": "Split phase complete for root 6",
+      "graph_mutation": {
+        "ops": [
+          {
+            "detail": "Split phase completed",
+            "index": 6,
+            "op": "update_node"
+          }
+        ]
+      },
+      "location": {
+        "completed_nodes": [],
+        "pending_children": [],
+        "pending_parents": [],
+        "root_node": null,
+        "selected_node": 6,
+        "trace_path": []
+      },
+      "op_type": "insert",
+      "path_graph": {
+        "cursor_pos": 0,
+        "done": false,
+        "end_edges": [],
+        "end_path": [],
+        "root": null,
+        "root_entry_edge": null,
+        "root_exit_edge": null,
+        "start_edges": [],
+        "start_node": null,
+        "start_path": [],
+        "success": false
+      },
+      "path_id": "insert/context-insert/1772505755625630800",
+      "query": {
+        "cursor_position": 0,
+        "query_tokens": [],
+        "query_width": 0
+      },
+      "step": 1,
+      "transition": {
+        "kind": "split_complete",
+        "left_fragment": null,
+        "original_node": 6,
+        "right_fragment": null
+      }
+    },
+    "message": "Split phase complete for root 6",
+    "op_type": "Insert",
+    "step": 1
+  },
+  "filename": "crates/context-stack/context-trace/src/graph/visualization.rs",
+  "level": "INFO",
+  "line_number": 561,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_trace::graph::visualization",
+  "timestamp": "2026-03-03T02:42:35.628449Z"
+}
+
+{
+  "fields": {
+    "graph_op": {
+      "description": "Starting join phase with 1 leaves",
+      "location": {
+        "completed_nodes": [],
+        "pending_children": [],
+        "pending_parents": [],
+        "root_node": null,
+        "selected_node": 6,
+        "trace_path": []
+      },
+      "op_type": "insert",
+      "path_graph": {
+        "cursor_pos": 0,
+        "done": false,
+        "end_edges": [],
+        "end_path": [],
+        "root": null,
+        "root_entry_edge": null,
+        "root_exit_edge": null,
+        "start_edges": [],
+        "start_node": null,
+        "start_path": [],
+        "success": false
+      },
+      "path_id": "insert/context-insert/1772505755625630800",
+      "query": {
+        "cursor_position": 0,
+        "query_tokens": [],
+        "query_width": 0
+      },
+      "step": 2,
+      "transition": {
+        "kind": "join_start",
+        "nodes": [
+          5
+        ]
+      }
+    },
+    "message": "Starting join phase with 1 leaves",
+    "op_type": "Insert",
+    "step": 2
+  },
+  "filename": "crates/context-stack/context-trace/src/graph/visualization.rs",
+  "level": "INFO",
+  "line_number": 561,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_trace::graph::visualization",
+  "timestamp": "2026-03-03T02:42:35.628655Z"
+}
+
+{
+  "fields": {
+    "graph_op": {
+      "description": "Processing node 5 at position 1",
+      "graph_mutation": {
+        "ops": [
+          {
+            "detail": "Processing at pos 1",
+            "index": 5,
+            "op": "update_node"
+          }
+        ]
+      },
+      "location": {
+        "completed_nodes": [],
+        "pending_children": [],
+        "pending_parents": [],
+        "root_node": null,
+        "selected_node": 5,
+        "trace_path": []
+      },
+      "op_type": "insert",
+      "path_graph": {
+        "cursor_pos": 0,
+        "done": false,
+        "end_edges": [],
+        "end_path": [],
+        "root": null,
+        "root_entry_edge": null,
+        "root_exit_edge": null,
+        "start_edges": [],
+        "start_node": null,
+        "start_path": [],
+        "success": false
+      },
+      "path_id": "insert/context-insert/1772505755625630800",
+      "query": {
+        "cursor_position": 0,
+        "query_tokens": [],
+        "query_width": 0
+      },
+      "step": 3,
+      "transition": {
+        "kind": "join_step",
+        "left": 5,
+        "result": 5,
+        "right": 5
+      }
+    },
+    "message": "Processing node 5 at position 1",
+    "op_type": "Insert",
+    "step": 3
+  },
+  "filename": "crates/context-stack/context-trace/src/graph/visualization.rs",
+  "level": "INFO",
+  "line_number": 561,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_trace::graph::visualization",
+  "timestamp": "2026-03-03T02:42:35.628856Z"
+}
+
+{
+  "fields": {
+    "is_root_merge": false,
+    "message": "PartitionMergeIter::merge_all: starting",
+    "mode": "Full",
+    "node": {
+      "index": 5,
+      "text": "ab"
+    },
+    "offsets": {
+      "_type": "SplitVertexCache",
+      "positions": {
+        "1": {
+          "_type": "SplitPositionCache",
+          "pattern_splits": {
+            "PatternId(9dbf13e0-6f6e-4149-82c0-2e9ace296fd1)": {
+              "_type": "TokenTracePos",
+              "inner_offset": {
+                "_type": "Option",
+                "_variant": "None"
+              },
+              "sub_index": 1
+            }
+          },
+          "top": {
+            "PosKey { index: \"abc\"(6), pos: 1 }": ""
+          }
+        }
+      }
+    },
+    "operating_range": {
+      "_type": "PartitionRange",
+      "_values": [
+        "0..=1"
+      ]
+    },
+    "patterns": {
+      "PatternId(9dbf13e0-6f6e-4149-82c0-2e9ace296fd1)": {
+        "_type": "Pattern",
+        "_values": [
+          [
+            {
+              "index": 0,
+              "text": "a"
+            },
+            {
+              "index": 1,
+              "text": "b"
+            }
+          ]
+        ]
+      }
+    },
+    "target_range": {
+      "_type": "Option",
+      "_variant": "None"
+    }
+  },
+  "filename": "crates/context-stack/context-insert/src/join/context/node/merge/iter.rs",
+  "level": "DEBUG",
+  "line_number": 108,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_insert::join::context::node::merge::iter",
+  "timestamp": "2026-03-03T02:42:35.629050Z"
+}
+
+{
+  "fields": {
+    "message": "\n    ==============================================================\n    merging partitions of length 1\n    =============================================================="
+  },
+  "filename": "crates/context-stack/context-insert/src/join/context/node/merge/iter.rs",
+  "level": "DEBUG",
+  "line_number": 125,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_insert::join::context::node::merge::iter",
+  "timestamp": "2026-03-03T02:42:35.629312Z"
+}
+
+{
+  "fields": {
+    "message": "Merging partition range",
+    "mode": "Full",
+    "node": {
+      "index": 5,
+      "text": "ab"
+    },
+    "operating_range": {
+      "_type": "PartitionRange",
+      "_values": [
+        "0..=1"
+      ]
+    },
+    "partition_range": {
+      "_type": "PartitionRange",
+      "_values": [
+        "0..=0"
+      ]
+    }
+  },
+  "filename": "crates/context-stack/context-insert/src/join/context/node/merge/iter.rs",
+  "level": "DEBUG",
+  "line_number": 222,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_insert::join::context::node::merge::iter",
+  "timestamp": "2026-03-03T02:42:35.629425Z"
+}
+
+{
+  "fields": {
+    "is_full_operating_range": "false",
+    "message": "Detected partition type",
+    "partition_type": "Prefix"
+  },
+  "filename": "crates/context-stack/context-insert/src/join/context/node/merge/iter.rs",
+  "level": "DEBUG",
+  "line_number": 234,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_insert::join::context::node::merge::iter",
+  "timestamp": "2026-03-03T02:42:35.629564Z"
+}
+
+{
+  "fields": {
+    "message": "MergePartitionCtx::from_merge_ctx: ENTERED",
+    "partition_range": {
+      "_type": "PartitionRange",
+      "_values": [
+        "0..=0"
+      ]
+    },
+    "role": "PREFIX"
+  },
+  "filename": "crates/context-stack/context-insert/src/join/context/node/merge/partition.rs",
+  "level": "DEBUG",
+  "line_number": 353,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_insert::join::context::node::merge::partition",
+  "timestamp": "2026-03-03T02:42:35.629673Z"
+}
+
+{
+  "fields": {
+    "message": "MergePartitionCtx::merge: ENTERED",
+    "num_offsets": 1,
+    "range_end": 0,
+    "range_start": 0,
+    "skip_pattern_replacement": false
+  },
+  "filename": "crates/context-stack/context-insert/src/join/context/node/merge/partition.rs",
+  "level": "DEBUG",
+  "line_number": 161,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_insert::join::context::node::merge::partition",
+  "timestamp": "2026-03-03T02:42:35.629802Z"
+}
+
+{
+  "fields": {
+    "existing": {
+      "index": 0,
+      "text": "a"
+    },
+    "message": "PREFIX: Token already exists - using without modification",
+    "range_end": 0,
+    "range_start": 0
+  },
+  "filename": "crates/context-stack/context-insert/src/join/context/node/merge/partition.rs",
+  "level": "DEBUG",
+  "line_number": 203,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_insert::join::context::node::merge::partition",
+  "timestamp": "2026-03-03T02:42:35.629945Z"
+}
+
+{
+  "fields": {
+    "merged_token": {
+      "index": 0,
+      "text": "a"
+    },
+    "message": "RangeMap INSERT: inserting token for range",
+    "partition_range": {
+      "_type": "PartitionRange",
+      "_values": [
+        "0..=0"
+      ]
+    }
+  },
+  "filename": "crates/context-stack/context-insert/src/join/context/node/merge/iter.rs",
+  "level": "DEBUG",
+  "line_number": 259,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_insert::join::context::node::merge::iter",
+  "timestamp": "2026-03-03T02:42:35.630069Z"
+}
+
+{
+  "fields": {
+    "merged_token": {
+      "index": 0,
+      "text": "a"
+    },
+    "message": "Computed splits for merged token",
+    "num_splits": 0,
+    "partition_range": {
+      "_type": "PartitionRange",
+      "_values": [
+        "0..=0"
+      ]
+    }
+  },
+  "filename": "crates/context-stack/context-insert/src/join/context/node/merge/iter.rs",
+  "level": "DEBUG",
+  "line_number": 443,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_insert::join::context::node::merge::iter",
+  "timestamp": "2026-03-03T02:42:35.630195Z"
+}
+
+{
+  "fields": {
+    "message": "Merging partition range",
+    "mode": "Full",
+    "node": {
+      "index": 5,
+      "text": "ab"
+    },
+    "operating_range": {
+      "_type": "PartitionRange",
+      "_values": [
+        "0..=1"
+      ]
+    },
+    "partition_range": {
+      "_type": "PartitionRange",
+      "_values": [
+        "1..=1"
+      ]
+    }
+  },
+  "filename": "crates/context-stack/context-insert/src/join/context/node/merge/iter.rs",
+  "level": "DEBUG",
+  "line_number": 222,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_insert::join::context::node::merge::iter",
+  "timestamp": "2026-03-03T02:42:35.630321Z"
+}
+
+{
+  "fields": {
+    "is_full_operating_range": "false",
+    "message": "Detected partition type",
+    "partition_type": "Postfix"
+  },
+  "filename": "crates/context-stack/context-insert/src/join/context/node/merge/iter.rs",
+  "level": "DEBUG",
+  "line_number": 234,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_insert::join::context::node::merge::iter",
+  "timestamp": "2026-03-03T02:42:35.630461Z"
+}
+
+{
+  "fields": {
+    "message": "MergePartitionCtx::from_merge_ctx: ENTERED",
+    "partition_range": {
+      "_type": "PartitionRange",
+      "_values": [
+        "1..=1"
+      ]
+    },
+    "role": "POSTFIX"
+  },
+  "filename": "crates/context-stack/context-insert/src/join/context/node/merge/partition.rs",
+  "level": "DEBUG",
+  "line_number": 353,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_insert::join::context::node::merge::partition",
+  "timestamp": "2026-03-03T02:42:35.630572Z"
+}
+
+{
+  "fields": {
+    "message": "MergePartitionCtx::merge: ENTERED",
+    "num_offsets": 1,
+    "range_end": 1,
+    "range_start": 1,
+    "skip_pattern_replacement": false
+  },
+  "filename": "crates/context-stack/context-insert/src/join/context/node/merge/partition.rs",
+  "level": "DEBUG",
+  "line_number": 161,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_insert::join::context::node::merge::partition",
+  "timestamp": "2026-03-03T02:42:35.630688Z"
+}
+
+{
+  "fields": {
+    "existing": {
+      "index": 1,
+      "text": "b"
+    },
+    "message": "POSTFIX: Token already exists - using without modification",
+    "range_end": 1,
+    "range_start": 1
+  },
+  "filename": "crates/context-stack/context-insert/src/join/context/node/merge/partition.rs",
+  "level": "DEBUG",
+  "line_number": 203,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_insert::join::context::node::merge::partition",
+  "timestamp": "2026-03-03T02:42:35.630820Z"
+}
+
+{
+  "fields": {
+    "merged_token": {
+      "index": 1,
+      "text": "b"
+    },
+    "message": "RangeMap INSERT: inserting token for range",
+    "partition_range": {
+      "_type": "PartitionRange",
+      "_values": [
+        "1..=1"
+      ]
+    }
+  },
+  "filename": "crates/context-stack/context-insert/src/join/context/node/merge/iter.rs",
+  "level": "DEBUG",
+  "line_number": 259,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_insert::join::context::node::merge::iter",
+  "timestamp": "2026-03-03T02:42:35.630945Z"
+}
+
+{
+  "fields": {
+    "merged_token": {
+      "index": 1,
+      "text": "b"
+    },
+    "message": "Computed splits for merged token",
+    "num_splits": 0,
+    "partition_range": {
+      "_type": "PartitionRange",
+      "_values": [
+        "1..=1"
+      ]
+    }
+  },
+  "filename": "crates/context-stack/context-insert/src/join/context/node/merge/iter.rs",
+  "level": "DEBUG",
+  "line_number": 443,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_insert::join::context::node::merge::iter",
+  "timestamp": "2026-03-03T02:42:35.631103Z"
+}
+
+{
+  "fields": {
+    "message": "\n    ==============================================================\n    merging partitions of length 2\n    =============================================================="
+  },
+  "filename": "crates/context-stack/context-insert/src/join/context/node/merge/iter.rs",
+  "level": "DEBUG",
+  "line_number": 125,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_insert::join::context::node::merge::iter",
+  "timestamp": "2026-03-03T02:42:35.631270Z"
+}
+
+{
+  "fields": {
+    "message": "Merging partition range",
+    "mode": "Full",
+    "node": {
+      "index": 5,
+      "text": "ab"
+    },
+    "operating_range": {
+      "_type": "PartitionRange",
+      "_values": [
+        "0..=1"
+      ]
+    },
+    "partition_range": {
+      "_type": "PartitionRange",
+      "_values": [
+        "0..=1"
+      ]
+    }
+  },
+  "filename": "crates/context-stack/context-insert/src/join/context/node/merge/iter.rs",
+  "level": "DEBUG",
+  "line_number": 222,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_insert::join::context::node::merge::iter",
+  "timestamp": "2026-03-03T02:42:35.631413Z"
+}
+
+{
+  "fields": {
+    "is_full_operating_range": "true",
+    "message": "Detected partition type",
+    "partition_type": "Full"
+  },
+  "filename": "crates/context-stack/context-insert/src/join/context/node/merge/iter.rs",
+  "level": "DEBUG",
+  "line_number": 234,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_insert::join::context::node::merge::iter",
+  "timestamp": "2026-03-03T02:42:35.631591Z"
+}
+
+{
+  "fields": {
+    "message": "Merging full partition - adding sub-merge patterns (intermediary node)"
+  },
+  "filename": "crates/context-stack/context-insert/src/join/context/node/merge/iter.rs",
+  "level": "DEBUG",
+  "line_number": 322,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_insert::join::context::node::merge::iter",
+  "timestamp": "2026-03-03T02:42:35.631729Z"
+}
+
+{
+  "fields": {
+    "merged_token": {
+      "index": 5,
+      "text": "ab"
+    },
+    "message": "RangeMap INSERT: inserting token for range",
+    "partition_range": {
+      "_type": "PartitionRange",
+      "_values": [
+        "0..=1"
+      ]
+    }
+  },
+  "filename": "crates/context-stack/context-insert/src/join/context/node/merge/iter.rs",
+  "level": "DEBUG",
+  "line_number": 259,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_insert::join::context::node::merge::iter",
+  "timestamp": "2026-03-03T02:42:35.631865Z"
+}
+
+{
+  "fields": {
+    "merged_token": {
+      "index": 5,
+      "text": "ab"
+    },
+    "message": "Computed splits for merged token",
+    "num_splits": 1,
+    "partition_range": {
+      "_type": "PartitionRange",
+      "_values": [
+        "0..=1"
+      ]
+    }
+  },
+  "filename": "crates/context-stack/context-insert/src/join/context/node/merge/iter.rs",
+  "level": "DEBUG",
+  "line_number": 443,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_insert::join::context::node::merge::iter",
+  "timestamp": "2026-03-03T02:42:35.632028Z"
+}
+
+{
+  "fields": {
+    "graph_op": {
+      "description": "Merging root node 6",
+      "graph_mutation": {
+        "ops": [
+          {
+            "detail": "Root merge",
+            "index": 6,
+            "op": "update_node"
+          }
+        ]
+      },
+      "location": {
+        "completed_nodes": [],
+        "pending_children": [],
+        "pending_parents": [],
+        "root_node": null,
+        "selected_node": 6,
+        "trace_path": []
+      },
+      "op_type": "insert",
+      "path_graph": {
+        "cursor_pos": 0,
+        "done": false,
+        "end_edges": [],
+        "end_path": [],
+        "root": null,
+        "root_entry_edge": null,
+        "root_exit_edge": null,
+        "start_edges": [],
+        "start_node": null,
+        "start_path": [],
+        "success": false
+      },
+      "path_id": "insert/context-insert/1772505755625630800",
+      "query": {
+        "cursor_position": 0,
+        "query_tokens": [],
+        "query_width": 0
+      },
+      "step": 4,
+      "transition": {
+        "kind": "join_step",
+        "left": 6,
+        "result": 6,
+        "right": 6
+      }
+    },
+    "message": "Merging root node 6",
+    "op_type": "Insert",
+    "step": 4
+  },
+  "filename": "crates/context-stack/context-trace/src/graph/visualization.rs",
+  "level": "INFO",
+  "line_number": 561,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_trace::graph::visualization",
+  "timestamp": "2026-03-03T02:42:35.632215Z"
+}
+
+{
+  "fields": {
+    "message": "Starting root merge join"
+  },
+  "filename": "crates/context-stack/context-insert/src/join/context/node/merge/node.rs",
+  "level": "INFO",
+  "line_number": 75,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_insert::join::context::node::merge::node",
+  "timestamp": "2026-03-03T02:42:35.632414Z"
+}
+
+{
+  "fields": {
+    "is_root_merge": true,
+    "message": "PartitionMergeIter::merge_all: starting",
+    "mode": {
+      "_type": "Root",
+      "_values": [
+        "Postfix"
+      ]
+    },
+    "node": {
+      "index": 6,
+      "text": "abc"
+    },
+    "offsets": {
+      "_type": "SplitVertexCache",
+      "positions": {
+        "1": {
+          "_type": "SplitPositionCache",
+          "pattern_splits": {
+            "PatternId(1f82d6b0-46f0-43c3-9e85-c7098bf1269a)": {
+              "_type": "TokenTracePos",
+              "inner_offset": {
+                "_type": "Option",
+                "_values": [
+                  1
+                ],
+                "_variant": "Some"
+              },
+              "sub_index": 0
+            }
+          },
+          "top": "{}"
+        }
+      }
+    },
+    "operating_range": {
+      "_type": "PartitionRange",
+      "_values": [
+        "1..=1"
+      ]
+    },
+    "patterns": {
+      "PatternId(1f82d6b0-46f0-43c3-9e85-c7098bf1269a)": {
+        "_type": "Pattern",
+        "_values": [
+          [
+            {
+              "index": 5,
+              "text": "ab"
+            },
+            {
+              "index": 2,
+              "text": "c"
+            }
+          ]
+        ]
+      }
+    },
+    "target_range": {
+      "_type": "Option",
+      "_values": [
+        {
+          "_type": "PartitionRange",
+          "_values": [
+            "1..=1"
+          ]
+        }
+      ],
+      "_variant": "Some"
+    }
+  },
+  "filename": "crates/context-stack/context-insert/src/join/context/node/merge/iter.rs",
+  "level": "DEBUG",
+  "line_number": 108,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_insert::join::context::node::merge::iter",
+  "timestamp": "2026-03-03T02:42:35.632538Z"
+}
+
+{
+  "fields": {
+    "message": "Merging edge partition (prefix) - token only, no pattern modification",
+    "prefix_range": {
+      "_type": "PartitionRange",
+      "_values": [
+        "0..=0"
+      ]
+    }
+  },
+  "filename": "crates/context-stack/context-insert/src/join/context/node/merge/iter.rs",
+  "level": "DEBUG",
+  "line_number": 186,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_insert::join::context::node::merge::iter",
+  "timestamp": "2026-03-03T02:42:35.632896Z"
+}
+
+{
+  "fields": {
+    "message": "MergePartitionCtx::from_merge_ctx: ENTERED",
+    "partition_range": {
+      "_type": "PartitionRange",
+      "_values": [
+        "0..=0"
+      ]
+    },
+    "role": "PREFIX"
+  },
+  "filename": "crates/context-stack/context-insert/src/join/context/node/merge/partition.rs",
+  "level": "DEBUG",
+  "line_number": 353,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_insert::join::context::node::merge::partition",
+  "timestamp": "2026-03-03T02:42:35.633243Z"
+}
+
+{
+  "fields": {
+    "message": "MergePartitionCtx::merge: ENTERED",
+    "num_offsets": 1,
+    "range_end": 0,
+    "range_start": 0,
+    "skip_pattern_replacement": true
+  },
+  "filename": "crates/context-stack/context-insert/src/join/context/node/merge/partition.rs",
+  "level": "DEBUG",
+  "line_number": 161,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_insert::join::context::node::merge::partition",
+  "timestamp": "2026-03-03T02:42:35.633443Z"
+}
+
+{
+  "fields": {
+    "existing": {
+      "index": 0,
+      "text": "a"
+    },
+    "message": "PREFIX: Token already exists - using without modification",
+    "range_end": 0,
+    "range_start": 0
+  },
+  "filename": "crates/context-stack/context-insert/src/join/context/node/merge/partition.rs",
+  "level": "DEBUG",
+  "line_number": 203,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_insert::join::context::node::merge::partition",
+  "timestamp": "2026-03-03T02:42:35.633602Z"
+}
+
+{
+  "fields": {
+    "message": "\n    ==============================================================\n    merging partitions of length 1\n    =============================================================="
+  },
+  "filename": "crates/context-stack/context-insert/src/join/context/node/merge/iter.rs",
+  "level": "DEBUG",
+  "line_number": 125,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_insert::join::context::node::merge::iter",
+  "timestamp": "2026-03-03T02:42:35.633734Z"
+}
+
+{
+  "fields": {
+    "message": "Merging partition range",
+    "mode": {
+      "_type": "Root",
+      "_values": [
+        "Postfix"
+      ]
+    },
+    "node": {
+      "index": 6,
+      "text": "abc"
+    },
+    "operating_range": {
+      "_type": "PartitionRange",
+      "_values": [
+        "1..=1"
+      ]
+    },
+    "partition_range": {
+      "_type": "PartitionRange",
+      "_values": [
+        "1..=1"
+      ]
+    }
+  },
+  "filename": "crates/context-stack/context-insert/src/join/context/node/merge/iter.rs",
+  "level": "DEBUG",
+  "line_number": 222,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_insert::join::context::node::merge::iter",
+  "timestamp": "2026-03-03T02:42:35.633844Z"
+}
+
+{
+  "fields": {
+    "is_full_operating_range": "true",
+    "message": "Detected partition type",
+    "partition_type": "Postfix"
+  },
+  "filename": "crates/context-stack/context-insert/src/join/context/node/merge/iter.rs",
+  "level": "DEBUG",
+  "line_number": 234,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_insert::join::context::node::merge::iter",
+  "timestamp": "2026-03-03T02:42:35.633996Z"
+}
+
+{
+  "fields": {
+    "message": "MergePartitionCtx::from_merge_ctx: ENTERED",
+    "partition_range": {
+      "_type": "PartitionRange",
+      "_values": [
+        "1..=1"
+      ]
+    },
+    "role": "POSTFIX"
+  },
+  "filename": "crates/context-stack/context-insert/src/join/context/node/merge/partition.rs",
+  "level": "DEBUG",
+  "line_number": 353,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_insert::join::context::node::merge::partition",
+  "timestamp": "2026-03-03T02:42:35.634110Z"
+}
+
+{
+  "fields": {
+    "message": "MergePartitionCtx::merge: ENTERED",
+    "num_offsets": 1,
+    "range_end": 1,
+    "range_start": 1,
+    "skip_pattern_replacement": false
+  },
+  "filename": "crates/context-stack/context-insert/src/join/context/node/merge/partition.rs",
+  "level": "DEBUG",
+  "line_number": 161,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_insert::join::context::node::merge::partition",
+  "timestamp": "2026-03-03T02:42:35.634227Z"
+}
+
+{
+  "fields": {
+    "key": {
+      "_type": "PosKey",
+      "index": {
+        "index": 5,
+        "text": "ab"
+      },
+      "pos": 1
+    },
+    "message": "Post<Join>::get_child_splits lookup",
+    "o": "1",
+    "pattern_len": 2,
+    "splits_keys": [
+      {
+        "_type": "PosKey",
+        "index": {
+          "index": 5,
+          "text": "ab"
+        },
+        "pos": 1
+      }
+    ],
+    "sub_index": 0,
+    "token": {
+      "index": 5,
+      "text": "ab"
+    }
+  },
+  "filename": "crates/context-stack/context-insert/src/join/context/pattern/borders.rs",
+  "level": "DEBUG",
+  "line_number": 43,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_insert::join::context::pattern::borders",
+  "timestamp": "2026-03-03T02:42:35.634358Z"
+}
+
+{
+  "fields": {
+    "message": "JoinedPatterns: JoinedPatterns {\n    patterns: [\n        Pattern(\n            [\n                \"b\"(1),\n                \"c\"(2),\n            ],\n        ),\n    ],\n    perfect: SinglePerfect(\n        None,\n    ),\n    range: None,\n    delta: PatternSubDeltas {\n        inner: {\n            PatternId(\n                1f82d6b0-46f0-43c3-9e85-c7098bf1269a,\n            ): 0,\n        },\n    },\n}"
+  },
+  "filename": "crates/context-stack/context-insert/src/join/joined/partition.rs",
+  "level": "DEBUG",
+  "line_number": 103,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_insert::join::joined::partition",
+  "timestamp": "2026-03-03T02:42:35.634576Z"
+}
+
+{
+  "fields": {
+    "had_pattern_replacement": false,
+    "joined.delta": {
+      "_type": "PatternSubDeltas",
+      "inner": {
+        "PatternId(1f82d6b0-46f0-43c3-9e85-c7098bf1269a)": 0
+      }
+    },
+    "message": "JoinPartitionInfo succeeded with delta",
+    "token": {
+      "index": 7,
+      "text": "bc"
+    }
+  },
+  "filename": "crates/context-stack/context-insert/src/join/context/node/merge/partition.rs",
+  "level": "DEBUG",
+  "line_number": 179,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_insert::join::context::node::merge::partition",
+  "timestamp": "2026-03-03T02:42:35.634762Z"
+}
+
+{
+  "fields": {
+    "message": "merge_partitions_in_range: reached target partition range",
+    "partition_range": {
+      "_type": "PartitionRange",
+      "_values": [
+        "1..=1"
+      ]
+    }
+  },
+  "filename": "crates/context-stack/context-insert/src/join/context/node/merge/iter.rs",
+  "level": "DEBUG",
+  "line_number": 414,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_insert::join::context::node::merge::iter",
+  "timestamp": "2026-03-03T02:42:35.634922Z"
+}
+
+{
+  "fields": {
+    "merged_token": {
+      "index": 7,
+      "text": "bc"
+    },
+    "message": "RangeMap INSERT: inserting token for range",
+    "partition_range": {
+      "_type": "PartitionRange",
+      "_values": [
+        "1..=1"
+      ]
+    }
+  },
+  "filename": "crates/context-stack/context-insert/src/join/context/node/merge/iter.rs",
+  "level": "DEBUG",
+  "line_number": 259,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_insert::join::context::node::merge::iter",
+  "timestamp": "2026-03-03T02:42:35.635117Z"
+}
+
+{
+  "fields": {
+    "merged_token": {
+      "index": 7,
+      "text": "bc"
+    },
+    "message": "Computed splits for merged token",
+    "num_splits": 0,
+    "partition_range": {
+      "_type": "PartitionRange",
+      "_values": [
+        "1..=1"
+      ]
+    }
+  },
+  "filename": "crates/context-stack/context-insert/src/join/context/node/merge/iter.rs",
+  "level": "DEBUG",
+  "line_number": 443,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_insert::join::context::node::merge::iter",
+  "timestamp": "2026-03-03T02:42:35.635269Z"
+}
+
+{
+  "fields": {
+    "message": "Target token extracted from range_map",
+    "target_token": {
+      "index": 7,
+      "text": "bc"
+    }
+  },
+  "filename": "crates/context-stack/context-insert/src/join/context/node/merge/node.rs",
+  "level": "INFO",
+  "line_number": 82,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_insert::join::context::node::merge::node",
+  "timestamp": "2026-03-03T02:42:35.635409Z"
+}
+
+{
+  "fields": {
+    "graph_op": {
+      "description": "Creating pattern at root 6: [0, 7]",
+      "graph_mutation": {
+        "ops": [
+          {
+            "from": 6,
+            "op": "add_edge",
+            "pattern_id": 1,
+            "to": 0
+          },
+          {
+            "from": 6,
+            "op": "add_edge",
+            "pattern_id": 1,
+            "to": 7
+          }
+        ]
+      },
+      "location": {
+        "completed_nodes": [],
+        "pending_children": [],
+        "pending_parents": [],
+        "root_node": null,
+        "selected_node": 6,
+        "trace_path": []
+      },
+      "op_type": "insert",
+      "path_graph": {
+        "cursor_pos": 0,
+        "done": false,
+        "end_edges": [],
+        "end_path": [],
+        "root": null,
+        "root_entry_edge": null,
+        "root_exit_edge": null,
+        "start_edges": [],
+        "start_node": null,
+        "start_path": [],
+        "success": false
+      },
+      "path_id": "insert/context-insert/1772505755625630800",
+      "query": {
+        "cursor_position": 0,
+        "query_tokens": [],
+        "query_width": 0
+      },
+      "step": 5,
+      "transition": {
+        "children": [
+          0,
+          7
+        ],
+        "kind": "create_pattern",
+        "parent": 6,
+        "pattern_id": 1
+      }
+    },
+    "message": "Creating pattern at root 6: [0, 7]",
+    "op_type": "Insert",
+    "step": 5
+  },
+  "filename": "crates/context-stack/context-trace/src/graph/visualization.rs",
+  "level": "INFO",
+  "line_number": 561,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_trace::graph::visualization",
+  "timestamp": "2026-03-03T02:42:35.635573Z"
+}
+
+{
+  "fields": {
+    "message": "Adding root pattern",
+    "pattern": {
+      "_type": "Pattern",
+      "_values": [
+        [
+          {
+            "index": 0,
+            "text": "a"
+          },
+          {
+            "index": 7,
+            "text": "bc"
+          }
+        ]
+      ]
+    },
+    "root": {
+      "index": 6,
+      "text": "abc"
+    }
+  },
+  "filename": "crates/context-stack/context-insert/src/join/context/node/merge/iter.rs",
+  "level": "DEBUG",
+  "line_number": 618,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_insert::join::context::node::merge::iter",
+  "timestamp": "2026-03-03T02:42:35.635767Z"
+}
+
+{
+  "fields": {
+    "message": "=== VERTEX DATA PATTERNS (actual token child patterns) ==="
+  },
+  "filename": "crates/context-stack/context-insert/src/join/context/node/merge/node.rs",
+  "level": "INFO",
+  "line_number": 109,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_insert::join::context::node::merge::node",
+  "timestamp": "2026-03-03T02:42:35.635938Z"
+}
+
+{
+  "fields": {
+    "message": "Root has 2 child pattern(s)",
+    "node": {
+      "index": 6,
+      "text": "abc"
+    },
+    "num_patterns": 2
+  },
+  "filename": "crates/context-stack/context-insert/src/join/context/node/merge/node.rs",
+  "level": "INFO",
+  "line_number": 115,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_insert::join::context::node::merge::node",
+  "timestamp": "2026-03-03T02:42:35.636046Z"
+}
+
+{
+  "fields": {
+    "message": "  Child Pattern 0: [\"ab\"(5), \"c\"(2)]"
+  },
+  "filename": "crates/context-stack/context-insert/src/join/context/node/merge/node.rs",
+  "level": "INFO",
+  "line_number": 123,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_insert::join::context::node::merge::node",
+  "timestamp": "2026-03-03T02:42:35.636193Z"
+}
+
+{
+  "fields": {
+    "message": "  Child Pattern 1: [\"a\"(0), \"bc\"(7)]"
+  },
+  "filename": "crates/context-stack/context-insert/src/join/context/node/merge/node.rs",
+  "level": "INFO",
+  "line_number": 123,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_insert::join::context::node::merge::node",
+  "timestamp": "2026-03-03T02:42:35.636309Z"
+}
+
+{
+  "fields": {
+    "message": "Target token has 1 child pattern(s)",
+    "num_patterns": 1,
+    "token": {
+      "index": 7,
+      "text": "bc"
+    }
+  },
+  "filename": "crates/context-stack/context-insert/src/join/context/node/merge/node.rs",
+  "level": "INFO",
+  "line_number": 129,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_insert::join::context::node::merge::node",
+  "timestamp": "2026-03-03T02:42:35.636412Z"
+}
+
+{
+  "fields": {
+    "message": "  Child Pattern 0: [\"b\"(1), \"c\"(2)]"
+  },
+  "filename": "crates/context-stack/context-insert/src/join/context/node/merge/node.rs",
+  "level": "INFO",
+  "line_number": 137,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_insert::join::context::node::merge::node",
+  "timestamp": "2026-03-03T02:42:35.636537Z"
+}
+
+{
+  "fields": {
+    "message": "=== END VERTEX DATA PATTERNS ==="
+  },
+  "filename": "crates/context-stack/context-insert/src/join/context/node/merge/node.rs",
+  "level": "INFO",
+  "line_number": 140,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_insert::join::context::node::merge::node",
+  "timestamp": "2026-03-03T02:42:35.636637Z"
+}
+
+{
+  "fields": {
+    "message": "=== VERTEX DATA PATTERNS (actual token child patterns) ==="
+  },
+  "filename": "crates/context-stack/context-insert/src/join/context/node/merge/node.rs",
+  "level": "INFO",
+  "line_number": 109,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_insert::join::context::node::merge::node",
+  "timestamp": "2026-03-03T02:42:35.636745Z"
+}
+
+{
+  "fields": {
+    "message": "Root has 2 child pattern(s)",
+    "node": {
+      "index": 6,
+      "text": "abc"
+    },
+    "num_patterns": 2
+  },
+  "filename": "crates/context-stack/context-insert/src/join/context/node/merge/node.rs",
+  "level": "INFO",
+  "line_number": 115,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_insert::join::context::node::merge::node",
+  "timestamp": "2026-03-03T02:42:35.636846Z"
+}
+
+{
+  "fields": {
+    "message": "  Child Pattern 0: [\"ab\"(5), \"c\"(2)]"
+  },
+  "filename": "crates/context-stack/context-insert/src/join/context/node/merge/node.rs",
+  "level": "INFO",
+  "line_number": 123,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_insert::join::context::node::merge::node",
+  "timestamp": "2026-03-03T02:42:35.636987Z"
+}
+
+{
+  "fields": {
+    "message": "  Child Pattern 1: [\"a\"(0), \"bc\"(7)]"
+  },
+  "filename": "crates/context-stack/context-insert/src/join/context/node/merge/node.rs",
+  "level": "INFO",
+  "line_number": 123,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_insert::join::context::node::merge::node",
+  "timestamp": "2026-03-03T02:42:35.637105Z"
+}
+
+{
+  "fields": {
+    "message": "Target token has 2 child pattern(s)",
+    "num_patterns": 2,
+    "token": {
+      "index": 6,
+      "text": "abc"
+    }
+  },
+  "filename": "crates/context-stack/context-insert/src/join/context/node/merge/node.rs",
+  "level": "INFO",
+  "line_number": 129,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_insert::join::context::node::merge::node",
+  "timestamp": "2026-03-03T02:42:35.637212Z"
+}
+
+{
+  "fields": {
+    "message": "  Child Pattern 0: [\"ab\"(5), \"c\"(2)]"
+  },
+  "filename": "crates/context-stack/context-insert/src/join/context/node/merge/node.rs",
+  "level": "INFO",
+  "line_number": 137,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_insert::join::context::node::merge::node",
+  "timestamp": "2026-03-03T02:42:35.637353Z"
+}
+
+{
+  "fields": {
+    "message": "  Child Pattern 1: [\"a\"(0), \"bc\"(7)]"
+  },
+  "filename": "crates/context-stack/context-insert/src/join/context/node/merge/node.rs",
+  "level": "INFO",
+  "line_number": 137,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_insert::join::context::node::merge::node",
+  "timestamp": "2026-03-03T02:42:35.637470Z"
+}
+
+{
+  "fields": {
+    "message": "=== END VERTEX DATA PATTERNS ==="
+  },
+  "filename": "crates/context-stack/context-insert/src/join/context/node/merge/node.rs",
+  "level": "INFO",
+  "line_number": 140,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_insert::join::context::node::merge::node",
+  "timestamp": "2026-03-03T02:42:35.637571Z"
+}
+
+{
+  "fields": {
+    "message": "Root join complete - returning target token",
+    "target_token": {
+      "index": 7,
+      "text": "bc"
+    }
+  },
+  "filename": "crates/context-stack/context-insert/src/join/context/node/merge/node.rs",
+  "level": "INFO",
+  "line_number": 99,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_insert::join::context::node::merge::node",
+  "timestamp": "2026-03-03T02:42:35.637669Z"
+}
+
+{
+  "fields": {
+    "graph_op": {
+      "description": "Join complete — created token 7",
+      "graph_mutation": {
+        "ops": [
+          {
+            "index": 7,
+            "op": "add_node",
+            "width": 0
+          }
+        ]
+      },
+      "location": {
+        "completed_nodes": [],
+        "pending_children": [],
+        "pending_parents": [],
+        "root_node": null,
+        "selected_node": 7,
+        "trace_path": []
+      },
+      "op_type": "insert",
+      "path_graph": {
+        "cursor_pos": 0,
+        "done": false,
+        "end_edges": [],
+        "end_path": [],
+        "root": null,
+        "root_entry_edge": null,
+        "root_exit_edge": null,
+        "start_edges": [],
+        "start_node": null,
+        "start_path": [],
+        "success": false
+      },
+      "path_id": "insert/context-insert/1772505755625630800",
+      "query": {
+        "cursor_position": 0,
+        "query_tokens": [],
+        "query_width": 0
+      },
+      "step": 6,
+      "transition": {
+        "kind": "join_complete",
+        "result_node": 7
+      }
+    },
+    "message": "Join complete — created token 7",
+    "op_type": "Insert",
+    "step": 6
+  },
+  "filename": "crates/context-stack/context-trace/src/graph/visualization.rs",
+  "level": "INFO",
+  "line_number": 561,
+  "span": "insert_or_get_complete",
+  "spans": [
+    "insert_or_get_complete"
+  ],
+  "target": "context_trace::graph::visualization",
+  "timestamp": "2026-03-03T02:42:35.637810Z"
+}
+
+{
+  "fields": {
+    "message": "close",
+    "time.busy": "27.8ms",
+    "time.idle": "8.00µs"
+  },
+  "filename": "crates/context-stack/context-insert/src/insert/context.rs",
+  "level": "INFO",
+  "line_number": 61,
+  "span": "insert_or_get_complete",
+  "spans": [],
+  "target": "context_insert::insert::context",
+  "timestamp": "2026-03-03T02:42:35.638000Z"
+}
+

@@ -1,0 +1,41 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "useDefineForClassFields": true,
+    "module": "ESNext",
+    "lib": ["ES2023", "DOM", "DOM.Iterable"],
+    "skipLibCheck": true,
+    "moduleResolution": "bundler",
+    "preserveSymlinks": true,
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "jsxImportSource": "preact",
+    
+    /* Strict Type-Checking */
+    "strict": true,
+    "noUncheckedIndexedAccess": false,
+    "noImplicitReturns": true,
+    "forceConsistentCasingInFileNames": true,
+    
+    /* Code Quality */
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    
+    "paths": {
+      "@/*": ["./src/*"],
+      "@context-engine/types": [
+        "./src/types/generated/index.ts"
+      ],
+      "@context-engine/viewer-api-frontend": [
+        "./node_modules/@context-engine/viewer-api-frontend/src/index.ts"
+      ]
+    },
+    "baseUrl": ".",
+    "types": ["vite/client", "node"]
+  },
+  "include": ["src"]
+}

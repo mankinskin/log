@@ -1,0 +1,30 @@
+# Log Viewer Configuration
+#
+# Relative paths are resolved from this file's directory.
+
+# Directory containing log files (default: auto-detected target/test-logs)
+log_dir = "../../context-stack/target/test-logs"
+
+# Workspace root for source file resolution (default: auto-detected via Cargo.toml)
+workspace_root = "../.."
+
+# Directory containing debug signature JSON files (default: <log_dir>/../debug_signatures)
+signatures_dir = "../../target/debug_signatures"
+
+# Directory for pre-built static frontend files - production mode (default: <CARGO_MANIFEST_DIR>/static)
+# static_dir = "./static"
+
+# Directory containing the Vite frontend project - dev mode (default: <CARGO_MANIFEST_DIR>/frontend)
+# frontend_dir = "./frontend"
+
+# Directory for the server's own log files (default: <CARGO_MANIFEST_DIR>/logs)
+# server_log_dir = "./logs"
+
+[server]
+host = "127.0.0.1"
+port = 3000
+# vite_port = 5173
+
+[logging]
+level = "info"
+# file_logging = false

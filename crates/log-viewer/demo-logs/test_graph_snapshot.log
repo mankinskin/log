@@ -1,0 +1,276 @@
+{
+  "fields": {
+    "log_file": {
+      "_type": "Option",
+      "_values": [
+        "C:/Users/linus_behrbohm/git/SECOND_CHECKOUT/graph_app/context-engine/target/test-logs/test_graph_snapshot.log"
+      ],
+      "_variant": "Some"
+    },
+    "message": "Test tracing initialized",
+    "test_name": "test_graph_snapshot"
+  },
+  "filename": "crates/context-stack/context-trace/src/logging/tracing_utils/test_tracing.rs",
+  "level": "INFO",
+  "line_number": 299,
+  "target": "context_trace::logging::tracing_utils::test_tracing",
+  "timestamp": "2026-03-03T02:42:43.682731Z"
+}
+
+{
+  "fields": {
+    "edge_count": 28,
+    "graph_data": {
+      "edges": [
+        {
+          "from": 5,
+          "pattern_idx": 0,
+          "sub_index": 0,
+          "to": 0
+        },
+        {
+          "from": 5,
+          "pattern_idx": 0,
+          "sub_index": 1,
+          "to": 1
+        },
+        {
+          "from": 6,
+          "pattern_idx": 0,
+          "sub_index": 0,
+          "to": 1
+        },
+        {
+          "from": 6,
+          "pattern_idx": 0,
+          "sub_index": 1,
+          "to": 2
+        },
+        {
+          "from": 7,
+          "pattern_idx": 0,
+          "sub_index": 0,
+          "to": 2
+        },
+        {
+          "from": 7,
+          "pattern_idx": 0,
+          "sub_index": 1,
+          "to": 3
+        },
+        {
+          "from": 8,
+          "pattern_idx": 0,
+          "sub_index": 0,
+          "to": 3
+        },
+        {
+          "from": 8,
+          "pattern_idx": 0,
+          "sub_index": 1,
+          "to": 4
+        },
+        {
+          "from": 9,
+          "pattern_idx": 0,
+          "sub_index": 0,
+          "to": 5
+        },
+        {
+          "from": 9,
+          "pattern_idx": 0,
+          "sub_index": 1,
+          "to": 2
+        },
+        {
+          "from": 9,
+          "pattern_idx": 1,
+          "sub_index": 0,
+          "to": 0
+        },
+        {
+          "from": 9,
+          "pattern_idx": 1,
+          "sub_index": 1,
+          "to": 6
+        },
+        {
+          "from": 10,
+          "pattern_idx": 0,
+          "sub_index": 0,
+          "to": 1
+        },
+        {
+          "from": 10,
+          "pattern_idx": 0,
+          "sub_index": 1,
+          "to": 7
+        },
+        {
+          "from": 10,
+          "pattern_idx": 1,
+          "sub_index": 0,
+          "to": 6
+        },
+        {
+          "from": 10,
+          "pattern_idx": 1,
+          "sub_index": 1,
+          "to": 3
+        },
+        {
+          "from": 11,
+          "pattern_idx": 0,
+          "sub_index": 0,
+          "to": 7
+        },
+        {
+          "from": 11,
+          "pattern_idx": 0,
+          "sub_index": 1,
+          "to": 4
+        },
+        {
+          "from": 11,
+          "pattern_idx": 1,
+          "sub_index": 0,
+          "to": 2
+        },
+        {
+          "from": 11,
+          "pattern_idx": 1,
+          "sub_index": 1,
+          "to": 8
+        },
+        {
+          "from": 12,
+          "pattern_idx": 0,
+          "sub_index": 0,
+          "to": 0
+        },
+        {
+          "from": 12,
+          "pattern_idx": 0,
+          "sub_index": 1,
+          "to": 10
+        },
+        {
+          "from": 12,
+          "pattern_idx": 1,
+          "sub_index": 0,
+          "to": 9
+        },
+        {
+          "from": 12,
+          "pattern_idx": 1,
+          "sub_index": 1,
+          "to": 3
+        },
+        {
+          "from": 13,
+          "pattern_idx": 0,
+          "sub_index": 0,
+          "to": 10
+        },
+        {
+          "from": 13,
+          "pattern_idx": 0,
+          "sub_index": 1,
+          "to": 4
+        },
+        {
+          "from": 13,
+          "pattern_idx": 1,
+          "sub_index": 0,
+          "to": 1
+        },
+        {
+          "from": 13,
+          "pattern_idx": 1,
+          "sub_index": 1,
+          "to": 11
+        }
+      ],
+      "nodes": [
+        {
+          "index": 0,
+          "label": "a",
+          "width": 1
+        },
+        {
+          "index": 1,
+          "label": "b",
+          "width": 1
+        },
+        {
+          "index": 2,
+          "label": "c",
+          "width": 1
+        },
+        {
+          "index": 3,
+          "label": "d",
+          "width": 1
+        },
+        {
+          "index": 4,
+          "label": "e",
+          "width": 1
+        },
+        {
+          "index": 5,
+          "label": "ab",
+          "width": 2
+        },
+        {
+          "index": 6,
+          "label": "bc",
+          "width": 2
+        },
+        {
+          "index": 7,
+          "label": "cd",
+          "width": 2
+        },
+        {
+          "index": 8,
+          "label": "de",
+          "width": 2
+        },
+        {
+          "index": 9,
+          "label": "abc",
+          "width": 3
+        },
+        {
+          "index": 10,
+          "label": "bcd",
+          "width": 3
+        },
+        {
+          "index": 11,
+          "label": "cde",
+          "width": 3
+        },
+        {
+          "index": 12,
+          "label": "abcd",
+          "width": 4
+        },
+        {
+          "index": 13,
+          "label": "bcde",
+          "width": 4
+        }
+      ]
+    },
+    "message": "graph_snapshot",
+    "node_count": 14
+  },
+  "filename": "crates/context-stack/context-trace/src/graph/snapshot.rs",
+  "level": "INFO",
+  "line_number": 112,
+  "target": "context_trace::graph::snapshot",
+  "timestamp": "2026-03-03T02:42:43.683883Z"
+}
+

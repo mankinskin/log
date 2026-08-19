@@ -1,0 +1,21 @@
+{
+  "name": "e2e",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:ui": "playwright test --ui",
+    "test:managed": "playwright test -c playwright.managed.config.ts",
+    "test:managed:headed": "playwright test -c playwright.managed.config.ts --headed",
+    "test:managed:ui": "playwright test -c playwright.managed.config.ts --ui",
+    "report": "playwright show-report playwright-report"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@playwright/test": "^1.58.2"
+  }
+}

@@ -1,0 +1,29 @@
+{
+    "name": "log-viewer-frontend",
+    "version": "0.1.0",
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "tsc && vite build",
+        "preview": "vite preview",
+        "test": "vitest run",
+        "test:watch": "vitest"
+    },
+    "dependencies": {
+        "@context-engine/viewer-api-frontend": "file:./viewer-api-frontend",
+        "@context-engine/types": "file:../../../packages/context-types",
+        "@preact/signals": "^1.2.2",
+        "chart.js": "^4.4.1",
+        "preact": "^10.19.3",
+        "prismjs": "^1.29.0"
+    },
+    "devDependencies": {
+        "@preact/preset-vite": "^2.8.1",
+        "@types/node": "^25.5.0",
+        "@types/prismjs": "^1.26.3",
+        "@webgpu/types": "^0.1.69",
+        "typescript": "^5.3.3",
+        "vite": "^5.0.11",
+        "vitest": "^3.2.4"
+    }
+}

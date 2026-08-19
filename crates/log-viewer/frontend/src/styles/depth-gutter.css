@@ -1,0 +1,85 @@
+/* Depth Gutter with CSS-drawn Tree Lines */
+
+.depth-gutter {
+  display: flex;
+  align-items: stretch;
+  flex-shrink: 0;
+  margin: 0;
+  padding: 0;
+  /* Position absolutely to fill full row height without affecting layout */
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.depth-line {
+  width: 12px;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  --line-color: var(--border-color);
+}
+
+/* │ Vertical pass-through - full height line on left edge */
+.depth-line.pass::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 6px;
+  border-left: 1px solid var(--line-color);
+}
+
+/* ┌ Top corner (span enter) - vertical from center DOWN + horizontal RIGHT */
+.depth-line.top-corner::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  bottom: 0;
+  left: 6px;
+  border-left: 1px solid var(--line-color);
+}
+.depth-line.top-corner::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 6px;
+  right: 0;
+  border-top: 1px solid var(--line-color);
+  transform: translateY(-0.5px);
+}
+
+/* └ Bottom corner (span exit) - vertical from top to CENTER + horizontal RIGHT */
+.depth-line.bottom-corner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 50%;
+  left: 6px;
+  border-left: 1px solid var(--line-color);
+}
+.depth-line.bottom-corner::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 6px;
+  right: 0;
+  border-top: 1px solid var(--line-color);
+  transform: translateY(-0.5px);
+}
+
+/* Span highlighting */
+.log-entry.span-enter,
+.log-entry.span-exit,
+.log-entry.in-span {
+  /* Remove border-left - using gutter colors instead */
+}
+
+.log-entry.span-highlighted {
+  background: rgba(255, 255, 255, 0.06) !important;
+}
+
+.log-entry.span-highlighted .span-name {
+  text-decoration: underline;
+}

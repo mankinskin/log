@@ -1,0 +1,172 @@
+/* Effects Debug — showcase page styles */
+
+.effects-debug {
+    padding: 24px 32px;
+    max-width: 900px;
+    overflow-y: auto;
+    height: 100%;
+}
+
+.effects-debug-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin: 0 0 4px;
+    color: var(--text-primary, #e0e0e0);
+}
+
+.effects-debug-subtitle {
+    font-size: 0.85rem;
+    color: var(--text-secondary, #888);
+    margin: 0 0 24px;
+}
+
+.effects-section {
+    margin-bottom: 32px;
+}
+
+.effects-section h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0 0 4px;
+    color: var(--text-primary, #d0d0d0);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    padding-bottom: 6px;
+}
+
+.effects-hint {
+    font-size: 0.8rem;
+    color: var(--text-secondary, #777);
+    margin: 4px 0 12px;
+}
+
+/* Grid of demo log entries */
+.effects-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.effects-grid .log-entry {
+    flex: 1 1 160px;
+    min-height: 64px;
+    padding: 12px 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.15s ease;
+}
+
+.effects-grid .log-entry:hover {
+    transform: scale(1.02);
+}
+
+.effects-label {
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+}
+
+.effects-desc {
+    font-size: 0.75rem;
+    color: var(--text-secondary, #888);
+    margin-top: 4px;
+}
+
+/* Particle info cards */
+.effects-particle-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.effects-particle-card {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 12px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.effects-particle-card strong {
+    font-size: 0.85rem;
+    color: var(--text-primary, #d0d0d0);
+}
+
+.effects-particle-card p {
+    font-size: 0.75rem;
+    color: var(--text-secondary, #888);
+    margin: 4px 0 0;
+    line-height: 1.4;
+}
+
+.effects-particle-swatch {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.effects-particle-swatch.metal-spark {
+    background: radial-gradient(circle, #ffcc44, #cc6611, #442200);
+    box-shadow: 0 0 6px rgba(255, 140, 30, 0.5);
+}
+
+.effects-particle-swatch.ember {
+    background: radial-gradient(circle, #ff8833, #993300, #331100);
+    box-shadow: 0 0 6px rgba(255, 100, 20, 0.4);
+}
+
+.effects-particle-swatch.angel-shard {
+    background: radial-gradient(circle, #fffde8, #ddc860, #886620);
+    box-shadow: 0 0 8px rgba(255, 240, 160, 0.5);
+}
+
+.effects-particle-swatch.glitter {
+    background: radial-gradient(circle, #eef0ff, #9090dd, #444488);
+    box-shadow: 0 0 6px rgba(180, 180, 255, 0.5);
+}
+
+/* Background info list */
+.effects-bg-info ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.effects-bg-info li {
+    font-size: 0.8rem;
+    color: var(--text-secondary, #999);
+    padding: 4px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.effects-bg-info li strong {
+    color: var(--text-primary, #d0d0d0);
+}
+
+/* Large hover target */
+.effects-large-target {
+    min-height: 140px !important;
+    flex: 1 1 100% !important;
+}
+
+.effects-large-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 8px;
+}
+
+.effects-large-content .effects-label {
+    font-size: 1.1rem;
+}
+
+.effects-large-content .effects-desc {
+    max-width: 500px;
+    line-height: 1.5;
+}

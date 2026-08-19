@@ -1,0 +1,16 @@
+name: state
+description: Application state and session management
+
+files:
+  - name: state.rs
+    description: AppState and session configuration for request handling
+
+key_types:
+  - AppState: Shared application state containing log parser and config
+  - SessionConfig: Per-client session configuration
+  - SessionStore: Storage for session configurations
+
+submodules: []
+source_files:
+  - src/state.rs
+last_synced: null

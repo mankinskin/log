@@ -1,0 +1,14 @@
+name: main
+description: Server entry point with HTTP and MCP mode handling
+
+files:
+  - name: main.rs
+    description: Entry point for log-viewer server with HTTP and MCP modes
+
+key_types:
+  - main: Entry point function that starts HTTP or MCP server based on args
+
+submodules: []
+source_files:
+  - src/main.rs
+last_synced: null

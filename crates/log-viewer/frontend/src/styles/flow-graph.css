@@ -1,0 +1,144 @@
+/* Flow Graph Visualization */
+
+.flow-graph {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-primary);
+}
+
+.flow-graph.empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flow-header {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0 4px;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  flex-shrink: 0;
+}
+
+.flow-warning {
+  color: var(--level-warn);
+  font-size: 17px;
+}
+
+.flow-legend {
+  display: flex;
+  gap: 4px;
+  margin-left: auto;
+  font-size: 17px;
+  color: var(--text-secondary);
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.legend-item .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.legend-item .dot.event { background: var(--level-info); }
+.legend-item .dot.span-enter { background: var(--accent-green); }
+.legend-item .dot.span-exit { background: var(--accent-orange); }
+
+/* Viewport: stacking context for Cytoscape + HTML overlay */
+.flow-viewport {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Cytoscape canvas — renders edges only (nodes invisible) */
+.flow-cy-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Overlay container — transforms with Cytoscape pan/zoom.
+   z-index: 2 keeps it above Cytoscape's internal canvases. */
+.flow-nodes-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  transform-origin: 0 0;
+  z-index: 2;
+}
+
+/* ---- Flow Nodes — styled like log-entry containers ---- */
+
+.flow-node {
+  position: absolute;
+  pointer-events: auto;
+  cursor: pointer;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 8px 12px;
+  gap: 4px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 1.3;
+  color: var(--text-primary);
+  border-radius: 3px;
+  /* Semi-transparent so shader effects bleed through, but opaque enough to read */
+  background: rgba(25, 25, 32, 0.65);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  transition: background 0.12s ease;
+}
+
+.flow-node:hover {
+  background: var(--bg-hover);
+}
+
+/* Level-specific left accent bar (like log-entry level indicators) */
+.flow-node.level-error  { border-left: 3px solid var(--level-error); }
+.flow-node.level-warn   { border-left: 3px solid var(--level-warn); }
+.flow-node.level-info   { border-left: 3px solid var(--level-info); }
+.flow-node.level-debug  { border-left: 3px solid var(--level-debug); }
+.flow-node.level-trace  { border-left: 3px solid var(--level-trace); }
+
+/* Span type accents */
+.flow-node.type-span_enter { border-top: 2px solid #2ecc71; }
+.flow-node.type-span_exit  { border-bottom: 2px dashed #e74c3c; }
+
+/* Row 1: badges and identifiers */
+.flow-node-row1 {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* Message text */
+.flow-node-message {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--text-secondary);
+  font-size: 11px;
+}
+
+/* Timestamp */
+.flow-node-time {
+  font-size: 9px;
+  color: var(--text-muted);
+  opacity: 0.6;
+}

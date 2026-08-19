@@ -1,0 +1,14 @@
+name: router
+description: HTTP routing configuration
+
+files:
+  - name: router.rs
+    description: Router setup with all API routes and static file serving
+
+key_types:
+  - create_router: Function to create the Axum router with all routes
+
+submodules: []
+source_files:
+  - src/router.rs
+last_synced: null

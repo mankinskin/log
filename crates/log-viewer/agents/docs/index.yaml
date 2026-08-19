@@ -1,0 +1,73 @@
+name: log-viewer
+version: "0.1.0"
+description: >
+  Web-based log viewer for tracing logs from the context-engine project.
+  Provides HTTP API and MCP tools for viewing, searching, and querying
+  structured log files with JQ support.
+
+modules:
+  - name: main
+    path: main
+    description: Server entry point with HTTP and MCP mode handling
+  - name: config
+    path: config
+    description: Configuration loading from files and environment
+  - name: log_parser
+    path: log_parser
+    description: Log file parsing and structured data extraction
+  - name: query
+    path: query
+    description: JQ query engine for log filtering
+  - name: handlers
+    path: handlers
+    description: HTTP request handlers for API endpoints
+  - name: router
+    path: router
+    description: HTTP routing configuration
+  - name: state
+    path: state
+    description: Application state and session management
+  - name: source
+    path: source
+    description: Source file resolution and language detection
+  - name: mcp_server
+    path: mcp_server
+    description: MCP server implementation for agent integration
+
+exported_items:
+  types:
+    - AppState: Application state containing log directory and parser
+    - Config: Configuration from file or environment
+    - LogEntry: Parsed log entry structure
+    - LogParser: Parser for structured log files
+    - SessionConfig: Session configuration for customization
+    - SessionStore: Thread-safe session storage
+  traits: []
+  macros: []
+
+dependencies:
+  - viewer-api: Shared server infrastructure
+  - tokio: Async runtime
+  - axum: HTTP framework
+  - serde: Serialization
+  - jaq-core: JQ query engine
+  - rmcp: MCP protocol
+
+features:
+  - HTTP API for log listing and viewing
+  - JQ query support for log filtering
+  - Source file resolution and preview
+  - Session-based customization
+  - MCP server mode for agent integration
+  - Configurable via TOML or environment
+
+source_files:
+  - src/main.rs
+  - src/config.rs
+  - src/log_parser.rs
+  - src/query.rs
+  - src/handlers.rs
+  - src/router.rs
+  - src/state.rs
+  - src/source.rs
+  - src/mcp_server.rs
