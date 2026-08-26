@@ -10,7 +10,10 @@ path = "src/main.rs"
 
 [dependencies]
 # Shared viewer infrastructure
-viewer-api = { git = "https://github.com/mankinskin/viewer-api", branch = "main", features = ["ts-gen"] }
+viewer-api = { git = "https://github.com/mankinskin/viewer-api", branch = "main" }
+
+# Log parsing and log-domain API types
+log-api = { git = "https://github.com/mankinskin/log", branch = "main" }
 
 # App-specific
 tokio = { version = "1", features = ["full"] }

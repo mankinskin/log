@@ -15,7 +15,9 @@ use test_api::{
 };
 
 mod error;
+pub mod log_parser;
 mod store;
+pub mod types;
 
 pub use error::LogError;
 pub use store::{
