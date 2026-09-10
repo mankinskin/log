@@ -5,14 +5,10 @@ use test_api::ValidationExecution;
 
 use super::*;
 use crate::{
-    RuntimeLogFormat,
-    RuntimeLogLinks,
-    RuntimeLogSession,
-    RuntimeLogStatus,
-    RuntimeLogTransport,
-    ValidationLogCapture,
-    ValidationLogKind,
+    OperationJournalQuery, RuntimeLogFormat, RuntimeLogLinks, RuntimeLogSession, RuntimeLogStatus,
+    RuntimeLogTransport, ValidationLogCapture, ValidationLogKind,
 };
+use memory_kernel::OperationJournal;
 
 fn at(secs: u32) -> chrono::DateTime<chrono::Utc> {
     chrono::Utc
@@ -25,11 +21,7 @@ fn config(dir: &TempDir) -> LogStoreConfig {
     LogStoreConfig::new(dir.path().join(".log"), "default")
 }
 
-fn capture(
-    id: &str,
-    exec_id: &str,
-    secs: u32,
-) -> ValidationLogCapture {
+fn capture(id: &str, exec_id: &str, secs: u32) -> ValidationLogCapture {
     let execution = ValidationExecution::passed(exec_id, "vt-a", at(secs));
     ValidationLogCapture::from_execution(
         id,
@@ -41,10 +33,7 @@ fn capture(
     )
 }
 
-fn runtime_session(
-    id: &str,
-    secs: u32,
-) -> RuntimeLogSession {
+fn runtime_session(id: &str, secs: u32) -> RuntimeLogSession {
     let mut session = RuntimeLogSession::new(
         id,
         at(secs),
@@ -68,6 +57,28 @@ fn runtime_session(
         graph_operation_ids: vec!["graph-op-1".to_string()],
     };
     session
+}
+
+fn operation_journal() -> OperationJournal {
+    serde_json::from_value(serde_json::json!({
+        "journal_id": "11111111-1111-4111-8111-111111111111",
+        "operation_id": "22222222-2222-4222-8222-222222222222",
+        "run_id": "33333333-3333-4333-8333-333333333333",
+        "schema_version": "operation-journal/v1",
+        "operation_kind": "move",
+        "component": "memory-kernel",
+        "preflight": {"inputs": {}, "ready": true},
+        "steps": [],
+        "phases": [],
+        "reversibility": "rollbackable",
+        "recovery": {
+            "resume_guidance": "resume",
+            "rollback_guidance": "rollback"
+        },
+        "links": {},
+        "domain_data": {}
+    }))
+    .unwrap()
 }
 
 #[test]
@@ -173,6 +184,26 @@ fn missing_runtime_session_reports_not_found() {
         cfg.get_runtime_session("nope"),
         Err(LogError::RuntimeSessionNotFound(_))
     ));
+}
+
+#[test]
+fn records_and_queries_operation_journal_by_kind() {
+    let dir = TempDir::new().unwrap();
+    let cfg = config(&dir);
+    let journal = operation_journal();
+    let journal_id = journal.journal_id.to_string();
+
+    let path = cfg.record_operation_journal(&journal).unwrap();
+    assert!(path.ends_with(format!("journals/{journal_id}.json")));
+    assert_eq!(cfg.get_operation_journal(&journal_id).unwrap(), journal);
+
+    let journals = cfg
+        .list_operation_journals(&OperationJournalQuery {
+            operation_kind: Some("move".to_string()),
+            ..Default::default()
+        })
+        .unwrap();
+    assert_eq!(journals, vec![journal]);
 }
 
 #[test]

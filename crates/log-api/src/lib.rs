@@ -23,6 +23,7 @@ pub use error::LogError;
 pub use store::{
     LogCaptureQuery,
     LogStoreConfig,
+    OperationJournalQuery,
     RuntimeLogSessionQuery,
 };
 

@@ -21,6 +21,9 @@ pub enum LogError {
     #[error("runtime log session not found: {0}")]
     RuntimeSessionNotFound(String),
 
+    #[error("operation journal not found: {0}")]
+    OperationJournalNotFound(String),
+
     #[error("failed to serialize log data for {path}: {source}")]
     Serialize {
         path: PathBuf,

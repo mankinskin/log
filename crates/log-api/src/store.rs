@@ -1,26 +1,16 @@
 use std::{
     fs,
     io::ErrorKind,
-    path::{
-        Path,
-        PathBuf,
-    },
+    path::{Path, PathBuf},
 };
 
 use serde::de::DeserializeOwned;
 
 use crate::{
-    LogError,
-    RuntimeLogSession,
-    RuntimeLogStatus,
-    RuntimeLogTransport,
-    ValidationLogCapture,
+    LogError, RuntimeLogSession, RuntimeLogStatus, RuntimeLogTransport, ValidationLogCapture,
 };
-use test_api::{
-    IdentifiableArtifact,
-    InteroperableArtifact,
-    TraceableArtifact,
-};
+use memory_kernel::OperationJournal;
+use test_api::{IdentifiableArtifact, InteroperableArtifact, TraceableArtifact};
 
 /// Configuration describing where the validation-log store lives.
 ///
@@ -62,11 +52,16 @@ pub struct RuntimeLogSessionQuery {
     pub limit: Option<usize>,
 }
 
+/// Filter for persisted generic operation journals.
+#[derive(Debug, Clone, Default, PartialEq, Eq)]
+pub struct OperationJournalQuery {
+    pub operation_kind: Option<String>,
+    pub component: Option<String>,
+    pub limit: Option<usize>,
+}
+
 impl LogStoreConfig {
-    pub fn new(
-        root: impl Into<PathBuf>,
-        workspace_slug: impl Into<String>,
-    ) -> Self {
+    pub fn new(root: impl Into<PathBuf>, workspace_slug: impl Into<String>) -> Self {
         Self {
             root: root.into(),
             workspace_slug: workspace_slug.into(),
@@ -74,15 +69,9 @@ impl LogStoreConfig {
     }
 
     /// Persist (create or overwrite) a log capture. Returns the file path.
-    pub fn record_capture(
-        &self,
-        capture: &ValidationLogCapture,
-    ) -> Result<PathBuf, LogError> {
+    pub fn record_capture(&self, capture: &ValidationLogCapture) -> Result<PathBuf, LogError> {
         // Compile-time check that ValidationLogCapture implements InteroperableArtifact + IdentifiableArtifact
-        fn assert_interoperable<
-            T: InteroperableArtifact + IdentifiableArtifact<Id = str>,
-        >() {
-        }
+        fn assert_interoperable<T: InteroperableArtifact + IdentifiableArtifact<Id = str>>() {}
         assert_interoperable::<ValidationLogCapture>();
 
         capture.validate_interoperability_contract()?;
@@ -92,13 +81,9 @@ impl LogStoreConfig {
     }
 
     /// Read a log capture by id.
-    pub fn get_capture(
-        &self,
-        id: &str,
-    ) -> Result<ValidationLogCapture, LogError> {
+    pub fn get_capture(&self, id: &str) -> Result<ValidationLogCapture, LogError> {
         let path = self.capture_path(id)?;
-        read_json_if_exists(&path)?
-            .ok_or_else(|| LogError::CaptureNotFound(id.to_string()))
+        read_json_if_exists(&path)?.ok_or_else(|| LogError::CaptureNotFound(id.to_string()))
     }
 
     /// Query stored captures, sorted by `captured_at` descending (newest first).
@@ -106,8 +91,7 @@ impl LogStoreConfig {
         &self,
         query: &LogCaptureQuery,
     ) -> Result<Vec<ValidationLogCapture>, LogError> {
-        let mut captures: Vec<ValidationLogCapture> =
-            self.read_dir_json(&self.captures_dir()?)?;
+        let mut captures: Vec<ValidationLogCapture> = self.read_dir_json(&self.captures_dir()?)?;
 
         captures.retain(|capture| {
             if let Some(execution_id) = &query.execution_id {
@@ -120,9 +104,7 @@ impl LogStoreConfig {
             true
         });
 
-        captures.sort_by(|a, b| {
-            b.captured_at.cmp(&a.captured_at).then(a.id.cmp(&b.id))
-        });
+        captures.sort_by(|a, b| b.captured_at.cmp(&a.captured_at).then(a.id.cmp(&b.id)));
 
         if let Some(limit) = query.limit {
             captures.truncate(limit);
@@ -131,15 +113,9 @@ impl LogStoreConfig {
     }
 
     /// Persist (create or overwrite) a runtime log session. Returns the file path.
-    pub fn record_runtime_session(
-        &self,
-        session: &RuntimeLogSession,
-    ) -> Result<PathBuf, LogError> {
+    pub fn record_runtime_session(&self, session: &RuntimeLogSession) -> Result<PathBuf, LogError> {
         // Compile-time check that RuntimeLogSession implements TraceableArtifact + IdentifiableArtifact
-        fn assert_interoperable<
-            T: TraceableArtifact + IdentifiableArtifact<Id = str>,
-        >() {
-        }
+        fn assert_interoperable<T: TraceableArtifact + IdentifiableArtifact<Id = str>>() {}
         assert_interoperable::<RuntimeLogSession>();
 
         session.validate_interoperability_contract()?;
@@ -149,13 +125,9 @@ impl LogStoreConfig {
     }
 
     /// Read a runtime log session by id.
-    pub fn get_runtime_session(
-        &self,
-        id: &str,
-    ) -> Result<RuntimeLogSession, LogError> {
+    pub fn get_runtime_session(&self, id: &str) -> Result<RuntimeLogSession, LogError> {
         let path = self.runtime_session_path(id)?;
-        read_json_if_exists(&path)?
-            .ok_or_else(|| LogError::RuntimeSessionNotFound(id.to_string()))
+        read_json_if_exists(&path)?.ok_or_else(|| LogError::RuntimeSessionNotFound(id.to_string()))
     }
 
     /// Query runtime log sessions, sorted by `started_at` descending (newest first).
@@ -166,19 +138,57 @@ impl LogStoreConfig {
         let mut sessions: Vec<RuntimeLogSession> =
             self.read_dir_json(&self.runtime_sessions_dir()?)?;
 
-        sessions.retain(|session| {
-            Self::matches_runtime_session_query(session, query)
-        });
+        sessions.retain(|session| Self::matches_runtime_session_query(session, query));
 
-        sessions.sort_by(|a, b| {
-            b.started_at.cmp(&a.started_at).then(a.id.cmp(&b.id))
-        });
+        sessions.sort_by(|a, b| b.started_at.cmp(&a.started_at).then(a.id.cmp(&b.id)));
 
         if let Some(limit) = query.limit {
             sessions.truncate(limit);
         }
 
         Ok(sessions)
+    }
+
+    /// Persist a generic operation journal without taking ownership of the
+    /// domain mutation which produced it.
+    pub fn record_operation_journal(
+        &self,
+        journal: &OperationJournal,
+    ) -> Result<PathBuf, LogError> {
+        let path = self.operation_journal_path(&journal.journal_id.to_string())?;
+        write_json(&path, journal)?;
+        Ok(path)
+    }
+
+    /// Read a generic operation journal by its durable journal id.
+    pub fn get_operation_journal(&self, journal_id: &str) -> Result<OperationJournal, LogError> {
+        let path = self.operation_journal_path(journal_id)?;
+        read_json_if_exists(&path)?
+            .ok_or_else(|| LogError::OperationJournalNotFound(journal_id.to_string()))
+    }
+
+    /// Query generic operation journals by operation kind or component.
+    pub fn list_operation_journals(
+        &self,
+        query: &OperationJournalQuery,
+    ) -> Result<Vec<OperationJournal>, LogError> {
+        let mut journals: Vec<OperationJournal> =
+            self.read_dir_json(&self.operation_journals_dir()?)?;
+        journals.retain(|journal| {
+            query
+                .operation_kind
+                .as_ref()
+                .is_none_or(|operation_kind| &journal.operation_kind == operation_kind)
+                && query
+                    .component
+                    .as_ref()
+                    .is_none_or(|component| &journal.component == component)
+        });
+        journals.sort_by(|left, right| left.journal_id.cmp(&right.journal_id));
+        if let Some(limit) = query.limit {
+            journals.truncate(limit);
+        }
+        Ok(journals)
     }
 
     fn matches_runtime_session_query(
@@ -279,9 +289,8 @@ impl LogStoreConfig {
         if self.root.as_os_str().is_empty() {
             return Err(LogError::EmptyRoot);
         }
-        validate_segment(&self.workspace_slug).map_err(|_| {
-            LogError::InvalidWorkspaceSlug(self.workspace_slug.clone())
-        })?;
+        validate_segment(&self.workspace_slug)
+            .map_err(|_| LogError::InvalidWorkspaceSlug(self.workspace_slug.clone()))?;
         Ok(self.root.join(&self.workspace_slug))
     }
 
@@ -293,37 +302,37 @@ impl LogStoreConfig {
         Ok(self.workspace_dir()?.join("sessions"))
     }
 
-    fn capture_path(
-        &self,
-        id: &str,
-    ) -> Result<PathBuf, LogError> {
-        validate_segment(id)
-            .map_err(|_| LogError::InvalidId(id.to_string()))?;
+    fn operation_journals_dir(&self) -> Result<PathBuf, LogError> {
+        Ok(self.workspace_dir()?.join("journals"))
+    }
+
+    fn capture_path(&self, id: &str) -> Result<PathBuf, LogError> {
+        validate_segment(id).map_err(|_| LogError::InvalidId(id.to_string()))?;
         Ok(self.captures_dir()?.join(format!("{id}.json")))
     }
 
-    fn runtime_session_path(
-        &self,
-        id: &str,
-    ) -> Result<PathBuf, LogError> {
-        validate_segment(id)
-            .map_err(|_| LogError::InvalidId(id.to_string()))?;
+    fn runtime_session_path(&self, id: &str) -> Result<PathBuf, LogError> {
+        validate_segment(id).map_err(|_| LogError::InvalidId(id.to_string()))?;
         Ok(self.runtime_sessions_dir()?.join(format!("{id}.json")))
     }
 
-    fn read_dir_json<T: DeserializeOwned>(
-        &self,
-        dir: &Path,
-    ) -> Result<Vec<T>, LogError> {
+    fn operation_journal_path(&self, journal_id: &str) -> Result<PathBuf, LogError> {
+        validate_segment(journal_id).map_err(|_| LogError::InvalidId(journal_id.to_string()))?;
+        Ok(self
+            .operation_journals_dir()?
+            .join(format!("{journal_id}.json")))
+    }
+
+    fn read_dir_json<T: DeserializeOwned>(&self, dir: &Path) -> Result<Vec<T>, LogError> {
         let entries = match fs::read_dir(dir) {
             Ok(entries) => entries,
-            Err(err) if err.kind() == ErrorKind::NotFound =>
-                return Ok(Vec::new()),
-            Err(source) =>
+            Err(err) if err.kind() == ErrorKind::NotFound => return Ok(Vec::new()),
+            Err(source) => {
                 return Err(LogError::Io {
                     path: dir.to_path_buf(),
                     source,
-                }),
+                })
+            }
         };
 
         let mut items = Vec::new();
@@ -344,21 +353,16 @@ impl LogStoreConfig {
     }
 }
 
-fn write_json<T: serde::Serialize>(
-    path: &Path,
-    value: &T,
-) -> Result<(), LogError> {
+fn write_json<T: serde::Serialize>(path: &Path, value: &T) -> Result<(), LogError> {
     if let Some(parent) = path.parent() {
         fs::create_dir_all(parent).map_err(|source| LogError::Io {
             path: parent.to_path_buf(),
             source,
         })?;
     }
-    let json = serde_json::to_string_pretty(value).map_err(|source| {
-        LogError::Serialize {
-            path: path.to_path_buf(),
-            source,
-        }
+    let json = serde_json::to_string_pretty(value).map_err(|source| LogError::Serialize {
+        path: path.to_path_buf(),
+        source,
     })?;
     fs::write(path, json).map_err(|source| LogError::Io {
         path: path.to_path_buf(),
@@ -366,23 +370,20 @@ fn write_json<T: serde::Serialize>(
     })
 }
 
-fn read_json_if_exists<T: DeserializeOwned>(
-    path: &Path
-) -> Result<Option<T>, LogError> {
+fn read_json_if_exists<T: DeserializeOwned>(path: &Path) -> Result<Option<T>, LogError> {
     let bytes = match fs::read(path) {
         Ok(bytes) => bytes,
         Err(err) if err.kind() == ErrorKind::NotFound => return Ok(None),
-        Err(source) =>
+        Err(source) => {
             return Err(LogError::Io {
                 path: path.to_path_buf(),
                 source,
-            }),
-    };
-    let value = serde_json::from_slice(&bytes).map_err(|source| {
-        LogError::Deserialize {
-            path: path.to_path_buf(),
-            source,
+            })
         }
+    };
+    let value = serde_json::from_slice(&bytes).map_err(|source| LogError::Deserialize {
+        path: path.to_path_buf(),
+        source,
     })?;
     Ok(Some(value))
 }
@@ -393,8 +394,7 @@ fn validate_segment(segment: &str) -> Result<(), ()> {
     if segment.is_empty() || segment == "." || segment == ".." {
         return Err(());
     }
-    if segment.contains('/') || segment.contains('\\') || segment.contains("..")
-    {
+    if segment.contains('/') || segment.contains('\\') || segment.contains("..") {
         return Err(());
     }
     if segment
