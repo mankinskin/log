@@ -24,6 +24,9 @@ pub enum LogError {
     #[error("operation journal not found: {0}")]
     OperationJournalNotFound(String),
 
+    #[error("failed to project operation journal: {0}")]
+    OperationJournalProjection(String),
+
     #[error("failed to serialize log data for {path}: {source}")]
     Serialize {
         path: PathBuf,

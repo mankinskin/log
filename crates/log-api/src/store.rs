@@ -9,7 +9,7 @@ use serde::de::DeserializeOwned;
 use crate::{
     LogError, RuntimeLogSession, RuntimeLogStatus, RuntimeLogTransport, ValidationLogCapture,
 };
-use memory_kernel::OperationJournal;
+use memory_kernel::{storage::move_kernel::MoveJournal, OperationJournal};
 use test_api::{IdentifiableArtifact, InteroperableArtifact, TraceableArtifact};
 
 /// Configuration describing where the validation-log store lives.
@@ -158,6 +158,13 @@ impl LogStoreConfig {
         let path = self.operation_journal_path(&journal.journal_id.to_string())?;
         write_json(&path, journal)?;
         Ok(path)
+    }
+
+    /// Project and persist a move journal as the shared operation envelope.
+    pub fn record_move_journal(&self, journal: &MoveJournal) -> Result<PathBuf, LogError> {
+        let operation_journal = OperationJournal::from_move_journal(journal)
+            .map_err(|error| LogError::OperationJournalProjection(error.to_string()))?;
+        self.record_operation_journal(&operation_journal)
     }
 
     /// Read a generic operation journal by its durable journal id.

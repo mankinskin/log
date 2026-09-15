@@ -81,6 +81,30 @@ fn operation_journal() -> OperationJournal {
     .unwrap()
 }
 
+fn move_journal() -> memory_kernel::storage::move_kernel::MoveJournal {
+    serde_json::from_value(serde_json::json!({
+        "id": "11111111-1111-4111-8111-111111111111",
+        "entity_id": "22222222-2222-4222-8222-222222222222",
+        "source_store_root": "/stores/source",
+        "target_store_root": "/stores/target",
+        "source_entity_path": "/stores/source/entity",
+        "destination_entity_path": "/stores/target/entity",
+        "phase": "Moved",
+        "created_at": "2026-06-28T12:00:00Z",
+        "updated_at": "2026-06-28T12:00:01Z",
+        "steps": ["moved entity"],
+        "rollback_steps": ["restore source entity"],
+        "lock_paths": ["/stores/source/move.lock"],
+        "migrated_board_entries": [],
+        "rewritten_path_files": [],
+        "manual_followups": [],
+        "phase_timings_ms": {"rename_entity_ms": 1},
+        "failure": null,
+        "next_recovery_step": null
+    }))
+    .unwrap()
+}
+
 #[test]
 fn records_and_reads_capture() {
     let dir = TempDir::new().unwrap();
@@ -204,6 +228,23 @@ fn records_and_queries_operation_journal_by_kind() {
         })
         .unwrap();
     assert_eq!(journals, vec![journal]);
+}
+
+#[test]
+fn projects_and_persists_move_journal_as_operation_journal() {
+    let dir = TempDir::new().unwrap();
+    let cfg = config(&dir);
+    let move_journal = move_journal();
+    let journal_id = move_journal.id.to_string();
+
+    let path = cfg.record_move_journal(&move_journal).unwrap();
+
+    assert!(path.ends_with(format!("journals/{journal_id}.json")));
+    let persisted = cfg.get_operation_journal(&journal_id).unwrap();
+    assert_eq!(
+        serde_json::to_value(persisted.into_move_journal().unwrap()).unwrap(),
+        serde_json::to_value(move_journal).unwrap()
+    );
 }
 
 #[test]
