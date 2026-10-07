@@ -3,35 +3,19 @@
 //! Provides tools for agents to query and analyze tracing logs.
 
 use rmcp::{
-    handler::server::{
-        tool::ToolRouter,
-        wrapper::Parameters,
-    },
+    handler::server::{tool::ToolRouter, wrapper::Parameters},
     model::*,
     schemars,
     schemars::JsonSchema,
-    tool,
-    tool_handler,
-    tool_router,
+    tool, tool_handler, tool_router,
     transport::stdio,
-    ErrorData as McpError,
-    ServerHandler,
-    ServiceExt,
+    ErrorData as McpError, ServerHandler, ServiceExt,
 };
-use serde::{
-    Deserialize,
-    Serialize,
-};
-use std::{
-    path::PathBuf,
-    sync::Arc,
-};
+use serde::{Deserialize, Serialize};
+use std::{path::PathBuf, sync::Arc};
 
 use crate::{
-    log_parser::{
-        LogEntry,
-        LogParser,
-    },
+    log_parser::{LogEntry, LogParser},
     query::JqFilter,
     to_unix_path,
 };
@@ -46,10 +30,7 @@ pub struct LogServer {
 }
 
 impl LogServer {
-    pub fn new(
-        log_dir: PathBuf,
-        workspace_root: PathBuf,
-    ) -> Self {
+    pub fn new(log_dir: PathBuf, workspace_root: PathBuf) -> Self {
         Self {
             log_dir,
             workspace_root,
@@ -187,10 +168,7 @@ impl LogServer {
         }
 
         let entries = std::fs::read_dir(&self.log_dir).map_err(|e| {
-            McpError::internal_error(
-                format!("Failed to read log directory: {}", e),
-                None,
-            )
+            McpError::internal_error(format!("Failed to read log directory: {}", e), None)
         })?;
 
         let pattern = input.pattern.as_deref();
@@ -199,8 +177,7 @@ impl LogServer {
         for entry in entries.flatten() {
             let path = entry.path();
             if path.extension().map_or(false, |ext| ext == "log") {
-                let name =
-                    path.file_name().unwrap().to_string_lossy().to_string();
+                let name = path.file_name().unwrap().to_string_lossy().to_string();
 
                 // Apply pattern filter if specified
                 if let Some(pat) = pattern {
@@ -249,19 +226,15 @@ impl LogServer {
 
         let path = self.log_dir.join(&input.filename);
         let content = std::fs::read_to_string(&path).map_err(|e| {
-            McpError::invalid_params(
-                format!("Failed to read log file: {}", e),
-                None,
-            )
+            McpError::invalid_params(format!("Failed to read log file: {}", e), None)
         })?;
 
         let mut entries = self.parser.parse(&content);
 
         // Apply JQ filter if specified
         if let Some(filter_str) = &input.filter {
-            let filter = JqFilter::compile(filter_str).map_err(|e| {
-                McpError::invalid_params(format!("Invalid filter: {}", e), None)
-            })?;
+            let filter = JqFilter::compile(filter_str)
+                .map_err(|e| McpError::invalid_params(format!("Invalid filter: {}", e), None))?;
 
             entries = entries
                 .into_iter()
@@ -314,17 +287,13 @@ impl LogServer {
 
         let path = self.log_dir.join(&input.filename);
         let content = std::fs::read_to_string(&path).map_err(|e| {
-            McpError::invalid_params(
-                format!("Failed to read log file: {}", e),
-                None,
-            )
+            McpError::invalid_params(format!("Failed to read log file: {}", e), None)
         })?;
 
         let entries = self.parser.parse(&content);
 
-        let filter = JqFilter::compile(&input.query).map_err(|e| {
-            McpError::invalid_params(format!("Invalid JQ query: {}", e), None)
-        })?;
+        let filter = JqFilter::compile(&input.query)
+            .map_err(|e| McpError::invalid_params(format!("Invalid JQ query: {}", e), None))?;
 
         let matches: Vec<_> = entries
             .into_iter()
@@ -364,10 +333,7 @@ impl LogServer {
 
         let full_path = self.workspace_root.join(&normalized);
         let content = std::fs::read_to_string(&full_path).map_err(|e| {
-            McpError::invalid_params(
-                format!("Failed to read source file: {}", e),
-                None,
-            )
+            McpError::invalid_params(format!("Failed to read source file: {}", e), None)
         })?;
 
         let lines: Vec<&str> = content.lines().collect();
@@ -429,10 +395,7 @@ impl LogServer {
 
         let path = self.log_dir.join(&input.filename);
         let content = std::fs::read_to_string(&path).map_err(|e| {
-            McpError::invalid_params(
-                format!("Failed to read log file: {}", e),
-                None,
-            )
+            McpError::invalid_params(format!("Failed to read log file: {}", e), None)
         })?;
 
         let entries = self.parser.parse(&content);
@@ -451,8 +414,7 @@ impl LogServer {
             *by_event_type.entry(entry.event_type.clone()).or_insert(0) += 1;
 
             if let Some(span_name) = &entry.span_name {
-                let (count, has_error) =
-                    span_info.entry(span_name.clone()).or_insert((0, false));
+                let (count, has_error) = span_info.entry(span_name.clone()).or_insert((0, false));
                 *count += 1;
                 if entry.level == "ERROR" {
                     *has_error = true;
@@ -502,15 +464,11 @@ impl LogServer {
             )]));
         }
 
-        let filter = JqFilter::compile(&input.query).map_err(|e| {
-            McpError::invalid_params(format!("Invalid JQ query: {}", e), None)
-        })?;
+        let filter = JqFilter::compile(&input.query)
+            .map_err(|e| McpError::invalid_params(format!("Invalid JQ query: {}", e), None))?;
 
         let entries = std::fs::read_dir(&self.log_dir).map_err(|e| {
-            McpError::internal_error(
-                format!("Failed to read log directory: {}", e),
-                None,
-            )
+            McpError::internal_error(format!("Failed to read log directory: {}", e), None)
         })?;
 
         let mut all_results: Vec<serde_json::Value> = Vec::new();
@@ -518,8 +476,7 @@ impl LogServer {
         for entry in entries.flatten() {
             let path = entry.path();
             if path.extension().map_or(false, |ext| ext == "log") {
-                let filename =
-                    path.file_name().unwrap().to_string_lossy().to_string();
+                let filename = path.file_name().unwrap().to_string_lossy().to_string();
 
                 if let Ok(content) = std::fs::read_to_string(&path) {
                     let log_entries = self.parser.parse(&content);
@@ -527,8 +484,7 @@ impl LogServer {
                     let matches: Vec<_> = log_entries
                         .into_iter()
                         .filter(|e| {
-                            let json =
-                                serde_json::to_value(e).unwrap_or_default();
+                            let json = serde_json::to_value(e).unwrap_or_default();
                             filter.matches(&json)
                         })
                         .take(input.limit_per_file)

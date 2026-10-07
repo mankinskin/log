@@ -1,20 +1,10 @@
 use chrono::TimeZone;
 use pretty_assertions::assert_eq;
-use test_api::{
-    ValidationExecution,
-    ValidationLinks,
-};
+use test_api::{ValidationExecution, ValidationLinks};
 
 use super::{
-    LogError,
-    RuntimeLogFormat,
-    RuntimeLogLinks,
-    RuntimeLogSession,
-    RuntimeLogStatus,
-    RuntimeLogTransport,
-    ValidationLogCapture,
-    ValidationLogKind,
-    ValidationLogLinks,
+    LogError, RuntimeLogFormat, RuntimeLogLinks, RuntimeLogSession, RuntimeLogStatus,
+    RuntimeLogTransport, ValidationLogCapture, ValidationLogKind, ValidationLogLinks,
     ValidationLogRetrieval,
 };
 
@@ -26,11 +16,7 @@ fn sample_time() -> chrono::DateTime<chrono::Utc> {
 }
 
 fn sample_execution() -> ValidationExecution {
-    let mut execution = ValidationExecution::passed(
-        "exec-1",
-        "validation-spec-1",
-        sample_time(),
-    );
+    let mut execution = ValidationExecution::passed("exec-1", "validation-spec-1", sample_time());
     execution.links = ValidationLinks {
         spec_ids: vec!["spec-1".to_string()],
         acceptance_criterion_ids: vec!["criterion-1".to_string()],
@@ -61,9 +47,7 @@ fn captures_and_retrievals_round_trip_through_serde() {
         capture.links.clone(),
     );
 
-    let json =
-        serde_json::to_string_pretty(&(capture.clone(), retrieval.clone()))
-            .unwrap();
+    let json = serde_json::to_string_pretty(&(capture.clone(), retrieval.clone())).unwrap();
     let reparsed: (ValidationLogCapture, ValidationLogRetrieval) =
         serde_json::from_str(&json).unwrap();
 
@@ -158,8 +142,7 @@ fn runtime_sessions_round_trip_through_serde() {
     session.workspace_root = Some("/repo/context-engine".to_string());
     session.store_root = Some("/repo/context-engine/.ticket".to_string());
     session.rotation_policy = Some("size:10MB,keep:5".to_string());
-    session.active_filters =
-        vec!["info".to_string(), "ticket_api=debug".to_string()];
+    session.active_filters = vec!["info".to_string(), "ticket_api=debug".to_string()];
     session.byte_offset_checkpoint = Some(2048);
     session.links = RuntimeLogLinks {
         spec_ids: vec!["spec-1".to_string()],
@@ -202,7 +185,9 @@ fn runtime_session_interoperability_contract_requires_correlation_links() {
     let gaps = session.interoperability_gaps();
     assert!(gaps.contains(&"missing operation"));
     assert!(gaps.contains(&"missing run_id"));
-    assert!(gaps.contains(&"missing execution, benchmark, journal, agent-session, or graph-operation links"));
+    assert!(gaps.contains(
+        &"missing execution, benchmark, journal, agent-session, or graph-operation links"
+    ));
 
     assert!(matches!(
         session.validate_interoperability_contract(),

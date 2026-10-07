@@ -2,45 +2,15 @@ use std::collections::HashMap;
 
 use dioxus::prelude::*;
 use viewer_api_dioxus::{
-    is_mobile_sidebar_viewport,
-    set_gpu_overlay_enabled,
-    Camera,
-    EdgeRef3D,
-    FileContentViewer,
-    FileTree,
-    FilterDef,
-    GlassPanel,
-    Graph3D,
-    HamburgerIcon,
-    Header,
-    HeaderActions,
-    Layout,
-    Layout3D,
-    LogIcon,
-    Node3D,
-    Overlay,
-    SearchIcon,
-    Sidebar,
-    StatsIcon,
-    TabBar,
-    TabItem,
-    ThemeProvider,
-    ThemeSettings,
-    TreeNode,
-    ViewerShell,
-    WgpuOverlay,
+    is_mobile_sidebar_viewport, set_gpu_overlay_enabled, Camera, EdgeRef3D, FileContentViewer,
+    FileTree, FilterDef, GlassPanel, Graph3D, HamburgerIcon, Header, HeaderActions, Layout,
+    Layout3D, LogIcon, Node3D, Overlay, SearchIcon, Sidebar, StatsIcon, TabBar, TabItem,
+    ThemeProvider, ThemeSettings, TreeNode, ViewerShell, WgpuOverlay,
 };
 
 use crate::{
-    api::{
-        HttpLogViewerBackend,
-        LogViewerBackend,
-    },
-    types::{
-        LogEntry,
-        LogFileInfo,
-        Signatures,
-    },
+    api::{HttpLogViewerBackend, LogViewerBackend},
+    types::{LogEntry, LogFileInfo, Signatures},
 };
 
 #[derive(Clone, Debug, Default, PartialEq)]
@@ -177,8 +147,7 @@ fn build_hypergraph_layout(entries: &[LogEntry]) -> Option<Layout3D> {
 
     let mut edges = Vec::with_capacity(snapshot.edges.len());
     for edge in snapshot.edges {
-        let Some(from_idx) = index_to_layout_idx.get(&edge.from).copied()
-        else {
+        let Some(from_idx) = index_to_layout_idx.get(&edge.from).copied() else {
             continue;
         };
         let Some(to_idx) = index_to_layout_idx.get(&edge.to).copied() else {
@@ -203,8 +172,7 @@ fn parse_route(hash: &str) -> Option<(String, String)> {
     if let Some(last_slash) = rest.rfind('/') {
         let possible_tab = &rest[last_slash + 1..];
         if valid_tabs.contains(&possible_tab) {
-            let file =
-                urlencoding::decode(&rest[..last_slash]).ok()?.to_string();
+            let file = urlencoding::decode(&rest[..last_slash]).ok()?.to_string();
             return Some((file, possible_tab.to_string()));
         }
     }
@@ -215,10 +183,7 @@ fn parse_route(hash: &str) -> Option<(String, String)> {
 
 // This helper is only invoked from wasm hash updates.
 #[cfg_attr(not(target_arch = "wasm32"), allow(dead_code))]
-fn build_route(
-    file: &str,
-    tab: &str,
-) -> String {
+fn build_route(file: &str, tab: &str) -> String {
     let encoded = urlencoding::encode(file);
     if tab == "logs" {
         format!("/file/{encoded}")
@@ -238,10 +203,7 @@ fn current_hash() -> Option<String> {
     }
 }
 
-fn update_hash(
-    file: &str,
-    tab: &str,
-) {
+fn update_hash(file: &str, tab: &str) {
     #[cfg(target_arch = "wasm32")]
     {
         if let Some(window) = web_sys::window() {
@@ -254,10 +216,7 @@ fn update_hash(
     }
 }
 
-fn file_matches_category(
-    file: &LogFileInfo,
-    category: Option<&str>,
-) -> bool {
+fn file_matches_category(file: &LogFileInfo, category: Option<&str>) -> bool {
     match category {
         Some("graph") => file.has_graph_snapshot,
         Some("search") => file.has_search_ops,
@@ -348,16 +307,12 @@ fn spawn_load_file_task(
         let result = backend.get_log(&name).await;
         match result {
             Ok(data) => {
-                let signatures =
-                    backend.get_signatures(&name).await.unwrap_or_default();
-                let first_source =
-                    data.entries.iter().find(|entry| entry.file.is_some());
+                let signatures = backend.get_signatures(&name).await.unwrap_or_default();
+                let first_source = data.entries.iter().find(|entry| entry.file.is_some());
 
-                let mut state =
-                    FileViewState::with_entries(data.entries.clone());
+                let mut state = FileViewState::with_entries(data.entries.clone());
                 state.signatures = signatures;
-                state.active_tab =
-                    route_tab.unwrap_or_else(|| "logs".to_string());
+                state.active_tab = route_tab.unwrap_or_else(|| "logs".to_string());
 
                 if let Some(entry) = first_source {
                     if let Some(path) = &entry.file {
@@ -365,8 +320,7 @@ fn spawn_load_file_task(
                             state.code_file = Some(path.clone());
                             state.code_content = src.content;
                             state.code_language = Some(src.language);
-                            state.selected_line =
-                                entry.source_line.map(|v| v as usize);
+                            state.selected_line = entry.source_line.map(|v| v as usize);
                         }
                     }
                 }
@@ -383,11 +337,11 @@ fn spawn_load_file_task(
                     "Loaded {name} ({} entries)",
                     state.visible_entries.len()
                 ));
-            },
+            }
             Err(err) => {
                 error_message.set(Some(err.to_string()));
                 status_message.set("Error loading file".to_string());
-            },
+            }
         }
 
         is_loading.set(false);
@@ -409,11 +363,11 @@ fn spawn_refresh_all_task(
                 let count = files.len();
                 log_files.set(files);
                 status_message.set(format!("Found {count} log files"));
-            },
+            }
             Err(err) => {
                 error_message.set(Some(err.to_string()));
                 status_message.set("Error loading files".to_string());
-            },
+            }
         }
         is_loading.set(false);
     });

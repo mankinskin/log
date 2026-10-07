@@ -1,28 +1,13 @@
 use std::fmt;
 
-use gloo_net::http::{
-    Request,
-    RequestBuilder,
-};
-use percent_encoding::{
-    utf8_percent_encode,
-    NON_ALPHANUMERIC,
-};
-use serde::{
-    de::DeserializeOwned,
-    Serialize,
-};
+use gloo_net::http::{Request, RequestBuilder};
+use percent_encoding::{utf8_percent_encode, NON_ALPHANUMERIC};
+use serde::{de::DeserializeOwned, Serialize};
 use viewer_api_dioxus::with_session;
 
 use crate::types::{
-    JqQueryResponse,
-    LogContentResponse,
-    LogFileInfo,
-    SearchResponse,
-    SessionConfig,
-    SessionConfigUpdate,
-    Signatures,
-    SourceFileResponse,
+    JqQueryResponse, LogContentResponse, LogFileInfo, SearchResponse, SessionConfig,
+    SessionConfigUpdate, Signatures, SourceFileResponse,
 };
 
 pub type ApiResult<T> = Result<T, ApiError>;
@@ -35,14 +20,10 @@ pub enum ApiError {
 }
 
 impl fmt::Display for ApiError {
-    fn fmt(
-        &self,
-        f: &mut fmt::Formatter<'_>,
-    ) -> fmt::Result {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         match self {
             Self::Network(err) => write!(f, "network error: {err}"),
-            Self::HttpStatus(status) =>
-                write!(f, "request failed with status {status}"),
+            Self::HttpStatus(status) => write!(f, "request failed with status {status}"),
             Self::Serialize(err) => write!(f, "serialization error: {err}"),
         }
     }
@@ -68,14 +49,8 @@ impl From<serde_json::Error> for ApiError {
 #[allow(dead_code)]
 pub trait LogViewerBackend {
     async fn list_logs(&self) -> ApiResult<Vec<LogFileInfo>>;
-    async fn get_log(
-        &self,
-        name: &str,
-    ) -> ApiResult<LogContentResponse>;
-    async fn get_signatures(
-        &self,
-        name: &str,
-    ) -> ApiResult<Signatures>;
+    async fn get_log(&self, name: &str) -> ApiResult<LogContentResponse>;
+    async fn get_signatures(&self, name: &str) -> ApiResult<Signatures>;
     async fn search_log(
         &self,
         name: &str,
@@ -89,15 +64,10 @@ pub trait LogViewerBackend {
         jq: &str,
         limit: Option<usize>,
     ) -> ApiResult<JqQueryResponse>;
-    async fn get_source_file(
-        &self,
-        path: &str,
-    ) -> ApiResult<SourceFileResponse>;
+    async fn get_source_file(&self, path: &str) -> ApiResult<SourceFileResponse>;
     async fn get_session_config(&self) -> ApiResult<SessionConfig>;
-    async fn update_session_config(
-        &self,
-        update: &SessionConfigUpdate,
-    ) -> ApiResult<SessionConfig>;
+    async fn update_session_config(&self, update: &SessionConfigUpdate)
+        -> ApiResult<SessionConfig>;
 }
 
 #[derive(Clone, Debug)]
@@ -118,10 +88,7 @@ impl HttpLogViewerBackend {
         }
     }
 
-    fn api_url(
-        &self,
-        path: &str,
-    ) -> String {
+    fn api_url(&self, path: &str) -> String {
         format!("{}{}", self.base_url.trim_end_matches('/'), path)
     }
 
@@ -129,10 +96,7 @@ impl HttpLogViewerBackend {
         utf8_percent_encode(value, NON_ALPHANUMERIC).to_string()
     }
 
-    async fn send_builder_json<T>(
-        &self,
-        request: RequestBuilder,
-    ) -> ApiResult<T>
+    async fn send_builder_json<T>(&self, request: RequestBuilder) -> ApiResult<T>
     where
         T: DeserializeOwned,
     {
@@ -145,10 +109,7 @@ impl HttpLogViewerBackend {
 
     // Retained for upcoming JSON write flows (session/config updates).
     #[allow(dead_code)]
-    async fn send_request_json<T>(
-        &self,
-        request: Request,
-    ) -> ApiResult<T>
+    async fn send_request_json<T>(&self, request: Request) -> ApiResult<T>
     where
         T: DeserializeOwned,
     {
@@ -180,11 +141,7 @@ impl HttpLogViewerBackend {
 
     // Retained for upcoming JSON write flows (session/config updates).
     #[allow(dead_code)]
-    async fn post_json<B, T>(
-        &self,
-        path: &str,
-        body: &B,
-    ) -> ApiResult<T>
+    async fn post_json<B, T>(&self, path: &str, body: &B) -> ApiResult<T>
     where
         B: Serialize,
         T: DeserializeOwned,
@@ -205,24 +162,17 @@ impl HttpLogViewerBackend {
 
 impl LogViewerBackend for HttpLogViewerBackend {
     async fn list_logs(&self) -> ApiResult<Vec<LogFileInfo>> {
-        let request =
-            Self::attach_session(Request::get(&self.api_url("/logs")));
+        let request = Self::attach_session(Request::get(&self.api_url("/logs")));
         self.send_builder_json(request).await
     }
 
-    async fn get_log(
-        &self,
-        name: &str,
-    ) -> ApiResult<LogContentResponse> {
+    async fn get_log(&self, name: &str) -> ApiResult<LogContentResponse> {
         let path = format!("/logs/{}", Self::encode(name));
         let request = Self::attach_session(Request::get(&self.api_url(&path)));
         self.send_builder_json(request).await
     }
 
-    async fn get_signatures(
-        &self,
-        name: &str,
-    ) -> ApiResult<Signatures> {
+    async fn get_signatures(&self, name: &str) -> ApiResult<Signatures> {
         let path = format!("/signatures/{}", Self::encode(name));
         let request = Self::attach_session(Request::get(&self.api_url(&path)));
         self.send_builder_json(request).await
@@ -235,8 +185,7 @@ impl LogViewerBackend for HttpLogViewerBackend {
         level: Option<&str>,
         limit: Option<usize>,
     ) -> ApiResult<SearchResponse> {
-        let mut path =
-            format!("/search/{}?q={}", Self::encode(name), Self::encode(query));
+        let mut path = format!("/search/{}?q={}", Self::encode(name), Self::encode(query));
         if let Some(level) = level {
             path.push_str("&level=");
             path.push_str(&Self::encode(level));
@@ -256,8 +205,7 @@ impl LogViewerBackend for HttpLogViewerBackend {
         jq: &str,
         limit: Option<usize>,
     ) -> ApiResult<JqQueryResponse> {
-        let mut path =
-            format!("/query/{}?jq={}", Self::encode(name), Self::encode(jq));
+        let mut path = format!("/query/{}?jq={}", Self::encode(name), Self::encode(jq));
         if let Some(limit) = limit {
             path.push_str("&limit=");
             path.push_str(&limit.to_string());
@@ -267,18 +215,14 @@ impl LogViewerBackend for HttpLogViewerBackend {
         self.send_builder_json(request).await
     }
 
-    async fn get_source_file(
-        &self,
-        path: &str,
-    ) -> ApiResult<SourceFileResponse> {
+    async fn get_source_file(&self, path: &str) -> ApiResult<SourceFileResponse> {
         let path = format!("/source/{}", Self::encode(path));
         let request = Self::attach_session(Request::get(&self.api_url(&path)));
         self.send_builder_json(request).await
     }
 
     async fn get_session_config(&self) -> ApiResult<SessionConfig> {
-        let request =
-            Self::attach_session(Request::get(&self.api_url("/session")));
+        let request = Self::attach_session(Request::get(&self.api_url("/session")));
         self.send_builder_json(request).await
     }
 

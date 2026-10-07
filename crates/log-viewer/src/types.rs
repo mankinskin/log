@@ -1,9 +1,6 @@
 //! Request and response types for the log viewer HTTP API.
 
-use serde::{
-    Deserialize,
-    Serialize,
-};
+use serde::{Deserialize, Serialize};
 use ts_rs::TS;
 
 use crate::log_parser::LogEntry;

@@ -1,18 +1,7 @@
-use chrono::{
-    DateTime,
-    Utc,
-};
+use chrono::{DateTime, Utc};
 use memory_kernel::InteroperableArtifact;
-use serde::{
-    Deserialize,
-    Serialize,
-};
-use test_api::{
-    IdentifiableArtifact,
-    TraceableArtifact,
-    ValidationExecution,
-    ValidationLinks,
-};
+use serde::{Deserialize, Serialize};
+use test_api::{IdentifiableArtifact, TraceableArtifact, ValidationExecution, ValidationLinks};
 
 mod error;
 pub mod log_parser;
@@ -20,12 +9,7 @@ mod store;
 pub mod types;
 
 pub use error::LogError;
-pub use store::{
-    LogCaptureQuery,
-    LogStoreConfig,
-    OperationJournalQuery,
-    RuntimeLogSessionQuery,
-};
+pub use store::{LogCaptureQuery, LogStoreConfig, OperationJournalQuery, RuntimeLogSessionQuery};
 
 #[derive(Debug, Clone, PartialEq, Eq, Default, Serialize, Deserialize)]
 pub struct ValidationLogLinks {
@@ -42,31 +26,19 @@ pub struct ValidationLogLinks {
 }
 
 impl ValidationLogLinks {
-    pub fn links_to_spec(
-        &self,
-        spec_id: &str,
-    ) -> bool {
+    pub fn links_to_spec(&self, spec_id: &str) -> bool {
         self.spec_ids.iter().any(|id| id == spec_id)
     }
 
-    pub fn links_to_ticket(
-        &self,
-        ticket_id: &str,
-    ) -> bool {
+    pub fn links_to_ticket(&self, ticket_id: &str) -> bool {
         self.ticket_ids.iter().any(|id| id == ticket_id)
     }
 
-    pub fn links_to_doc_evidence(
-        &self,
-        doc_evidence_id: &str,
-    ) -> bool {
+    pub fn links_to_doc_evidence(&self, doc_evidence_id: &str) -> bool {
         self.doc_evidence_ids.iter().any(|id| id == doc_evidence_id)
     }
 
-    pub fn links_to_execution(
-        &self,
-        execution_id: &str,
-    ) -> bool {
+    pub fn links_to_execution(&self, execution_id: &str) -> bool {
         self.validation_execution_ids
             .iter()
             .any(|id| id == execution_id)
@@ -77,10 +49,7 @@ impl From<&ValidationExecution> for ValidationLogLinks {
     fn from(execution: &ValidationExecution) -> Self {
         Self {
             spec_ids: execution.links.spec_ids.clone(),
-            acceptance_criterion_ids: execution
-                .links
-                .acceptance_criterion_ids
-                .clone(),
+            acceptance_criterion_ids: execution.links.acceptance_criterion_ids.clone(),
             ticket_ids: execution.links.ticket_ids.clone(),
             doc_evidence_ids: execution.links.doc_evidence_ids.clone(),
             validation_execution_ids: vec![execution.id.clone()],
@@ -129,17 +98,14 @@ impl ValidationLogCapture {
         <Self as InteroperableArtifact>::interoperability_gaps(self)
     }
 
-    pub fn validate_interoperability_contract(
-        &self
-    ) -> Result<(), crate::LogError> {
+    pub fn validate_interoperability_contract(&self) -> Result<(), crate::LogError> {
         let gaps = self.interoperability_gaps();
         if gaps.is_empty() {
             return Ok(());
         }
 
         Err(crate::LogError::InteroperabilityContract {
-            record_kind: <Self as InteroperableArtifact>::artifact_class(self)
-                .to_string(),
+            record_kind: <Self as InteroperableArtifact>::artifact_class(self).to_string(),
             detail: gaps.join(", "),
         })
     }
@@ -250,54 +216,33 @@ impl RuntimeLogLinks {
             || !self.graph_operation_ids.is_empty()
     }
 
-    pub fn links_to_spec(
-        &self,
-        spec_id: &str,
-    ) -> bool {
+    pub fn links_to_spec(&self, spec_id: &str) -> bool {
         self.spec_ids.iter().any(|id| id == spec_id)
     }
 
-    pub fn links_to_ticket(
-        &self,
-        ticket_id: &str,
-    ) -> bool {
+    pub fn links_to_ticket(&self, ticket_id: &str) -> bool {
         self.ticket_ids.iter().any(|id| id == ticket_id)
     }
 
-    pub fn links_to_execution(
-        &self,
-        execution_id: &str,
-    ) -> bool {
+    pub fn links_to_execution(&self, execution_id: &str) -> bool {
         self.validation_execution_ids
             .iter()
             .any(|id| id == execution_id)
     }
 
-    pub fn links_to_benchmark(
-        &self,
-        benchmark_id: &str,
-    ) -> bool {
+    pub fn links_to_benchmark(&self, benchmark_id: &str) -> bool {
         self.benchmark_ids.iter().any(|id| id == benchmark_id)
     }
 
-    pub fn links_to_agent_session(
-        &self,
-        session_id: &str,
-    ) -> bool {
+    pub fn links_to_agent_session(&self, session_id: &str) -> bool {
         self.agent_session_ids.iter().any(|id| id == session_id)
     }
 
-    pub fn links_to_journal(
-        &self,
-        journal_id: &str,
-    ) -> bool {
+    pub fn links_to_journal(&self, journal_id: &str) -> bool {
         self.journal_ids.iter().any(|id| id == journal_id)
     }
 
-    pub fn links_to_graph_operation(
-        &self,
-        graph_operation_id: &str,
-    ) -> bool {
+    pub fn links_to_graph_operation(&self, graph_operation_id: &str) -> bool {
         self.graph_operation_ids
             .iter()
             .any(|id| id == graph_operation_id)
@@ -390,7 +335,9 @@ impl InteroperableArtifact for RuntimeLogSession {
             gaps.push("missing run_id");
         }
         if !self.links.has_correlation_links() {
-            gaps.push("missing execution, benchmark, journal, agent-session, or graph-operation links");
+            gaps.push(
+                "missing execution, benchmark, journal, agent-session, or graph-operation links",
+            );
         }
         gaps
     }
@@ -417,17 +364,14 @@ impl RuntimeLogSession {
         <Self as InteroperableArtifact>::interoperability_gaps(self)
     }
 
-    pub fn validate_interoperability_contract(
-        &self
-    ) -> Result<(), crate::LogError> {
+    pub fn validate_interoperability_contract(&self) -> Result<(), crate::LogError> {
         let gaps = self.interoperability_gaps();
         if gaps.is_empty() {
             return Ok(());
         }
 
         Err(crate::LogError::InteroperabilityContract {
-            record_kind: <Self as InteroperableArtifact>::artifact_class(self)
-                .to_string(),
+            record_kind: <Self as InteroperableArtifact>::artifact_class(self).to_string(),
             detail: gaps.join(", "),
         })
     }

@@ -1,29 +1,13 @@
 //! Source file viewing and resolution.
 
-use tracing::{
-    debug,
-    error,
-    info,
-    instrument,
-    warn,
-};
+use tracing::{debug, error, info, instrument, warn};
 use viewer_api::{
     axum::{
-        extract::{
-            Path,
-            Query,
-            State,
-        },
-        http::{
-            HeaderMap,
-            StatusCode,
-        },
+        extract::{Path, Query, State},
+        http::{HeaderMap, StatusCode},
         response::Json,
     },
-    source::{
-        extract_snippet,
-        SourceLocation,
-    },
+    source::{extract_snippet, SourceLocation},
 };
 
 // Re-export shared utilities so crate-level code can access them
@@ -31,15 +15,8 @@ pub use viewer_api::source::detect_language;
 
 use crate::{
     handlers::to_unix_path,
-    state::{
-        get_session_config,
-        increment_source_count,
-        AppState,
-    },
-    types::{
-        ErrorResponse,
-        SourceQuery,
-    },
+    state::{get_session_config, increment_source_count, AppState},
+    types::{ErrorResponse, SourceQuery},
 };
 
 /// Fetch the content of a source file using the configured backend.
@@ -50,14 +27,13 @@ async fn fetch_content(
     state: &AppState,
     path: &str,
 ) -> Result<String, (StatusCode, Json<ErrorResponse>)> {
-    let location =
-        state
-            .source_backend
-            .resolve_url_or_path(path)
-            .map_err(|e| {
-                warn!(error = %e, path = %path, "Invalid source path");
-                (StatusCode::BAD_REQUEST, Json(ErrorResponse { error: e }))
-            })?;
+    let location = state
+        .source_backend
+        .resolve_url_or_path(path)
+        .map_err(|e| {
+            warn!(error = %e, path = %path, "Invalid source path");
+            (StatusCode::BAD_REQUEST, Json(ErrorResponse { error: e }))
+        })?;
 
     match location {
         SourceLocation::Path(full_path) => {
@@ -75,7 +51,7 @@ async fn fetch_content(
                     }),
                 )
             })
-        },
+        }
         SourceLocation::Url(url) => {
             debug!(url = %url, "Fetching remote source file");
             let response = reqwest::get(&url).await.map_err(|e| {
@@ -94,10 +70,7 @@ async fn fetch_content(
                 return Err((
                     StatusCode::NOT_FOUND,
                     Json(ErrorResponse {
-                        error: format!(
-                            "Remote source file not found: {} (HTTP {})",
-                            path, status
-                        ),
+                        error: format!("Remote source file not found: {} (HTTP {})", path, status),
                     }),
                 ));
             }
@@ -111,7 +84,7 @@ async fn fetch_content(
                     }),
                 )
             })
-        },
+        }
     }
 }
 

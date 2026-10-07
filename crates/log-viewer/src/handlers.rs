@@ -1,47 +1,19 @@
 //! HTTP request handlers for log operations.
 
-use tracing::{
-    debug,
-    error,
-    info,
-    instrument,
-    warn,
-};
+use tracing::{debug, error, info, instrument, warn};
 use viewer_api::axum::{
-    extract::{
-        Path,
-        Query,
-        State,
-    },
-    http::{
-        header,
-        HeaderMap,
-        StatusCode,
-    },
-    response::{
-        IntoResponse,
-        Json,
-    },
+    extract::{Path, Query, State},
+    http::{header, HeaderMap, StatusCode},
+    response::{IntoResponse, Json},
 };
 
 use crate::{
     log_parser::LogEntry,
     query,
-    state::{
-        get_session_config,
-        AppState,
-        SessionConfig,
-        SESSION_HEADER,
-    },
+    state::{get_session_config, AppState, SessionConfig, SESSION_HEADER},
     types::{
-        ErrorResponse,
-        JqQuery,
-        JqQueryResponse,
-        LogContentResponse,
-        LogFileInfo,
-        SearchQuery,
-        SearchResponse,
-        SessionConfigUpdate,
+        ErrorResponse, JqQuery, JqQueryResponse, LogContentResponse, LogFileInfo, SearchQuery,
+        SearchResponse, SessionConfigUpdate,
     },
 };
 
@@ -54,11 +26,7 @@ fn is_invalid_filename(name: &str) -> bool {
     name.contains("..") || name.contains('/') || name.contains('\\')
 }
 
-fn entry_matches_query(
-    entry: &LogEntry,
-    regex: &regex::Regex,
-    level_filter: Option<&str>,
-) -> bool {
+fn entry_matches_query(entry: &LogEntry, regex: &regex::Regex, level_filter: Option<&str>) -> bool {
     if let Some(filter) = level_filter {
         if !entry.level.eq_ignore_ascii_case(filter) {
             return false;
@@ -102,13 +70,10 @@ pub async fn get_session(
             )
         })?;
 
-    let config =
-        get_session_config(&state.sessions, &headers).unwrap_or_else(|| {
-            SessionConfig {
-                session_id: session_id.to_string(),
-                ..Default::default()
-            }
-        });
+    let config = get_session_config(&state.sessions, &headers).unwrap_or_else(|| SessionConfig {
+        session_id: session_id.to_string(),
+        ..Default::default()
+    });
 
     Ok(Json(config))
 }
@@ -156,7 +121,7 @@ pub async fn update_session(
 /// List all available log files
 #[instrument(skip(state), fields(log_dir = %to_unix_path(&state.log_dir)))]
 pub async fn list_logs(
-    State(state): State<AppState>
+    State(state): State<AppState>,
 ) -> Result<Json<Vec<LogFileInfo>>, (StatusCode, Json<ErrorResponse>)> {
     debug!("Listing log files");
 
@@ -339,9 +304,7 @@ pub async fn search_log(
     // Filter entries
     let mut matches: Vec<LogEntry> = entries
         .into_iter()
-        .filter(|entry| {
-            entry_matches_query(entry, &regex, query.level.as_deref())
-        })
+        .filter(|entry| entry_matches_query(entry, &regex, query.level.as_deref()))
         .collect();
 
     let total_matches = matches.len();

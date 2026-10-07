@@ -8,20 +8,9 @@
 //!
 //! Environment variables override config file values.
 
-use serde::{
-    Deserialize,
-    Serialize,
-};
-use std::{
-    env,
-    fs,
-    path::PathBuf,
-};
-use tracing::{
-    debug,
-    info,
-    warn,
-};
+use serde::{Deserialize, Serialize};
+use std::{env, fs, path::PathBuf};
+use tracing::{debug, info, warn};
 
 /// Convert a path to Unix-style string (forward slashes)
 fn to_unix_path(path: &std::path::Path) -> String {
@@ -137,30 +126,18 @@ impl Config {
                 match fs::read_to_string(&path) {
                     Ok(content) => match toml::from_str::<Config>(&content) {
                         Ok(mut config) => {
-                            info!(
-                                "Loaded config from: {}",
-                                to_unix_path(&path)
-                            );
+                            info!("Loaded config from: {}", to_unix_path(&path));
                             // Remember config file directory for resolving relative paths
-                            config.config_dir =
-                                path.parent().map(|p| p.to_path_buf());
+                            config.config_dir = path.parent().map(|p| p.to_path_buf());
                             return Some(config);
-                        },
+                        }
                         Err(e) => {
-                            warn!(
-                                "Failed to parse config file {}: {}",
-                                to_unix_path(&path),
-                                e
-                            );
-                        },
+                            warn!("Failed to parse config file {}: {}", to_unix_path(&path), e);
+                        }
                     },
                     Err(e) => {
-                        debug!(
-                            "Could not read config file {}: {}",
-                            to_unix_path(&path),
-                            e
-                        );
-                    },
+                        debug!("Could not read config file {}: {}", to_unix_path(&path), e);
+                    }
                 }
             }
         }
@@ -190,9 +167,7 @@ impl Config {
 
         // 4. User config directory
         if let Some(home) = dirs_path() {
-            paths.push(
-                home.join(".config").join("log-viewer").join("config.toml"),
-            );
+            paths.push(home.join(".config").join("log-viewer").join("config.toml"));
         }
 
         paths
@@ -211,15 +186,15 @@ impl Config {
         }
 
         // STATIC_DIR / LOG_VIEWER_STATIC_DIR override config file
-        if let Ok(static_dir) = env::var("STATIC_DIR")
-            .or_else(|_| env::var("LOG_VIEWER_STATIC_DIR"))
+        if let Ok(static_dir) =
+            env::var("STATIC_DIR").or_else(|_| env::var("LOG_VIEWER_STATIC_DIR"))
         {
             self.static_dir = Some(PathBuf::from(static_dir));
         }
 
         // FRONTEND_DIR / LOG_VIEWER_FRONTEND_DIR override config file
-        if let Ok(frontend_dir) = env::var("FRONTEND_DIR")
-            .or_else(|_| env::var("LOG_VIEWER_FRONTEND_DIR"))
+        if let Ok(frontend_dir) =
+            env::var("FRONTEND_DIR").or_else(|_| env::var("LOG_VIEWER_FRONTEND_DIR"))
         {
             self.frontend_dir = Some(PathBuf::from(frontend_dir));
         }
@@ -236,10 +211,7 @@ impl Config {
     }
 
     /// Resolve a path that may be relative to the config file's directory.
-    fn resolve_path(
-        &self,
-        p: &PathBuf,
-    ) -> PathBuf {
+    fn resolve_path(&self, p: &PathBuf) -> PathBuf {
         if p.is_relative() {
             if let Some(base) = &self.config_dir {
                 return base.join(p);
@@ -254,8 +226,7 @@ impl Config {
             return self.resolve_path(p);
         }
         // Default to target/test-logs in workspace root
-        let mut path =
-            env::current_dir().expect("Failed to get current directory");
+        let mut path = env::current_dir().expect("Failed to get current directory");
         while !path.join("Cargo.toml").exists() && path.parent().is_some() {
             path = path.parent().unwrap().to_path_buf();
         }
@@ -267,8 +238,7 @@ impl Config {
         if let Some(p) = &self.workspace_root {
             return self.resolve_path(p);
         }
-        let mut path =
-            env::current_dir().expect("Failed to get current directory");
+        let mut path = env::current_dir().expect("Failed to get current directory");
         while !path.join("Cargo.toml").exists() && path.parent().is_some() {
             path = path.parent().unwrap().to_path_buf();
         }

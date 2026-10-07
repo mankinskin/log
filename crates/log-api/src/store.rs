@@ -9,7 +9,7 @@ use serde::de::DeserializeOwned;
 use crate::{
     LogError, RuntimeLogSession, RuntimeLogStatus, RuntimeLogTransport, ValidationLogCapture,
 };
-use memory_kernel::{storage::move_kernel::MoveJournal, OperationJournal};
+use memory_kernel::{OperationJournal, storage::move_kernel::MoveJournal};
 use test_api::{IdentifiableArtifact, InteroperableArtifact, TraceableArtifact};
 
 /// Configuration describing where the validation-log store lives.
@@ -338,7 +338,7 @@ impl LogStoreConfig {
                 return Err(LogError::Io {
                     path: dir.to_path_buf(),
                     source,
-                })
+                });
             }
         };
 
@@ -385,7 +385,7 @@ fn read_json_if_exists<T: DeserializeOwned>(path: &Path) -> Result<Option<T>, Lo
             return Err(LogError::Io {
                 path: path.to_path_buf(),
                 source,
-            })
+            });
         }
     };
     let value = serde_json::from_slice(&bytes).map_err(|source| LogError::Deserialize {

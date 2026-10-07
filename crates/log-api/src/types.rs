@@ -1,10 +1,7 @@
 //! Log entry API types, moved here from context-stack's `context-api` so
 //! `log-viewer` no longer needs a `context-api`/`context-stack` dependency.
 
-use serde::{
-    Deserialize,
-    Serialize,
-};
+use serde::{Deserialize, Serialize};
 
 /// A parsed log entry — the simplified API view of a full `LogEntry`.
 #[derive(Debug, Clone, Serialize, Deserialize, schemars::JsonSchema)]

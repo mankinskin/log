@@ -2,29 +2,17 @@
 
 use std::path::PathBuf;
 use viewer_api::{
-    axum::{
-        routing::get,
-        Router,
-    },
+    axum::{routing::get, Router},
     dev_proxy,
     tower_http::{
-        cors::{
-            Any,
-            CorsLayer,
-        },
+        cors::{Any, CorsLayer},
         services::ServeDir,
     },
 };
 
 use crate::{
     handlers::{
-        get_log,
-        get_session,
-        get_signatures,
-        list_logs,
-        query_log,
-        search_log,
-        update_session,
+        get_log, get_session, get_signatures, list_logs, query_log, search_log, update_session,
     },
     source::get_source,
     state::AppState,
@@ -39,10 +27,7 @@ pub enum FrontendMode {
 }
 
 /// Create the router with all routes
-pub fn create_router(
-    state: AppState,
-    frontend: FrontendMode,
-) -> Router {
+pub fn create_router(state: AppState, frontend: FrontendMode) -> Router {
     let mut router = Router::new()
         .route("/api/logs", get(list_logs))
         .route("/api/logs/{name}", get(get_log))
@@ -55,13 +40,14 @@ pub fn create_router(
         .with_state(state);
 
     match frontend {
-        FrontendMode::Static(dir) =>
+        FrontendMode::Static(dir) => {
             if dir.exists() {
                 router = router.fallback_service(ServeDir::new(&dir));
-            },
+            }
+        }
         FrontendMode::DevProxy(port) => {
             router = router.merge(dev_proxy::dev_proxy_fallback(port));
-        },
+        }
     }
 
     router

@@ -45,43 +45,20 @@ mod state;
 mod types;
 
 use config::Config;
-use std::{
-    env,
-    fs,
-    net::SocketAddr,
-    path::Path,
-};
-use viewer_api::{
-    display_host,
-    init_tracing_full,
-    tracing::info,
-    TracingConfig,
-};
+use std::{env, fs, net::SocketAddr, path::Path};
+use viewer_api::{display_host, init_tracing_full, tracing::info, TracingConfig};
 
 use handlers::to_unix_path;
 use router::create_router;
 use state::create_app_state_from_config;
 
 // Re-export types needed by tests
-pub use log_parser::{
-    LogEntry,
-    LogParser,
-};
+pub use log_parser::{LogEntry, LogParser};
 pub use state::{
-    create_app_state,
-    AppState,
-    SessionConfig,
-    SessionStore,
-    SourceBackend,
-    SESSION_HEADER,
+    create_app_state, AppState, SessionConfig, SessionStore, SourceBackend, SESSION_HEADER,
 };
 pub use types::{
-    ErrorResponse,
-    JqQuery,
-    JqQueryResponse,
-    LogContentResponse,
-    LogFileInfo,
-    SearchQuery,
+    ErrorResponse, JqQuery, JqQueryResponse, LogContentResponse, LogFileInfo, SearchQuery,
     SearchResponse,
 };
 
@@ -114,8 +91,7 @@ fn has_built_static_frontend(dir: &Path) -> bool {
 
     // Built Trunk output includes wasm bootstrap and generated wasm artifact.
     let trunk_build = index_html.contains("_bg.wasm")
-        && (index_html.contains("import init")
-            || index_html.contains("TrunkApplicationStarted"));
+        && (index_html.contains("import init") || index_html.contains("TrunkApplicationStarted"));
 
     vite_build || trunk_build
 }
@@ -136,9 +112,7 @@ async fn main() {
 
     if mcp_mode {
         // MCP-only mode - run stdio server
-        if let Err(e) =
-            mcp_server::run_mcp_server(log_dir, workspace_root).await
-        {
+        if let Err(e) = mcp_server::run_mcp_server(log_dir, workspace_root).await {
             eprintln!("MCP server error: {}", e);
             std::process::exit(1);
         }
@@ -177,20 +151,15 @@ Build it with either:\n  (cd memory-viewers/log-viewer/frontend && npx vite buil
             let frontend_dir = config.resolve_frontend_dir();
             info!(frontend_dir = %to_unix_path(&frontend_dir), port = vite_port, "Starting Vite dev server (hot reload enabled)");
 
-            match viewer_api::dev_proxy::DevServer::start(
-                &frontend_dir,
-                vite_port,
-            )
-            .await
-            {
+            match viewer_api::dev_proxy::DevServer::start(&frontend_dir, vite_port).await {
                 Ok(server) => {
                     _dev_server = Some(server);
                     frontend_mode = router::FrontendMode::DevProxy(vite_port);
-                },
+                }
                 Err(e) => {
                     eprintln!("Failed to start Vite dev server: {}", e);
                     std::process::exit(1);
-                },
+                }
             }
         } else {
             _dev_server = None;
@@ -201,10 +170,9 @@ Build it with either:\n  (cd memory-viewers/log-viewer/frontend && npx vite buil
         let app = create_router(state, frontend_mode);
 
         // Bind to address from config
-        let addr: SocketAddr =
-            format!("{}:{}", config.server.host, config.server.port)
-                .parse()
-                .expect("Invalid server address in config");
+        let addr: SocketAddr = format!("{}:{}", config.server.host, config.server.port)
+            .parse()
+            .expect("Invalid server address in config");
         let listener = tokio::net::TcpListener::bind(addr).await.unwrap();
         // Single-line URL log so VS Code's `serverReadyAction` regex can
         // capture it. Keep the exact "Listening on http://..." prefix — the
@@ -230,10 +198,7 @@ mod tests {
         collections::HashMap,
         fs,
         path::PathBuf,
-        sync::{
-            Arc,
-            RwLock,
-        },
+        sync::{Arc, RwLock},
     };
     use tempfile::TempDir;
     use viewer_api::source::resolve_source_path;
@@ -268,21 +233,13 @@ mod tests {
     }
 
     /// Helper to create a sample log file
-    fn create_log_file(
-        dir: &TempDir,
-        name: &str,
-        content: &str,
-    ) {
+    fn create_log_file(dir: &TempDir, name: &str, content: &str) {
         let path = dir.path().join(name);
         fs::write(&path, content).unwrap();
     }
 
     /// Helper to create a sample source file
-    fn create_source_file(
-        dir: &TempDir,
-        path: &str,
-        content: &str,
-    ) {
+    fn create_source_file(dir: &TempDir, path: &str, content: &str) {
         let full_path = dir.path().join(path);
         if let Some(parent) = full_path.parent() {
             fs::create_dir_all(parent).unwrap();
@@ -440,7 +397,8 @@ mod tests {
     async fn test_get_source_snippet() {
         let (server, _log_dir, workspace_dir) = create_test_app();
 
-        let source_content = "line1\nline2\nline3\nline4\nline5\nline6\nline7\nline8\nline9\nline10";
+        let source_content =
+            "line1\nline2\nline3\nline4\nline5\nline6\nline7\nline8\nline9\nline10";
         create_source_file(&workspace_dir, "test.txt", source_content);
 
         let response = server
@@ -461,8 +419,7 @@ mod tests {
         let (server, _log_dir, _workspace_dir) = create_test_app();
 
         // URL-encoded path traversal attempt
-        let response =
-            server.get("/api/source/..%2F..%2F..%2Fetc%2Fpasswd").await;
+        let response = server.get("/api/source/..%2F..%2F..%2Fetc%2Fpasswd").await;
         response.assert_status_bad_request();
     }
 
@@ -543,11 +500,7 @@ mod tests {
     async fn test_query_log_jq_invalid() {
         let (server, log_dir, _workspace_dir) = create_test_app();
 
-        create_log_file(
-            &log_dir,
-            "test.log",
-            r#"{"level":"INFO","message":"test"}"#,
-        );
+        create_log_file(&log_dir, "test.log", r#"{"level":"INFO","message":"test"}"#);
 
         // Invalid JQ syntax
         let response = server

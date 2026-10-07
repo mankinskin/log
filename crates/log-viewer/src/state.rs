@@ -1,24 +1,15 @@
 //! Application state and session management.
 
-use serde::{
-    Deserialize,
-    Serialize,
-};
+use serde::{Deserialize, Serialize};
 use std::{
     collections::HashMap,
     env,
     path::PathBuf,
-    sync::{
-        Arc,
-        RwLock,
-    },
+    sync::{Arc, RwLock},
 };
 use viewer_api::axum::http::HeaderMap;
 
-use crate::{
-    config::Config,
-    log_parser::LogParser,
-};
+use crate::{config::Config, log_parser::LogParser};
 
 // Re-export source backend for use in handlers
 pub use viewer_api::source::SourceBackend;
@@ -87,10 +78,7 @@ pub fn create_app_state_from_config(config: &Config) -> AppState {
 /// 1. Explicit `[repository]` section in config file.
 /// 2. Auto-detection via `GITHUB_ACTIONS` / `GITHUB_REPOSITORY` / `GITHUB_SHA`.
 /// 3. Local filesystem (default).
-fn resolve_source_backend(
-    config: &Config,
-    workspace_root: PathBuf,
-) -> SourceBackend {
+fn resolve_source_backend(config: &Config, workspace_root: PathBuf) -> SourceBackend {
     let repo_cfg = &config.repository;
 
     // Build a remote backend if repo_url AND a commit are configured/detectable.
@@ -99,9 +87,7 @@ fn resolve_source_backend(
         .clone()
         .or_else(|| env::var("GITHUB_SHA").ok());
 
-    if let (Some(repo_url), Some(commit)) =
-        (repo_cfg.repo_url.as_ref(), explicit_commit)
-    {
+    if let (Some(repo_url), Some(commit)) = (repo_cfg.repo_url.as_ref(), explicit_commit) {
         // Parse "https://github.com/owner/repo" -> owner/repo
         if let Some(path) = repo_url
             .trim_end_matches('/')
@@ -131,16 +117,12 @@ fn resolve_source_backend(
 }
 
 /// Create the application state (for backward compatibility and tests)
-pub fn create_app_state(
-    log_dir: Option<PathBuf>,
-    workspace_root: Option<PathBuf>,
-) -> AppState {
+pub fn create_app_state(log_dir: Option<PathBuf>, workspace_root: Option<PathBuf>) -> AppState {
     let log_dir = log_dir
         .or_else(|| env::var("LOG_DIR").map(PathBuf::from).ok())
         .unwrap_or_else(|| {
             // Default to target/test-logs in workspace root
-            let mut path =
-                env::current_dir().expect("Failed to get current directory");
+            let mut path = env::current_dir().expect("Failed to get current directory");
             // Try to find workspace root by looking for Cargo.toml
             while !path.join("Cargo.toml").exists() && path.parent().is_some() {
                 path = path.parent().unwrap().to_path_buf();
@@ -151,8 +133,7 @@ pub fn create_app_state(
     let workspace_root = workspace_root
         .or_else(|| env::var("WORKSPACE_ROOT").map(PathBuf::from).ok())
         .unwrap_or_else(|| {
-            let mut path =
-                env::current_dir().expect("Failed to get current directory");
+            let mut path = env::current_dir().expect("Failed to get current directory");
             while !path.join("Cargo.toml").exists() && path.parent().is_some() {
                 path = path.parent().unwrap().to_path_buf();
             }
@@ -179,12 +160,8 @@ pub fn create_app_state(
 
 /// Get or create session config from headers
 /// Returns None if no session ID is provided (anonymous request)
-pub fn get_session_config(
-    sessions: &SessionStore,
-    headers: &HeaderMap,
-) -> Option<SessionConfig> {
-    let session_id =
-        headers.get(SESSION_HEADER).and_then(|v| v.to_str().ok())?;
+pub fn get_session_config(sessions: &SessionStore, headers: &HeaderMap) -> Option<SessionConfig> {
+    let session_id = headers.get(SESSION_HEADER).and_then(|v| v.to_str().ok())?;
 
     // Get or create session
     let sessions_guard = sessions.read().unwrap();
@@ -205,10 +182,7 @@ pub fn get_session_config(
 }
 
 /// Increment source request counter for a session
-pub fn increment_source_count(
-    sessions: &SessionStore,
-    session_id: &str,
-) -> usize {
+pub fn increment_source_count(sessions: &SessionStore, session_id: &str) -> usize {
     let mut sessions_guard = sessions.write().unwrap();
     if let Some(config) = sessions_guard.get_mut(session_id) {
         config.source_request_count += 1;

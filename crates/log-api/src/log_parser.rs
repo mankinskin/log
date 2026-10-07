@@ -7,15 +7,11 @@
 
 use once_cell::sync::Lazy;
 use regex::Regex;
-use serde::{
-    Deserialize,
-    Serialize,
-};
+use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 
 // Regex to strip ANSI escape codes
-static ANSI_REGEX: Lazy<Regex> =
-    Lazy::new(|| Regex::new(r"\x1b\[[0-9;]*m").unwrap());
+static ANSI_REGEX: Lazy<Regex> = Lazy::new(|| Regex::new(r"\x1b\[[0-9;]*m").unwrap());
 
 // Regex to parse panic location from message: "panicked at <file>:<line>:<col>:"
 static PANIC_LOCATION_REGEX: Lazy<Regex> =
@@ -175,15 +171,13 @@ impl<'de> serde::Deserialize<'de> for SpanEntry {
                 fields: HashMap::new(),
             })),
             serde_json::Value::Object(_) => {
-                let info: SpanInfo =
-                    serde_json::from_value(serde_json::Value::Object(
-                        value.as_object().cloned().unwrap_or_default(),
-                    ))
-                    .map_err(serde::de::Error::custom)?;
+                let info: SpanInfo = serde_json::from_value(serde_json::Value::Object(
+                    value.as_object().cloned().unwrap_or_default(),
+                ))
+                .map_err(serde::de::Error::custom)?;
                 Ok(SpanEntry(info))
-            },
-            _ =>
-                Err(serde::de::Error::custom("span must be a string or object")),
+            }
+            _ => Err(serde::de::Error::custom("span must be a string or object")),
         }
     }
 }
@@ -203,21 +197,14 @@ impl LogParser {
         json.fields.as_ref()?.as_object()
     }
 
-    fn collect_entry_fields(
-        &self,
-        json: &TracingJson,
-    ) -> HashMap<String, serde_json::Value> {
+    fn collect_entry_fields(&self, json: &TracingJson) -> HashMap<String, serde_json::Value> {
         let mut fields = HashMap::new();
 
         if let Some(obj) = self.fields_object(json) {
             for (key, value) in obj {
                 if !matches!(
                     key.as_str(),
-                    "message"
-                        | "backtrace"
-                        | "panic_file"
-                        | "panic_line"
-                        | "panic_column"
+                    "message" | "backtrace" | "panic_file" | "panic_line" | "panic_column"
                 ) {
                     fields.insert(key.clone(), value.clone());
                 }
@@ -235,10 +222,7 @@ impl LogParser {
         fields
     }
 
-    fn extract_panic_fields(
-        &self,
-        json: &TracingJson,
-    ) -> (Option<String>, Option<u32>) {
+    fn extract_panic_fields(&self, json: &TracingJson) -> (Option<String>, Option<u32>) {
         let Some(obj) = self.fields_object(json) else {
             return (None, None);
         };
@@ -255,10 +239,7 @@ impl LogParser {
         (panic_file, panic_line)
     }
 
-    fn extract_message(
-        &self,
-        json: &TracingJson,
-    ) -> String {
+    fn extract_message(&self, json: &TracingJson) -> String {
         self.fields_object(json)
             .and_then(|obj| obj.get("message"))
             .map(|value| match value {
@@ -268,10 +249,7 @@ impl LogParser {
             .unwrap_or_default()
     }
 
-    fn extract_backtrace(
-        &self,
-        json: &TracingJson,
-    ) -> Option<String> {
+    fn extract_backtrace(&self, json: &TracingJson) -> Option<String> {
         self.fields_object(json)
             .and_then(|obj| obj.get("backtrace"))
             .map(|value| match value {
@@ -280,11 +258,7 @@ impl LogParser {
             })
     }
 
-    fn detect_event_type(
-        &self,
-        message: &str,
-        json: &TracingJson,
-    ) -> String {
+    fn detect_event_type(&self, message: &str, json: &TracingJson) -> String {
         if (message.contains("new") || message.contains("enter"))
             && json
                 .span
@@ -299,9 +273,7 @@ impl LogParser {
             };
         }
 
-        if (message.contains("close") || message.contains("exit"))
-            && json.span.is_some()
-        {
+        if (message.contains("close") || message.contains("exit")) && json.span.is_some() {
             return "span_exit".to_string();
         }
 
@@ -318,16 +290,13 @@ impl LogParser {
             return message;
         }
 
-        if let Some(name) =
-            json.span.as_ref().and_then(|span| span.0.name.as_ref())
-        {
+        if let Some(name) = json.span.as_ref().and_then(|span| span.0.name.as_ref()) {
             *event_type = "span_enter".to_string();
             message = format!("Span: {}", name);
         }
 
         if message.is_empty() {
-            message =
-                json.target.clone().unwrap_or_else(|| "Unknown".to_string());
+            message = json.target.clone().unwrap_or_else(|| "Unknown".to_string());
         }
 
         message
@@ -337,14 +306,10 @@ impl LogParser {
     ///
     /// Handles both pretty-printed JSON (multi-line) and NDJSON formats.
     /// Uses serde_json's streaming deserializer to parse consecutive JSON objects.
-    pub fn parse(
-        &self,
-        content: &str,
-    ) -> Vec<LogEntry> {
+    pub fn parse(&self, content: &str) -> Vec<LogEntry> {
         let mut entries = Vec::new();
 
-        let stream = serde_json::Deserializer::from_str(content)
-            .into_iter::<TracingJson>();
+        let stream = serde_json::Deserializer::from_str(content).into_iter::<TracingJson>();
 
         for (index, result) in stream.enumerate() {
             let entry_num = index + 1;
@@ -352,7 +317,7 @@ impl LogParser {
             match result {
                 Ok(json) => {
                     entries.push(self.json_to_entry(entry_num, &json));
-                },
+                }
                 Err(e) => {
                     entries.push(LogEntry {
                         line_number: entry_num,
@@ -373,22 +338,17 @@ impl LogParser {
                     });
                     // Stop on parse errors to avoid cascading failures
                     break;
-                },
+                }
             }
         }
 
         entries
     }
 
-    fn json_to_entry(
-        &self,
-        line_number: usize,
-        json: &TracingJson,
-    ) -> LogEntry {
+    fn json_to_entry(&self, line_number: usize, json: &TracingJson) -> LogEntry {
         let level = json.level.clone().unwrap_or_else(|| "INFO".to_string());
 
-        let (message, event_type, backtrace) =
-            self.extract_message_and_type(json);
+        let (message, event_type, backtrace) = self.extract_message_and_type(json);
 
         let span_name = json
             .span
@@ -436,17 +396,10 @@ impl LogParser {
         }
     }
 
-    fn extract_message_and_type(
-        &self,
-        json: &TracingJson,
-    ) -> (String, String, Option<String>) {
-        let mut event_type =
-            self.detect_event_type(&self.extract_message(json), json);
-        let message = self.apply_message_fallback(
-            self.extract_message(json),
-            &mut event_type,
-            json,
-        );
+    fn extract_message_and_type(&self, json: &TracingJson) -> (String, String, Option<String>) {
+        let mut event_type = self.detect_event_type(&self.extract_message(json), json);
+        let message =
+            self.apply_message_fallback(self.extract_message(json), &mut event_type, json);
         let backtrace = self.extract_backtrace(json);
 
         (message, event_type, backtrace)
@@ -529,13 +482,12 @@ mod tests {
     #[test]
     fn test_calculate_depth() {
         let parser = LogParser::new();
-        let entry1 =
-            r#"{"level":"INFO","fields":{"message":"test"},"spans":[]}"#;
+        let entry1 = r#"{"level":"INFO","fields":{"message":"test"},"spans":[]}"#;
         let entry2 = r#"{"level":"INFO","fields":{"message":"test"},"spans":[{"name":"a"}]}"#;
-        let entry3 = r#"{"level":"INFO","fields":{"message":"test"},"spans":[{"name":"a"},{"name":"b"}]}"#;
+        let entry3 =
+            r#"{"level":"INFO","fields":{"message":"test"},"spans":[{"name":"a"},{"name":"b"}]}"#;
 
-        let entries =
-            parser.parse(&format!("{}\n{}\n{}", entry1, entry2, entry3));
+        let entries = parser.parse(&format!("{}\n{}\n{}", entry1, entry2, entry3));
         assert_eq!(entries[0].depth, 0);
         assert_eq!(entries[1].depth, 1);
         assert_eq!(entries[2].depth, 2);
@@ -561,8 +513,7 @@ mod tests {
     #[test]
     fn test_default_impl() {
         let parser = LogParser::default();
-        let entries =
-            parser.parse(r#"{"level":"DEBUG","fields":{"message":"hi"}}"#);
+        let entries = parser.parse(r#"{"level":"DEBUG","fields":{"message":"hi"}}"#);
         assert_eq!(entries.len(), 1);
         assert_eq!(entries[0].message, "hi");
     }
