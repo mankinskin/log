@@ -11,7 +11,7 @@
     },
     "dependencies": {
         "@context-engine/viewer-api-frontend": "file:./viewer-api-frontend",
-        "@context-engine/types": "file:../../../packages/context-types",
+        "@context-engine/types": "file:./src/types/generated",
         "@preact/signals": "^1.2.2",
         "chart.js": "^4.4.1",
         "preact": "^10.19.3",
