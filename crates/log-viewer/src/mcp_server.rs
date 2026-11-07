@@ -20,6 +20,22 @@ use crate::{
     to_unix_path,
 };
 
+#[cfg(test)]
+mod contract_tests {
+    use super::*;
+
+    #[test]
+    fn advertised_log_contracts_distinguish_predicates_from_projection() {
+        let tools = LogServer::tool_router().list_all();
+        assert_eq!(tools.len(), 6);
+        for tool in &tools {
+            assert!(tool.description.as_deref().unwrap().contains("no per-call workspace"));
+        }
+        let get = tools.iter().find(|tool| tool.name == "get_log").unwrap();
+        assert!(get.description.as_deref().unwrap().contains("NOT projection"));
+    }
+}
+
 /// MCP Server for log debugging
 #[derive(Clone)]
 pub struct LogServer {
@@ -155,7 +171,7 @@ struct SpanSummary {
 impl LogServer {
     /// List all available log files
     #[tool(
-        description = "List all log files in the configured log directory. Returns filename, size, and modification time."
+        description = "List .log files directly in the configured directory, nonrecursive, sorted by name. pattern is a filename substring, not glob. Returns JSON name/size/UTC modified array, or plain text if directory is missing. Uses process-configured log/workspace paths; no per-call workspace."
     )]
     async fn list_logs(
         &self,
@@ -208,7 +224,7 @@ impl LogServer {
 
     /// Get log file content with optional JQ filtering
     #[tool(
-        description = "Read a log file and optionally filter entries using JQ syntax. Supports pagination with offset/limit."
+        description = "Read parsed entries from a bare filename. filter is a per-entry jq truthiness predicate, NOT projection: nonnull/nonfalse matches return original entries. Filter precedes offset (default 0) and limit (default 100, zero none, no cap). Returns total/offset/limit/returned/entries. Uses process-configured log/workspace paths; no per-call workspace."
     )]
     async fn get_log(
         &self,
@@ -269,7 +285,7 @@ impl LogServer {
 
     /// Query logs using JQ filter expressions
     #[tool(
-        description = "Filter log entries using JQ query syntax. Examples:\n- select(.level == \"ERROR\")\n- select(.message | contains(\"panic\"))\n- select(.span_name == \"my_function\")\n- select(.level == \"ERROR\" and .fields.some_key != null)"
+        description = "Filter entries with a per-entry jq truthiness predicate, returning original entries, not transformed jq output. limit defaults 50, zero none; no offset. matches counts returned entries, not total matches. Uses process-configured log/workspace paths; no per-call workspace."
     )]
     async fn query_logs(
         &self,
@@ -317,7 +333,7 @@ impl LogServer {
 
     /// Get source code snippet for a file location
     #[tool(
-        description = "Read source code from a file, optionally centered on a specific line with context."
+        description = "Read a source path relative to configured workspace root; paths containing .. are rejected. Omit line to return the WHOLE file; otherwise line is 1-based with context (default 5) on each side. Uses process-configured log/workspace paths; no per-call workspace."
     )]
     async fn get_source(
         &self,
@@ -377,7 +393,7 @@ impl LogServer {
 
     /// Analyze a log file for patterns and issues
     #[tool(
-        description = "Analyze a log file to get statistics, error summary, and span information. Useful for getting an overview before detailed debugging."
+        description = "Analyze parsed log entries. error_entries contains at most the first 20 ERROR/WARN entries; span_summary order is unspecified. Uses configured log directory, not an entity-store selector. Uses process-configured log/workspace paths; no per-call workspace."
     )]
     async fn analyze_log(
         &self,
@@ -452,7 +468,7 @@ impl LogServer {
 
     /// Search across all log files
     #[tool(
-        description = "Search across all log files using a JQ query. Returns matches from each file up to the limit."
+        description = "Apply a per-entry jq truthiness predicate across .log files, nonrecursive and unordered. Returns original entries for files with matches, at most limit_per_file each (default 10; zero none). Unreadable files are skipped. Uses process-configured log/workspace paths; no per-call workspace."
     )]
     async fn search_all_logs(
         &self,
